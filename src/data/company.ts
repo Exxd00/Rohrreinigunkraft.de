@@ -1,6 +1,8 @@
+import { serviceArea } from "./service-area";
+
 /**
  * Company data and content for Rohrreinigung Kraft
- * Focused on Mittelfranken: Nürnberg, Fürth, Erlangen + 60km Umkreis
+ * Focused on Mittelfranken: Nürnberg, Fürth, Erlangen + 30km Umkreis
  *
  * ⚠️ WICHTIG: Alle Zeitangaben einheitlich halten!
  * Standard: "30-60 Min" (in Nürnberg oft schneller)
@@ -9,12 +11,12 @@
 // Firmenadresse - ECHT (von Gelbe Seiten verifiziert)
 export const company = {
   name: "Rohrreinigung Kraft",
-  tagline: "Ihr lokaler Rohrreinigungsexperte in Mittelfranken",
+  tagline: "Ihr Rohrreinigungsexperte für Nürnberg und Umgebung",
   subTagline: "Nürnberg • Fürth • Erlangen • 24/7 Notdienst",
   mainCity: "Nürnberg",
   priorityCities: ["Nürnberg", "Fürth", "Erlangen"],
   region: "Mittelfranken",
-  serviceRadius: 60, // km - Servicegebiet in Mittelfranken
+  serviceRadius: serviceArea.radiusKm, // website coverage; Ads has its own setting
 
   contact: {
     phone: "+49 911 89218682",
@@ -96,15 +98,15 @@ export const company = {
     satisfactionRate: "98%",
   },
 
-  // ✅ ECHTE BEWERTUNGEN (Google Maps - Stand April 2026)
+  // ✅ ECHTE BEWERTUNGEN (Google Maps - geprüft am 21.09.2026)
   rating: {
     score: 5.0,
     maxScore: 5,
-    reviewCount: 129, // Google Maps verifiziert
+    reviewCount: 141, // Google Maps verifiziert
     displayText: "5.0/5",
-    fullText: "5.0/5 basierend auf 129 Google-Bewertungen",
+    fullText: "5.0/5 basierend auf 141 Google-Bewertungen",
     platforms: [
-      { name: "Google", score: 5.0, count: 129 },
+      { name: "Google", score: 5.0, count: 141 },
     ],
   },
 
@@ -282,7 +284,7 @@ export const company = {
 
   seo: {
     defaultTitle: "Rohrreinigung Kraft | 24/7 Notdienst Nürnberg, Fürth, Erlangen",
-    defaultDescription: "Rohrreinigung & Kanalreinigung in Mittelfranken ✓ Meist 30-60 Min ✓ 24/7 Notdienst ✓ Kostenlose Diagnose ✓ Festpreis vorab. Jetzt anrufen: 0911 89218682",
+    defaultDescription: "Rohrreinigung & Kanalreinigung in Nürnberg und 30 km Umgebung ✓ Meist 30-60 Min ✓ 24/7 Notdienst ✓ Kostenlose Diagnose ✓ Festpreis vorab. Jetzt anrufen: 0911 89218682",
     keywords: [
       "Rohrreinigung Nürnberg",
       "Rohrreinigung Fürth",

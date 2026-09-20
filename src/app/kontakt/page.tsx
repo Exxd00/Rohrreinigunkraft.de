@@ -3,6 +3,7 @@ import ContactForm from "@/components/home/ContactForm";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://rohrreinigung-kraft.de/kontakt" },
   title: "Kontakt | Rohrreinigung Kraft - 24/7 Notdienst",
   description: `Kontaktieren Sie Rohrreinigung Kraft für professionelle Rohrreinigung in Nürnberg. 24/7 Notdienst: ${company.contact.phoneDisplay}`,
 };
@@ -41,7 +42,7 @@ export default function KontaktPage() {
                   Großraum Nürnberg & Umgebung
                 </p>
                 <p className="text-sm text-gray-400">
-                  Bayern - Mittelfranken - Oberfranken - Oberpfalz
+                  Nürnberg und Umgebung · 30 km Umkreis
                 </p>
               </div>
             </div>

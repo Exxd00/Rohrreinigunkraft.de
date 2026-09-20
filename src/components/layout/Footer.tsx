@@ -61,7 +61,8 @@ export default function Footer() {
                 {/* Static Map Image */}
                 <div className="relative h-48 md:h-56 bg-gray-800 overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2589.4!2d11.0767!3d49.4521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDI3JzA3LjYiTiAxMcKwMDQnMzYuMSJF!5e0!3m2!1sde!2sde!4v1"
+                    src="https://www.google.com/maps?q=Rohrreinigung+Kraft,+Ehemannstra%C3%9Fe+9,+90478+N%C3%BCrnberg&output=embed"
+                    title="Standort Rohrreinigung Kraft, Ehemannstraße 9 in Nürnberg"
                     className="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-500 pointer-events-none"
                     style={{ border: 0 }}
                     allowFullScreen
@@ -71,7 +72,7 @@ export default function Footer() {
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent group-hover:from-gray-900/60 transition-all" />
                   {/* Click indicator */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div className="absolute bottom-4 left-4 right-4 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
                       <span className="text-white text-sm font-medium">Unser Standort</span>
@@ -152,7 +153,7 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                Ihr lokaler Partner für Rohrreinigung in Mittelfranken.
+                Ihr Partner für Rohrreinigung in Nürnberg und 30 km Umgebung.
                 Schnell, fair und zuverlässig seit über 10 Jahren.
               </p>
               <div className="flex items-center gap-2 text-sm">

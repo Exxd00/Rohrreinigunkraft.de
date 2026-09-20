@@ -61,7 +61,7 @@ export default function HeroSection() {
               <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 bg-white/10 border border-white/20 rounded-full">
                 <MapPin className="w-4 h-4 text-primary" />
                 <span className="text-sm md:text-base font-semibold text-white">
-                  Rohrreinigung <span className="text-primary">Nürnberg</span> & Mittelfranken
+                  Rohrreinigung <span className="text-primary">Nürnberg</span> & 30 km Umgebung
                 </span>
               </div>
 

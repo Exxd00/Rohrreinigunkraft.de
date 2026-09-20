@@ -4,6 +4,7 @@ import { company } from "@/data/company";
 import { MapPin, Phone, Mail, Building2, FileText, Scale, Shield, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://rohrreinigung-kraft.de/impressum" },
   title: "Impressum | Rohrreinigung Kraft",
   description: "Impressum und rechtliche Informationen von Rohrreinigung Kraft - Ihr lokaler Rohrreinigungsservice in Mittelfranken.",
 };

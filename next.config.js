@@ -36,6 +36,9 @@ const nextConfig = {
         destination: "https://rohrreinigung-kraft.de/:path*",
         permanent: true,
       },
+      ...require("./src/data/municipalities.json").filter(city => !city.isCity).flatMap(city =>
+        ["rohrreinigung", "kanalreinigung", "abflussreinigung", "rohrreinigung-notdienst"].map(service => ({ source: `/${city.slug}/${service}`, destination: `/${city.slug}`, permanent: true }))
+      ),
       { source: "/datenschutzerklaerung", destination: "/datenschutz", permanent: true },
       { source: "/privacy-policy", destination: "/datenschutz", permanent: true },
       { source: "/contact", destination: "/kontakt", permanent: true },
@@ -47,10 +50,6 @@ const nextConfig = {
       { source: "/toilette-verstopft", destination: "/service/toilette-verstopft", permanent: true },
       { source: "/abflussreinigung", destination: "/service/abflussreinigung", permanent: true },
       { source: "/kamera-inspektion", destination: "/service/kamera-inspektion", permanent: true },
-      { source: "/:city((?!service/)[^/]+)/rohrreinigung", destination: "/:city", permanent: true },
-      { source: "/:city((?!service/)[^/]+)/abflussreinigung", destination: "/:city", permanent: true },
-      { source: "/:city((?!service/)[^/]+)/kanalreinigung", destination: "/:city", permanent: true },
-      { source: "/:city((?!service/)[^/]+)/rohrreinigung-notdienst", destination: "/:city", permanent: true },
       { source: "/services", destination: "/leistungen", permanent: true },
       { source: "/pricing", destination: "/preise", permanent: true },
       { source: "/about", destination: "/#about", permanent: true },

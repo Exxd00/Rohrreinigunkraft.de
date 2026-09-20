@@ -1,3 +1,7 @@
+import { getLocalService } from "@/data/local-services";
+import { getCityServiceBrief } from "@/data/city-service-notes";
+import { serviceAreaSchema } from "@/data/service-area";
+import { pageMetadata } from "@/lib/page-seo";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -25,6 +29,8 @@ interface ServicePageProps {
   params: Promise<{ service: string }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({
     service: slug,
@@ -39,6 +45,9 @@ function getServicePrice(slug: string): number {
     "toilette-verstopft": company.pricing.services.toiletteVerstopft.from,
     "rohrreinigung-notdienst": company.pricing.services.notdienst.from,
     "kamera-inspektion": company.pricing.services.kameraInspektion.from,
+    "dichtheitspruefung": company.pricing.services.dichtheitspruefung.from,
+    "rohrsanierung": company.pricing.services.rohrsanierung.from,
+    "rohrreinigung-wartung": company.pricing.services.wartungsvertrag.from,
   };
   return priceMap[slug] || company.pricing.services.rohrreinigung.from;
 }
@@ -56,14 +65,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   const price = getServicePrice(serviceSlug);
 
-  return {
-    title: `${service.name} | Ab ${price}€ | Festpreis vor Arbeit | Rohrreinigung Kraft`,
-    description: `${service.name} ab ${price}€ ✓ Kostenlose Diagnose ✓ Festpreis VORHER ✓ ${company.urgency.responseTime} Min Anfahrt ✓ 24/7. ${company.contact.phoneDisplay}`,
-    openGraph: {
-      title: `${service.name} | Rohrreinigung Kraft`,
-      description: enhancedContent?.heroSubheadline || service.shortDescription,
-    },
-  };
+  return pageMetadata(`/service/${service.slug}`, `${service.name} | Nürnberg & 30 km | Rohrreinigung Kraft`, `${service.shortDescription}. Ablauf und Vorbereitung für Nürnberg und das Umland im 30-km-Radius. Preis vor Arbeitsbeginn abstimmen.`);
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
@@ -81,7 +83,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
     .filter((s) => s.slug !== service.slug)
     .slice(0, 4);
 
-  const mainCities = getNearbyCities(50).slice(0, 6);
+  const mainCities = cities.filter(city => city.isCity);
+  const localDetail = getLocalService(serviceSlug);
 
   // Schema.org markup
   const jsonLd = {
@@ -109,18 +112,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
         ratingValue: "5.0",
         bestRating: "5",
         worstRating: "1",
-        ratingCount: "129"
+        ratingCount: String(company.rating.reviewCount)
       }
     },
-    areaServed: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: 49.4521,
-        longitude: 11.0767,
-      },
-      geoRadius: "60000",
-    },
+    areaServed: serviceAreaSchema,
     serviceType: service.name,
     offers: {
       "@type": "Offer",
@@ -202,7 +197,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {enhancedContent?.heroHeadline || `${service.name}?`}
             </h1>
             <p className="text-lg md:text-xl text-white/80 mb-6 max-w-xl mx-auto">
-              {enhancedContent?.heroSubheadline || `24/7 Notdienst – In ${company.urgency.responseTime} Min vor Ort`}
+              {enhancedContent?.heroSubheadline || "Nürnberg und 30 km Umgebung – Umfang und Anfahrt vorab klären"}
             </p>
 
             {/* Trust Points */}
@@ -217,7 +212,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <Clock className="w-5 h-5 text-amber-400" />
-                <span className="text-sm font-medium">{company.urgency.responseTimeDisplay} vor Ort</span>
+                <span className="text-sm font-medium">Ankunft am Telefon klären</span>
               </div>
             </div>
 
@@ -261,6 +256,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </div>
       </section>
+
+      {localDetail && <section className="bg-white py-12 dark:bg-slate-950"><div className="container mx-auto max-w-5xl px-4"><p className="text-sm font-semibold text-sky-700 dark:text-sky-300">{localDetail.label}</p><h2 className="mt-3 text-2xl font-bold">Was umfasst {service.name}?</h2><p className="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">{localDetail.intro}</p><div className="mt-7 grid gap-5 md:grid-cols-3">{[{ title: "Vorbereitung", text: localDetail.preparation }, { title: "Verfahren nach Befund", text: localDetail.method }, { title: "Ergebnis und nächste Schritte", text: localDetail.result }].map(item => <article key={item.title} className="rounded-xl bg-slate-50 p-6 dark:bg-slate-900"><h3 className="font-bold">{item.title}</h3><p className="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">{item.text}</p></article>)}</div><p className="mt-5 rounded-xl bg-sky-50 p-5 text-sm leading-relaxed text-slate-700 dark:bg-sky-950/30 dark:text-slate-300">{localDetail.stop}</p></div></section>}
 
       {/* Enhanced Content Sections - Only if available */}
       {enhancedContent && (
@@ -520,7 +517,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {mainCities.map((city) => (
                 <Link
                   key={city.slug}
-                  href={`/${city.slug}`}
+                  href={getCityServiceBrief(city.slug, service.slug) ? `/${city.slug}/${service.slug}` : `/${city.slug}`}
                   className="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary border border-gray-200 dark:border-gray-700 transition-colors"
                 >
                   {city.name}

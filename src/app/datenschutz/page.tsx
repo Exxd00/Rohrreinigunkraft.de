@@ -4,6 +4,7 @@ import { company } from "@/data/company";
 import { Shield, Lock, Eye, Server, FileText, Mail, Scale, Database, UserCheck, Cookie, Phone, Building2 } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://rohrreinigung-kraft.de/datenschutz" },
   title: "Datenschutz | Rohrreinigung Kraft",
   description: "Datenschutzerklärung von Rohrreinigung Kraft. Erfahren Sie, wie wir Ihre Daten schützen.",
 };
