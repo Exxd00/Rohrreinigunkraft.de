@@ -5,11 +5,14 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { company } from "@/data/company";
 import AnimatedLogo from "./AnimatedLogo";
 import ThemeToggle from "./ThemeToggle";
 import CallConfirmModal from "./CallConfirmModal";
+import municipalities from "@/data/municipalities.json";
+
+const citySlugs = new Set(municipalities.map(city => city.slug));
 
 const navigation = [
   {
@@ -24,6 +27,7 @@ const navigation = [
     ]
   },
   { name: "Preise", href: "/preise" },
+  { name: "Einsatzgebiet", href: "/staedte" },
   { name: "Für Gewerbe", href: "/hausverwaltung" },
   { name: "FAQ", href: "/faq" },
   { name: "Kontakt", href: "/kontakt" },
@@ -31,7 +35,7 @@ const navigation = [
 
 // Pages with dark/gradient hero sections that need light text when not scrolled
 // Note: /staedte has a LIGHT hero, so not included here
-const darkHeroPages = ["/", "/kontakt", "/leistungen", "/service", "/preise", "/hausverwaltung", "/faq"];
+const darkHeroPages = ["/", "/service", "/preise", "/hausverwaltung", "/faq"];
 
 export default function Header() {
   const pathname = usePathname();
@@ -43,7 +47,7 @@ export default function Header() {
   // Check if current page has a dark hero
   const hasDarkHero = darkHeroPages.some(page =>
     page === "/" ? pathname === "/" : pathname.startsWith(page)
-  ) || pathname.match(/^\/[a-z-]+$/); // City pages like /nuernberg
+  ) || citySlugs.has(pathname.split("/")[1]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -149,7 +153,7 @@ export default function Header() {
 
             {/* Desktop CTA & Theme Toggle */}
             <div className="hidden lg:flex items-center gap-3">
-              <ThemeToggle />
+              <ThemeToggle onDarkBackground={!isScrolled && hasDarkHero} />
               <Button
                 onClick={handlePhoneClick}
                 className="gradient-primary text-white hover:opacity-90 btn-shimmer gap-2 font-semibold shadow-lg shadow-primary/30"
@@ -161,10 +165,11 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <div className="flex lg:hidden items-center gap-2">
-              <ThemeToggle />
+              <ThemeToggle onDarkBackground={!isScrolled && hasDarkHero} />
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button
+                    aria-label="Menü öffnen"
                     variant="ghost"
                     size="icon"
                     className={`lg:hidden ${!isScrolled && hasDarkHero ? "text-white hover:bg-white/10" : ""}`}
@@ -172,7 +177,9 @@ export default function Header() {
                     <Menu className="w-6 h-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] p-0">
+                <SheetContent side="right" className="w-[300px] max-w-[90vw] p-0">
+                  <SheetTitle className="sr-only">Navigation</SheetTitle>
+                  <SheetDescription className="sr-only">Leistungen, Einsatzgebiet und Kontakt</SheetDescription>
                   <div className="flex flex-col h-full">
                     {/* Mobile Header */}
                     <div className="flex items-center justify-between p-4 border-b">

@@ -23,6 +23,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rohrreinigung-kraft.de"),
   title: company.seo.defaultTitle,
   description: company.seo.defaultDescription,
   keywords: company.seo.keywords.join(", "),
@@ -50,9 +51,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: "https://rohrreinigung-kraft.de",
   },
   verification: {
     google: "Rb-1R7PT7LPYi2K7kWjNX0b-FQALvyLymxsy62dN1jk",
@@ -97,7 +95,7 @@ export default function RootLayout({
               "@id": "https://rohrreinigung-kraft.de/#organization",
               name: "Rohrreinigung Kraft",
               description:
-                "Professionelle Rohrreinigung & Kanalreinigung in Mittelfranken. 24/7 Notdienst.",
+                "Rohrreinigung & Kanalreinigung in Nürnberg und 30 km Umgebung. 24/7 Notdienstaufnahme.",
               url: "https://rohrreinigung-kraft.de",
               logo: "https://rohrreinigung-kraft.de/logo.png",
               telephone: "+4991189218682",
@@ -109,11 +107,6 @@ export default function RootLayout({
                 addressRegion: "Bayern",
                 postalCode: "90478",
                 addressCountry: "DE",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: "49.4521",
-                longitude: "11.0767",
               },
               openingHoursSpecification: {
                 "@type": "OpeningHoursSpecification",

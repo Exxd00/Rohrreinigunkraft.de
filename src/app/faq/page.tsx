@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://rohrreinigung-kraft.de/faq" },
   title: "FAQ Rohrreinigung | Häufige Fragen zu Preisen, Ablauf & Notdienst",
   description: "Alle Antworten zu Rohrreinigung: Was kostet es? Wie lange dauert es? Wann brauche ich einen Notdienst? ✓ Ehrliche Antworten ✓ Keine Verkaufsfloskeln",
 };
@@ -264,7 +265,7 @@ const faqCategories = [
     questions: [
       {
         question: "In welchen Städten sind Sie aktiv?",
-        answer: "Unser Kerngebiet: Nürnberg, Fürth, Erlangen. Wir fahren auch ins Umland: Schwabach, Zirndorf, Oberasbach, Stein, Herzogenaurach, Langenzenn und weitere Orte in Mittelfranken (ca. 60 km Radius).",
+        answer: "Unser Einsatzgebiet umfasst Nürnberg und Orte innerhalb von 30 km Luftlinie ab Nürnberg Hauptbahnhof, darunter Fürth, Erlangen und Schwabach. An der Grenze bestätigen wir die Abdeckung anhand Ihrer genauen Adresse. Die Ortsliste finden Sie unter Einsatzgebiet.",
         shortAnswer: "Kerngebiet: Nürnberg, Fürth, Erlangen. Plus Umland im 60-km-Radius."
       },
       {

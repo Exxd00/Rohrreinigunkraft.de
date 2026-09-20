@@ -570,8 +570,8 @@ export const regionFAQ: FAQItem[] = [
   {
     id: "region-1",
     question: "In welchen Städten sind Sie tätig?",
-    shortAnswer: "Nürnberg, Fürth, Erlangen und ganz Mittelfranken – ca. 60 km Umkreis.",
-    fullAnswer: "Wir sind in ganz Mittelfranken tätig: Kerngebiet sind Nürnberg, Fürth und Erlangen (Anfahrt inklusive). Außerdem: Schwabach, Lauf, Roth, Neumarkt, Herzogenaurach, Forchheim und alle Orte im Umkreis von ca. 60 km um Nürnberg.",
+    shortAnswer: "Nürnberg und Umgebung im 30-km-Radius; Randadressen prüfen wir vorab.",
+    fullAnswer: "Unser Einsatzgebiet umfasst 30 km Luftlinie ab Nürnberg Hauptbahnhof. Dazu gehören unter anderem Fürth, Erlangen, Schwabach, Lauf und Roth. Für Ortsteile am Rand gilt die genaue Adresse; Anfahrt und mögliche Zuschläge besprechen wir vor einer Zusage.",
     category: "region",
     page: ["homepage", "faq"],
     keywords: ["einsatzgebiet", "welche städte"],
@@ -625,8 +625,8 @@ export const regionFAQ: FAQItem[] = [
   {
     id: "region-6",
     question: "Kommen Sie auch nach Forchheim?",
-    shortAnswer: "Ja. +25€ Anfahrtspauschale. Anfahrtszeit ca. 45-60 Min.",
-    fullAnswer: "Ja, wir kommen auch nach Forchheim und Umgebung. Anfahrtspauschale: 25€ (vorab am Telefon genannt). Anfahrtszeit: ca. 45-60 Minuten. Für Notfälle sind wir auch dort schnell einsatzbereit.",
+    shortAnswer: "Keine pauschale Zusage: Die genaue Adresse wird an der 30-km-Grenze geprüft.",
+    fullAnswer: "Unser festes Einsatzgebiet endet bei 30 km Luftlinie ab Nürnberg Hauptbahnhof. Der Ortsmittelpunkt von Forchheim liegt außerhalb dieses Radius. Für eine Adresse nahe der Grenze prüfen wir die konkrete Lage; es gibt keine pauschale Zusage für Forchheim und Umgebung.",
     category: "region",
     page: ["faq"],
     keywords: ["forchheim rohrreinigung"],

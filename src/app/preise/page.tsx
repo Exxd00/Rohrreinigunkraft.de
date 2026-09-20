@@ -30,6 +30,7 @@ import { guaranteesBefore, guaranteesDuring, guaranteesAfter, guaranteeSummary }
 import { getFAQForPage } from "@/data/faq-database";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://rohrreinigung-kraft.de/preise" },
   title: "Rohrreinigung Preise | Festpreis BEVOR wir anfangen | Keine Überraschungen",
   description: "Was kostet Rohrreinigung? Ab 79€. Der EXAKTE Preis nach kostenloser Diagnose – BEVOR die Arbeit beginnt. Lehnen Sie ab? Kostet nichts. Jetzt informieren!",
 };

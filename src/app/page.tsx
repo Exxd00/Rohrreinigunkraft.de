@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { serviceAreaSchema } from "@/data/service-area";
+import ServiceAreaSummary from "@/components/home/ServiceAreaSummary";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemProcess from "@/components/home/ProblemProcess";
 import PricingPreview from "@/components/home/PricingPreview";
@@ -12,6 +15,8 @@ import Gallery from "@/components/home/Gallery";
 import CTASection from "@/components/home/CTASection";
 import EmergencyGuide from "@/components/home/EmergencyGuide";
 import { company, testimonials } from "@/data/company";
+
+export const metadata: Metadata = { alternates: { canonical: "https://rohrreinigung-kraft.de/" } };
 
 // JSON-LD Schema for Local SEO - Optimized for Mittelfranken
 const jsonLd = {
@@ -39,42 +44,7 @@ const jsonLd = {
     addressCountry: "DE",
   },
 
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 49.4521,
-    longitude: 11.0767,
-  },
-
-  areaServed: [
-    {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: 49.4521,
-        longitude: 11.0767,
-      },
-      geoRadius: "60000",
-    },
-    {
-      "@type": "City",
-      name: "Nürnberg",
-      sameAs: "https://de.wikipedia.org/wiki/N%C3%BCrnberg"
-    },
-    {
-      "@type": "City",
-      name: "Fürth",
-      sameAs: "https://de.wikipedia.org/wiki/F%C3%BCrth"
-    },
-    {
-      "@type": "City",
-      name: "Erlangen",
-      sameAs: "https://de.wikipedia.org/wiki/Erlangen"
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Mittelfranken"
-    }
-  ],
+  areaServed: serviceAreaSchema,
 
   openingHoursSpecification: [
     {
@@ -91,8 +61,8 @@ const jsonLd = {
     ratingValue: "5.0",
     bestRating: "5",
     worstRating: "1",
-    ratingCount: "129",
-    reviewCount: "129"
+    ratingCount: String(company.rating.reviewCount),
+    reviewCount: String(company.rating.reviewCount)
   },
 
   // Einzelne Reviews - OHNE itemReviewed (da bereits in LocalBusiness)
@@ -299,7 +269,7 @@ const jsonLd = {
     ],
   },
 
-  slogan: "Ihr lokaler Rohrreinigungsexperte in Mittelfranken - 24/7 Notdienst",
+  slogan: "Rohrreinigung für Nürnberg und 30 km Umgebung - 24/7 Notdienstaufnahme",
 
   foundingDate: "2014",
 
@@ -381,7 +351,7 @@ const faqSchema = {
       name: "In welchen Städten bieten Sie Rohrreinigung an?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Wir bieten Rohrreinigung in ganz Mittelfranken an: Nürnberg, Fürth, Erlangen, Schwabach, Zirndorf, Herzogenaurach, Lauf, Roth, Forchheim, Ansbach und alle Städte im Umkreis von 60km um Nürnberg."
+        text: "Unser Einsatzgebiet umfasst Nürnberg und Umgebung im Radius von 30 km Luftlinie ab Nürnberg Hauptbahnhof. Für Ortsteile und Adressen am Rand bestätigen wir die Abdeckung vor dem Einsatz."
       }
     }
   ]
@@ -439,6 +409,7 @@ export default function Home() {
       <Gallery />
 
       {/* 12. CTA Section */}
+      <ServiceAreaSummary />
       <CTASection />
     </>
   );

@@ -3,14 +3,19 @@
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
-export default function ThemeToggle() {
+export default function ThemeToggle({
+  onDarkBackground = false,
+}: { onDarkBackground?: boolean }) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
     const initialTheme = savedTheme || systemTheme;
     setTheme(initialTheme);
     document.documentElement.classList.toggle("dark", initialTheme === "dark");
@@ -26,7 +31,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors"
+        className="w-11 h-11 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors"
         aria-label="Theme toggle"
       >
         <Sun className="w-4 h-4 text-white/70" />
@@ -37,11 +42,15 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
-      aria-label={theme === "light" ? "Dunkelmodus aktivieren" : "Hellmodus aktivieren"}
+      className="w-11 h-11 rounded-lg flex items-center justify-center hover:bg-white/10 dark:hover:bg-white/10 transition-colors"
+      aria-label={
+        theme === "light" ? "Dunkelmodus aktivieren" : "Hellmodus aktivieren"
+      }
     >
       {theme === "light" ? (
-        <Moon className="w-4 h-4 text-gray-700 dark:text-white/70 hover:text-primary transition-colors" />
+        <Moon
+          className={`w-4 h-4 transition-colors ${onDarkBackground ? "text-white" : "text-gray-700 dark:text-white/80"}`}
+        />
       ) : (
         <Sun className="w-4 h-4 text-yellow-400 hover:text-yellow-300 transition-colors" />
       )}

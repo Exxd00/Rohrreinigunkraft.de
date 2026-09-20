@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://rohrreinigung-kraft.de/hausverwaltung" },
   title: "Rohrreinigung für Hausverwaltungen & Gewerbe | Festpreise & Rahmenverträge",
   description: "B2B-Service für Hausverwaltungen, WEG & Gewerbe. Wartungsverträge ab 29€/Einheit ✓ Prioritäts-Notdienst ✓ Transparente Festpreise ✓ Sammelrechnung ✓",
 };
@@ -64,7 +65,7 @@ const targetGroups = [
   {
     icon: Home,
     title: "Immobilien­betreuung",
-    description: "Zuverlässiger Partner für Ihre Objekte in Mittelfranken",
+    description: "Zuverlässiger Partner für Ihre Objekte in Nürnberg und 30 km Umgebung",
     benefits: [
       "Schnelle Reaktionszeit",
       "Transparente Abrechnung",
@@ -179,7 +180,7 @@ export default function HausverwaltungPage() {
 
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 border border-primary/30 rounded-full mb-6">
               <Building2 className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">B2B-Service für Mittelfranken</span>
+              <span className="text-sm font-medium text-primary">B2B-Service für Nürnberg & 30 km Umgebung</span>
             </div>
 
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">

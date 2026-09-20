@@ -20,21 +20,22 @@ test("redirects the bare service path to the catalogue with HTTP 301", () => {
   });
 });
 
-test("legacy city redirects do not capture real service pages", () => {
+test("reviewed local pages remain reachable and municipality aliases stay specific", () => {
   for (const slug of [
     "rohrreinigung",
     "abflussreinigung",
     "kanalreinigung",
     "rohrreinigung-notdienst",
   ]) {
-    const redirect = redirects.find(
-      (entry) =>
-        entry.source.includes(":city") && entry.source.endsWith(`/${slug}`),
-    );
-    assert.ok(redirect, `missing redirect for ${slug}`);
-    const match = getPathMatch(redirect.source);
-    assert.equal(match(`/service/${slug}`), false);
-    assert.deepEqual(match(`/nuernberg/${slug}`), { city: "nuernberg" });
+    const localRedirects = redirects.filter(entry => !entry.has);
+    for (const entry of localRedirects) {
+      const match = getPathMatch(entry.source);
+      assert.equal(match(`/service/${slug}`), false);
+      assert.equal(match(`/nuernberg/${slug}`), false);
+    }
+    const alias = redirects.find(entry => entry.source === `/feucht/${slug}`);
+    assert.equal(alias?.destination, "/feucht");
+    assert.equal(alias?.permanent, true);
   }
 });
 
