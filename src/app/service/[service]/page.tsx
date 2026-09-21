@@ -1,4 +1,5 @@
 import { getLocalService } from "@/data/local-services";
+import WorkVideo from "@/components/city/WorkVideo";
 import { getCityServiceBrief } from "@/data/city-service-notes";
 import { serviceAreaSchema } from "@/data/service-area";
 import { pageMetadata } from "@/lib/page-seo";
@@ -509,6 +510,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       )}
 
       {/* Cities */}
+      <WorkVideo serviceSlug={service.slug} />
       <section className="py-8 bg-gray-50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">

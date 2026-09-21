@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import WorkVideo from "@/components/city/WorkVideo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ClipboardCheck, Search, CheckCircle2 } from "lucide-react";
@@ -162,6 +163,7 @@ export default async function CityServicePage({ params }: Props) {
           </p>
         </div>
       </section>
+      <WorkVideo serviceSlug={service.slug} />
       <section className="bg-white py-12 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-bold">

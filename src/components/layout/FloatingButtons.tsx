@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { Phone, Home, Zap } from "lucide-react";
-import { company } from "@/data/company";
+import { Phone, Zap } from "lucide-react";
 import { trackCTAClick } from "@/lib/tracking";
 import CallConfirmModal from "./CallConfirmModal";
 
 export default function FloatingButtons() {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
+
+  // Inner pages use the persistent header call button, leaving content and media clear.
+  if (pathname !== "/") return null;
 
   const handlePhoneClick = () => {
     setIsCallModalOpen(true);
@@ -36,21 +36,8 @@ export default function FloatingButtons() {
         source="floating_button"
       />
 
-      {/* Back to Home Button - Only show on non-homepage */}
-      {!isHomePage && (
-        <div className="fixed bottom-20 left-3 md:bottom-6 md:left-6 z-50">
-          <Link
-            href="/"
-            className="flex items-center justify-center w-11 h-11 md:w-14 md:h-14 bg-gray-700 hover:bg-gray-800 dark:bg-gray-600 rounded-full shadow-lg transition-colors"
-            aria-label="Zurück zur Startseite"
-          >
-            <Home className="w-5 h-5 md:w-6 md:h-6 text-white" />
-          </Link>
-        </div>
-      )}
-
       {/* Right side buttons - Mobile optimized */}
-      <div className="fixed bottom-3 right-3 md:bottom-6 md:right-6 z-50 flex flex-col gap-2 md:gap-3">
+      <div className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] right-3 md:bottom-6 md:right-6 z-30 flex flex-col gap-2 md:gap-3">
         {/* Soforthilfe Button */}
         <button
           type="button"
