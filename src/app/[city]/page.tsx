@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import WorkVideo from "@/components/city/WorkVideo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ClipboardList } from "lucide-react";
@@ -160,6 +161,7 @@ export default async function CityPage({
           </Link>
         </div>
       </section>
+      <WorkVideo />
       <section className="bg-white py-12 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-bold">

@@ -1,234 +1,251 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  Phone,
+  MapPin,
+  Wrench,
+  ArrowRight,
+  ChevronDown,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
 import { company } from "@/data/company";
 import AnimatedLogo from "./AnimatedLogo";
 import ThemeToggle from "./ThemeToggle";
 import CallConfirmModal from "./CallConfirmModal";
 import municipalities from "@/data/municipalities.json";
-
-const citySlugs = new Set(municipalities.map(city => city.slug));
-
+const citySlugs = new Set(municipalities.map((city) => city.slug));
 const navigation = [
-  {
-    name: "Leistungen",
-    href: "/leistungen",
-    submenu: [
-      { name: "Rohrreinigung", href: "/service/rohrreinigung" },
-      { name: "Kanalreinigung", href: "/service/kanalreinigung" },
-      { name: "Abflussreinigung", href: "/service/abflussreinigung" },
-      { name: "Notdienst 24/7", href: "/service/rohrreinigung-notdienst" },
-      { name: "TV-Inspektion", href: "/service/kamera-inspektion" },
-    ]
-  },
+  { name: "Leistungen", href: "/leistungen" },
+  { name: "Städte", href: "/staedte" },
   { name: "Preise", href: "/preise" },
-  { name: "Einsatzgebiet", href: "/staedte" },
   { name: "Für Gewerbe", href: "/hausverwaltung" },
   { name: "FAQ", href: "/faq" },
   { name: "Kontakt", href: "/kontakt" },
 ];
-
-// Pages with dark/gradient hero sections that need light text when not scrolled
-// Note: /staedte has a LIGHT hero, so not included here
+const quickServices = [
+  { name: "Rohrreinigung", slug: "rohrreinigung" },
+  { name: "Kanalreinigung", slug: "kanalreinigung" },
+  { name: "Abflussreinigung", slug: "abflussreinigung" },
+  { name: "Notdienst 24/7", slug: "rohrreinigung-notdienst" },
+  { name: "TV-Inspektion", slug: "kamera-inspektion" },
+];
 const darkHeroPages = ["/", "/service", "/preise", "/hausverwaltung", "/faq"];
 
 export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
-
-  // Check if current page has a dark hero
-  const hasDarkHero = darkHeroPages.some(page =>
-    page === "/" ? pathname === "/" : pathname.startsWith(page)
-  ) || citySlugs.has(pathname.split("/")[1]);
-
+  const hasDarkHero =
+    darkHeroPages.some((page) =>
+      page === "/" ? pathname === "/" : pathname.startsWith(page),
+    ) || citySlugs.has(pathname.split("/")[1]);
+  const lightText = !isScrolled && hasDarkHero;
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  }, [pathname]);
+  const closeMenu = () => setIsMobileMenuOpen(false);
   const handlePhoneClick = () => {
-    setIsMobileMenuOpen(false);
+    closeMenu();
     setIsCallModalOpen(true);
   };
-
-  // Determine text color based on scroll state and page type
-  const getTextColorClasses = () => {
-    if (isScrolled) {
-      return "text-gray-900 dark:text-white";
-    }
-    if (hasDarkHero) {
-      return "text-white";
-    }
-    return "text-gray-900 dark:text-white";
-  };
-
-  const getNavTextColorClasses = () => {
-    if (isScrolled) {
-      return "text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary";
-    }
-    if (hasDarkHero) {
-      return "text-white/90 hover:text-white";
-    }
-    return "text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary";
-  };
-
+  const isActive = (href: string) =>
+    pathname === href ||
+    (href === "/staedte" && citySlugs.has(pathname.split("/")[1])) ||
+    (href === "/leistungen" && pathname.startsWith("/service/"));
   return (
     <>
-      {/* Call Confirmation Modal */}
       <CallConfirmModal
         isOpen={isCallModalOpen}
         onClose={() => setIsCallModalOpen(false)}
         source="header"
       />
-
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-lg py-2"
-            : hasDarkHero
-              ? "bg-black/10 backdrop-blur-sm py-4"
-              : "bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-4"
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 py-3 transition-colors motion-reduce:transition-none ${isScrolled ? "bg-white/95 shadow-lg backdrop-blur-lg dark:bg-gray-900/95" : hasDarkHero ? "bg-black/10 backdrop-blur-sm" : "bg-white/90 backdrop-blur-sm dark:bg-gray-900/90"}`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
+          <div className="flex items-center justify-between gap-2">
+            <Link
+              href="/"
+              aria-label="Rohrreinigung Kraft – Startseite"
+              className="group flex shrink-0 items-center gap-2"
+            >
               <AnimatedLogo />
               <div className="flex flex-col">
-                <span className={`text-lg md:text-xl font-bold transition-colors ${getTextColorClasses()} group-hover:text-primary`}>
+                <span
+                  className={`text-base font-bold sm:text-lg ${lightText ? "text-white" : "text-gray-900 dark:text-white"}`}
+                >
                   Rohrreinigung
                 </span>
-                <span className="text-sm font-semibold text-primary">Kraft</span>
+                <span className="text-sm font-semibold text-primary">
+                  Kraft
+                </span>
               </div>
             </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav
+              aria-label="Hauptnavigation"
+              className="hidden items-center gap-1 xl:flex"
+            >
               {navigation.map((item) => (
-                <div
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={() => item.submenu && setActiveSubmenu(item.name)}
-                  onMouseLeave={() => setActiveSubmenu(null)}
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className={`inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-semibold transition-colors ${lightText ? "text-white hover:bg-white/15" : "text-gray-700 hover:bg-sky-50 hover:text-sky-800 dark:text-gray-200 dark:hover:bg-slate-800"} ${isActive(item.href) ? "underline decoration-2 underline-offset-8" : ""}`}
                 >
-                  <Link
-                    href={item.href}
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/10 ${getNavTextColorClasses()}`}
-                  >
-                    {item.name}
-                    {item.submenu && <ChevronDown className="w-4 h-4" />}
-                  </Link>
-
-                  {/* Submenu */}
-                  {item.submenu && activeSubmenu === item.name && (
-                    <div className="absolute top-full left-0 pt-2 w-56 animate-fade-in-up">
-                      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 overflow-hidden">
-                        {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-primary/10 hover:text-primary transition-colors"
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  {item.name}
+                </Link>
               ))}
             </nav>
-
-            {/* Desktop CTA & Theme Toggle */}
-            <div className="hidden lg:flex items-center gap-3">
-              <ThemeToggle onDarkBackground={!isScrolled && hasDarkHero} />
+            <div className="hidden items-center gap-3 xl:flex">
+              <ThemeToggle onDarkBackground={lightText} />
               <Button
                 onClick={handlePhoneClick}
-                className="gradient-primary text-white hover:opacity-90 btn-shimmer gap-2 font-semibold shadow-lg shadow-primary/30"
+                className="min-h-11 gap-2 bg-sky-700 font-semibold text-white shadow-lg hover:bg-sky-800"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="h-4 w-4" />
                 {company.contact.phoneDisplay}
               </Button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <div className="flex lg:hidden items-center gap-2">
-              <ThemeToggle onDarkBackground={!isScrolled && hasDarkHero} />
+            <div className="flex items-center gap-1 xl:hidden">
+              <Button
+                aria-label="Anrufen"
+                onClick={handlePhoneClick}
+                variant="ghost"
+                size="icon"
+                className={`h-11 w-11 ${lightText ? "text-white hover:bg-white/10" : "text-sky-800 dark:text-sky-300"}`}
+              >
+                <Phone className="h-5 w-5" />
+              </Button>
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button
                     aria-label="Menü öffnen"
                     variant="ghost"
                     size="icon"
-                    className={`lg:hidden ${!isScrolled && hasDarkHero ? "text-white hover:bg-white/10" : ""}`}
+                    className={`h-11 w-11 ${lightText ? "text-white hover:bg-white/10" : ""}`}
                   >
-                    <Menu className="w-6 h-6" />
+                    <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] max-w-[90vw] p-0">
+                <SheetContent
+                  side="right"
+                  className="w-[360px] max-w-[94vw] p-0"
+                >
                   <SheetTitle className="sr-only">Navigation</SheetTitle>
-                  <SheetDescription className="sr-only">Leistungen, Einsatzgebiet und Kontakt</SheetDescription>
-                  <div className="flex flex-col h-full">
-                    {/* Mobile Header */}
-                    <div className="flex items-center justify-between p-4 border-b">
-                      <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  <SheetDescription className="sr-only">
+                    Leistungen, Städte und Gemeinden sowie Kontakt
+                  </SheetDescription>
+                  <div className="flex h-full min-h-0 flex-col">
+                    <div className="flex items-center justify-between gap-1 border-b p-4 pr-14">
+                      <Link
+                        href="/"
+                        onClick={closeMenu}
+                        className="inline-flex min-h-11 items-center gap-2 font-bold text-gray-900 dark:text-white"
+                      >
                         <AnimatedLogo size="sm" />
-                        <span className="font-bold text-gray-900 dark:text-white">Rohrreinigung Kraft</span>
+                        <span>Kraft · Startseite</span>
                       </Link>
+                      <ThemeToggle />
                     </div>
-
-                    {/* Mobile Navigation */}
-                    <nav className="flex-1 overflow-y-auto p-4">
-                      {navigation.map((item) => (
-                        <div key={item.name} className="mb-2">
-                          <Link
-                            href={item.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
-                          >
-                            {item.name}
-                          </Link>
-                          {item.submenu && (
-                            <div className="ml-4 mt-1 space-y-1">
-                              {item.submenu.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  href={subItem.href}
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                  className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-                                >
-                                  {subItem.name}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                    <nav
+                      aria-label="Mobile Navigation"
+                      className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4"
+                    >
+                      {[
+                        {
+                          name: "Leistungen",
+                          description: "Hilfe nach Anliegen finden",
+                          href: "/leistungen",
+                          icon: Wrench,
+                        },
+                        {
+                          name: "Städte & Gemeinden",
+                          description: "Ihren Ort im 30-km-Gebiet finden",
+                          href: "/staedte",
+                          icon: MapPin,
+                        },
+                      ].map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={closeMenu}
+                          aria-current={
+                            pathname === item.href ? "page" : undefined
+                          }
+                          className="mb-3 flex items-center gap-3 rounded-xl border border-sky-100 bg-sky-50 p-4 text-sky-950 hover:border-sky-400 dark:border-sky-900 dark:bg-sky-950/40 dark:text-sky-100"
+                        >
+                          <item.icon
+                            className="h-5 w-5 shrink-0"
+                            aria-hidden="true"
+                          />
+                          <span className="min-w-0 flex-1">
+                            <span className="block font-bold">{item.name}</span>
+                            <span className="mt-1 block text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                              {item.description}
+                            </span>
+                          </span>
+                          <ArrowRight
+                            className="h-4 w-4 shrink-0"
+                            aria-hidden="true"
+                          />
+                        </Link>
                       ))}
+                      {navigation.slice(2).map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={closeMenu}
+                          aria-current={
+                            pathname === item.href ? "page" : undefined
+                          }
+                          className="mb-1 flex min-h-12 items-center rounded-lg px-4 font-medium text-gray-700 hover:bg-sky-50 dark:text-gray-200 dark:hover:bg-slate-800"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                      <details className="mt-3 border-t pt-2">
+                        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-2 px-4 text-sm font-semibold">
+                          Häufig gesuchte Leistungen
+                          <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                        </summary>
+                        <div className="space-y-1">
+                          {quickServices.map((item) => (
+                            <Link
+                              key={item.slug}
+                              href={`/service/${item.slug}`}
+                              onClick={closeMenu}
+                              className="flex min-h-11 items-center rounded-lg px-4 text-sm text-slate-600 hover:bg-sky-50 dark:text-slate-300 dark:hover:bg-slate-800"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
                     </nav>
-
-                    {/* Mobile CTA */}
-                    <div className="p-4 border-t bg-gray-50 dark:bg-gray-800">
+                    <div className="border-t bg-slate-50 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] dark:bg-slate-900">
                       <Button
                         onClick={handlePhoneClick}
-                        className="w-full gradient-primary text-white gap-2 font-semibold h-12"
+                        className="h-12 w-full gap-2 bg-sky-700 font-semibold text-white hover:bg-sky-800"
                       >
-                        <Phone className="w-5 h-5" />
+                        <Phone className="h-5 w-5" />
                         Jetzt anrufen
                       </Button>
-                      <p className="text-center text-sm text-gray-500 mt-2">
-                        24/7 Notdienst verfügbar
+                      <p className="mt-2 text-center text-xs text-slate-600 dark:text-slate-400">
+                        24/7 telefonische Notdienstaufnahme
                       </p>
                     </div>
                   </div>

@@ -16,12 +16,13 @@ export const metadata = pageMetadata(
 
 export default function StaedtePage() {
   const entries = getCitiesSortedByName().map(
-    ({ name, slug, distance, isCity, region }) => ({
+    ({ name, slug, distance, isCity, region, postalCodes }) => ({
       name,
       slug,
       distance,
       isCity,
       region,
+      postalCodes,
     }),
   );
   return (

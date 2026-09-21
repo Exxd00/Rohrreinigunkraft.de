@@ -1,153 +1,73 @@
-"use client";
-
-import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Search, Filter, ArrowRight, Phone } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { services, serviceCategories } from "@/data/services";
+import ServiceDirectory from "@/components/directory/ServiceDirectory";
+import PhoneCallButton from "@/components/ui/phone-call-button";
 import { company } from "@/data/company";
-
+import { getCitiesSortedByName } from "@/data/cities";
+import { reviewedCitySlugs } from "@/data/city-service-notes";
+import { localServices } from "@/data/local-services";
+import { pageMetadata } from "@/lib/page-seo";
+export const metadata = pageMetadata(
+  "/leistungen",
+  "Leistungen & Hilfe bei Verstopfung | Rohrreinigung Kraft",
+  "Finden Sie Rohrreinigung, Kanalservice, Notdienst und Untersuchungen in Nürnberg und 30 km Umgebung. Nach Anliegen, Leistungsbereich und Stadt filtern.",
+);
 export default function LeistungenPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  const filteredServices = useMemo(() => {
-    return services.filter((service) => {
-      const matchesSearch = service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        service.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = !selectedCategory || service.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchQuery, selectedCategory]);
-
+  const towns = getCitiesSortedByName()
+    .filter((town) => reviewedCitySlugs.includes(town.slug))
+    .map(({ name, slug }) => ({ name, slug }));
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-12 bg-gradient-to-br from-[#F8FBFF] via-white to-[#E8F4FF] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Unsere <span className="text-gradient">Leistungen</span>
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Professionelle Rohrreinigung, Kanalreinigung und mehr.
-              Finden Sie die passende Lösung für Ihr Problem.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Filter Section */}
-      <section className="py-8 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 sticky top-16 z-40">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between max-w-6xl mx-auto">
-            {/* Search */}
-            <div className="relative w-full md:w-80">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <Input
-                type="text"
-                placeholder="Leistung suchen..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 h-12"
-              />
-            </div>
-
-            {/* Category Filter */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto">
-              <Filter className="w-5 h-5 text-gray-400 shrink-0" />
-              <Button
-                variant={selectedCategory === null ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedCategory(null)}
-                className="shrink-0"
-              >
-                Alle
-              </Button>
-              {serviceCategories.map((category) => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedCategory(category)}
-                  className="shrink-0"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-12 bg-gray-50 dark:bg-gray-800/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            {/* Results count */}
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-              {filteredServices.length} Leistungen gefunden
-            </p>
-
-            {/* Always horizontal grid - 2 cols on mobile, 3 on tablet/desktop */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
-              {filteredServices.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={`/service/${service.slug}`}
-                  className="group bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-lg transition-all hover-lift border border-gray-100 dark:border-gray-700"
-                >
-                  <Badge variant="secondary" className="mb-2 sm:mb-3 md:mb-4 text-xs">
-                    {service.category}
-                  </Badge>
-                  <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2 md:mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                    {service.name}
-                  </h2>
-                  <p className="hidden sm:block text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4 line-clamp-2">
-                    {service.shortDescription}
-                  </p>
-                  <div className="flex items-center text-primary text-xs sm:text-sm font-medium">
-                    <span className="hidden sm:inline">Mehr erfahren</span>
-                    <span className="sm:hidden">Info</span>
-                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            {filteredServices.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-500 dark:text-gray-400 mb-4">
-                  Keine Leistungen gefunden. Versuchen Sie eine andere Suche.
-                </p>
-                <Button onClick={() => { setSearchQuery(""); setSelectedCategory(null); }}>
-                  Filter zurücksetzen
-                </Button>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-12 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Nicht sicher, welche Leistung Sie benötigen?
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Rufen Sie uns an - wir beraten Sie kostenlos und unverbindlich!
-            </p>
-            <Link href={`tel:${company.contact.phone}`}>
-              <Button size="lg" className="gradient-primary text-white h-14 px-8">
-                <Phone className="w-5 h-5 mr-2" />
-                {company.contact.phoneDisplay}
-              </Button>
+      <section className="bg-gradient-to-br from-sky-50 via-white to-slate-50 pt-28 pb-10 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 md:pt-36 md:pb-12">
+        <div className="container mx-auto max-w-6xl px-4">
+          <nav
+            aria-label="Brotkrumen"
+            className="mb-5 flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400"
+          >
+            <Link
+              href="/"
+              className="inline-flex min-h-11 items-center underline underline-offset-4"
+            >
+              Startseite
             </Link>
-          </div>
+            <span aria-hidden="true">/</span>
+            <span>Leistungen</span>
+          </nav>
+          <p className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+            Nürnberg & 30 km Umgebung
+          </p>
+          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight text-slate-900 dark:text-white md:text-5xl">
+            Die passende Hilfe für Ihr Anliegen
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Abfluss verstopft, Rückstau oder eine Leitung prüfen? Finden Sie die
+            passende Leistung und erfahren Sie, wie wir den Einsatz vorbereiten.
+          </p>
+        </div>
+      </section>
+      <section className="bg-slate-50 py-8 dark:bg-slate-950 md:py-12">
+        <div className="container mx-auto max-w-6xl px-4">
+          <ServiceDirectory
+            towns={towns}
+            localSlugs={localServices.map((service) => service.slug)}
+          />
+        </div>
+      </section>
+      <section className="bg-slate-900 py-12 text-white">
+        <div className="container mx-auto max-w-4xl px-4">
+          <h2 className="text-2xl font-bold">
+            Sie sind unsicher, wo die Ursache liegt?
+          </h2>
+          <p className="mt-3 max-w-2xl leading-relaxed text-slate-300">
+            Beschreiben Sie uns, was passiert und welche Abläufe betroffen sind.
+            Wir klären den nächsten Schritt und die Verfügbarkeit für Ihre
+            Adresse.
+          </p>
+          <PhoneCallButton
+            source="service-directory"
+            className="mt-6 h-auto min-h-12 whitespace-normal px-6 py-3"
+          >
+            {company.contact.phoneDisplay}
+          </PhoneCallButton>
         </div>
       </section>
     </>
