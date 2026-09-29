@@ -193,18 +193,18 @@ export default function ContactForm() {
             {/* Form */}
             <div className="bg-white dark:bg-gray-900 rounded-lg md:rounded-2xl p-4 md:p-6 shadow-xl border border-gray-100 dark:border-gray-700">
               {/* Urgency Header */}
-              <div className="flex items-center justify-between mb-3 md:mb-4">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3 md:mb-4">
                 <div className="flex items-center gap-1.5 md:gap-2">
                   <span className="relative flex h-2 w-2 md:h-3 md:w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/75 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 md:h-3 md:w-3 bg-primary"></span>
                   </span>
                   <span className="text-xs md:text-sm font-medium text-primary dark:text-[#3AB0FF]">
-                    {company.urgency.availableTechnicians} Fachkräfte verfügbar
+                    Verfügbarkeit telefonisch klären
                   </span>
                 </div>
                 <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-                  Letzter Einsatz: {company.urgency.lastServiceCity}
+                  Nürnberg & Umgebung
                 </div>
               </div>
 
@@ -213,7 +213,7 @@ export default function ContactForm() {
               </h2>
               <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 flex items-center gap-2">
                 <Zap className="w-4 h-4 text-primary" />
-                <span>Rückruf in {company.urgency.callbackTime} Minuten</span>
+                <span>Rückruf anfordern – bei akutem Rückstau bitte anrufen</span>
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
@@ -492,7 +492,7 @@ export default function ContactForm() {
                 <div className="flex items-center gap-2 mb-2 md:mb-3">
                   <Clock className="w-5 h-5" />
                   <span className="text-base md:text-lg font-bold">
-                    Anfahrt in {company.urgency.responseTime} Min
+                    Ankunftszeit telefonisch klären
                   </span>
                 </div>
                 <a

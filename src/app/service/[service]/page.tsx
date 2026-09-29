@@ -1,3 +1,5 @@
+import { getServicePrice } from "@/lib/service-pricing";
+import ServiceEvidence from "@/components/city/ServiceEvidence";
 import { getServiceHeroCopy } from "@/data/hero-copy";
 import { getLocalService } from "@/data/local-services";
 import VideoShowcase from "@/components/home/VideoShowcase";
@@ -39,21 +41,6 @@ export async function generateStaticParams() {
   }));
 }
 
-function getServicePrice(slug: string): number {
-  const priceMap: Record<string, number> = {
-    "rohrreinigung": company.pricing.services.rohrreinigung.from,
-    "kanalreinigung": company.pricing.services.kanalreinigung.from,
-    "abflussreinigung": company.pricing.services.abflussreinigung.from,
-    "toilette-verstopft": company.pricing.services.toiletteVerstopft.from,
-    "rohrreinigung-notdienst": company.pricing.services.notdienst.from,
-    "kamera-inspektion": company.pricing.services.kameraInspektion.from,
-    "dichtheitspruefung": company.pricing.services.dichtheitspruefung.from,
-    "rohrsanierung": company.pricing.services.rohrsanierung.from,
-    "rohrreinigung-wartung": company.pricing.services.wartungsvertrag.from,
-  };
-  return priceMap[slug] || company.pricing.services.rohrreinigung.from;
-}
-
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { service: serviceSlug } = await params;
   const service = getServiceBySlug(serviceSlug);
@@ -64,8 +51,6 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: "Leistung nicht gefunden",
     };
   }
-
-  const price = getServicePrice(serviceSlug);
 
   return pageMetadata(`/service/${service.slug}`, `${service.name} | Nürnberg & 30 km | Rohrreinigung Kraft`, `${service.shortDescription}. Ablauf und Vorbereitung für Nürnberg und das Umland im 30-km-Radius. Preis vor Arbeitsbeginn abstimmen.`);
 }
@@ -86,7 +71,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
     .slice(0, 4);
 
   const mainCities = cities.filter(city => city.isCity);
-  const localDetail = getLocalService(serviceSlug);
+  const localDetail = getLocalService(serviceSlug) ??
+    (serviceSlug === "kanalsanierung" ? getLocalService("rohrsanierung") : undefined);
 
   // Schema.org markup
   const jsonLd = {
@@ -109,17 +95,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
         addressRegion: "Bayern",
         addressCountry: "DE"
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        bestRating: "5",
-        worstRating: "1",
-        ratingCount: String(company.rating.reviewCount)
-      }
     },
     areaServed: serviceAreaSchema,
     serviceType: service.name,
-    offers: {
+    ...(price !== undefined ? { offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
       priceSpecification: {
@@ -128,6 +107,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         minPrice: price,
       },
     },
+    } : {}),
     termsOfService: "Festpreis nach kostenloser Diagnose vor Ort",
     hoursAvailable: {
       "@type": "OpeningHoursSpecification",
@@ -222,8 +202,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
             {/* Price badge */}
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 rounded-xl mb-8">
-              <span className="text-white/70">Ab</span>
-              <span className="text-3xl font-black text-white">{price}€</span>
+              {price !== undefined ? (
+                <><span className="text-white/70">Ab</span><span className="text-3xl font-black text-white">{price}€</span></>
+              ) : (
+                <span className="text-xl font-bold text-white">Angebot nach Befund</span>
+              )}
               <span className="text-white/70">• Festpreis nach Diagnose</span>
             </div>
 
@@ -513,6 +496,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </section>
       )}
 
+      <ServiceEvidence />
+
       {/* Cities */}
       <section className="py-8 bg-gray-50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
@@ -546,7 +531,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-md transition-all text-center"
                 >
                   <p className="font-medium text-gray-900 dark:text-white text-sm">{s.name}</p>
-                  <p className="text-primary font-bold text-sm">ab {getServicePrice(s.slug)}€</p>
+                  <p className="text-primary font-bold text-sm">{getServicePrice(s.slug) !== undefined ? `ab ${getServicePrice(s.slug)}€` : "Preis nach Befund"}</p>
                 </Link>
               ))}
             </div>

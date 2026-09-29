@@ -39,6 +39,22 @@ const nextConfig = {
       ...require("./src/data/municipalities.json").filter(city => !city.isCity).flatMap(city =>
         ["rohrreinigung", "kanalreinigung", "abflussreinigung", "rohrreinigung-notdienst"].map(service => ({ source: `/${city.slug}/${service}`, destination: `/${city.slug}`, permanent: true }))
       ),
+      // Retired city/job combinations with a directly matching active service page.
+      // Keep this list explicit: unrelated or out-of-area URLs should remain 404.
+      ...[
+        ["postbauer-heng", "leckortung"],
+        ["uttenreuth", "abfluss-stinkt"],
+        ["uttenreuth", "rissreparatur"],
+        ["obermichelbach", "kueche-abfluss-verstopft"],
+        ["aurachtal", "grundleitung-verstopft"],
+        ["grossenseebach", "inliner-sanierung"],
+        ["rohr", "regenwasserleitung-verstopft"],
+        ["cadolzburg", "partielle-reparatur"],
+      ].map(([city, service]) => ({
+        source: `/${city}/${service}`,
+        destination: `/service/${service}`,
+        permanent: true,
+      })),
       { source: "/datenschutzerklaerung", destination: "/datenschutz", permanent: true },
       { source: "/privacy-policy", destination: "/datenschutz", permanent: true },
       { source: "/contact", destination: "/kontakt", permanent: true },

@@ -56,7 +56,7 @@ export const services: Service[] = [
     "toilette-verstopft",
     "Rohrreinigung",
     "Schnelle Hilfe bei verstopfter Toilette",
-    ["Soforthilfe innerhalb von 30 Minuten", "Hygienische Arbeitsweise", "Professionelle Ausrüstung", "Keine Folgeschäden", "Faire Preise"],
+    ["Verfügbarkeit und Ankunft telefonisch klären", "Hygienische Arbeitsweise", "Professionelle Ausrüstung", "Keine Folgeschäden", "Faire Preise"],
     "toilet"
   ),
   createService(

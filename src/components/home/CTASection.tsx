@@ -34,7 +34,7 @@ export default function CTASection() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span className="text-sm font-medium text-emerald-300">
-                  {company.urgency.availableTechnicians} Techniker jetzt verfügbar
+                  24/7 telefonisch erreichbar
                 </span>
               </div>
 
@@ -55,7 +55,7 @@ export default function CTASection() {
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <Clock className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">{company.urgency.responseTimeDisplay} vor Ort</span>
+                <span className="text-sm font-medium">Ankunft telefonisch klären</span>
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <CheckCircle className="w-5 h-5 text-emerald-400" />

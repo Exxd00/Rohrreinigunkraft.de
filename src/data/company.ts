@@ -4,8 +4,7 @@ import { serviceArea } from "./service-area";
  * Company data and content for Rohrreinigung Kraft
  * Focused on Mittelfranken: Nürnberg, Fürth, Erlangen + 30km Umkreis
  *
- * ⚠️ WICHTIG: Alle Zeitangaben einheitlich halten!
- * Standard: "30-60 Min" (in Nürnberg oft schneller)
+ * Ankunft und Verfügbarkeit werden telefonisch abgestimmt.
  */
 
 // Firmenadresse - ECHT (von Gelbe Seiten verifiziert)
@@ -73,21 +72,8 @@ export const company = {
     },
   },
 
-  // ⚠️ EINHEITLICHE ZEITANGABEN
-  // Standard: 30-60 Min (in Nürnberg oft schneller)
-  urgency: {
-    responseTime: "30-60", // EINHEITLICH überall
-    responseTimeDisplay: "30-60 Min",
-    responseTimeShort: "Meist 30-60 Min",
-    responseTimeNote: "In Nürnberg oft schneller",
-    callbackTime: "wenigen", // "Rückruf in wenigen Minuten"
-    availableTechnicians: "2-3",
-    lastServiceCity: "Nürnberg",
-    lastServiceTime: "vor 23 Min",
-  },
-
   stats: {
-    responseTime: "30-60 Min",
+    responseTime: "Nach Vereinbarung",
     availability: "24/7",
     localTeam: "Lokaler Fachbetrieb",
     region: "Mittelfranken",
@@ -153,8 +139,8 @@ export const company = {
       icon: "clock"
     },
     {
-      title: "Meist 30-60 Min",
-      description: "Schnelle Anfahrt – in Nürnberg oft noch schneller",
+      title: "Ankunft nach Absprache",
+      description: "Verfügbarkeit und Adresse telefonisch klären",
       icon: "truck"
     },
     {
@@ -199,7 +185,7 @@ export const company = {
         "Kennen jede Ecke der Stadt",
         "Erfahrung mit Altbauten & Neubauten",
       ],
-      responseTime: "30-60 Min", // EINHEITLICH
+      responseTime: "Nach Vereinbarung", // EINHEITLICH
       commonProblems: [
         "Altbau-Rohrsysteme in der Südstadt",
         "Wurzeleinwuchs in Gartenstädten",
@@ -209,13 +195,13 @@ export const company = {
     fuerth: {
       name: "Fürth",
       headline: "Rohrreinigung Fürth – Direkt nebenan",
-      subheadline: "Schnelle Anfahrt von Nürnberg – Meist 30-60 Min bei Ihnen",
+      subheadline: "Anfahrt von Nürnberg – Verfügbarkeit telefonisch klären",
       localFacts: [
         "Direkte Nachbarschaft zu Nürnberg",
         "Kurze Anfahrtswege",
         "Lokale Erfahrung seit Jahren",
       ],
-      responseTime: "30-60 Min", // EINHEITLICH
+      responseTime: "Nach Vereinbarung", // EINHEITLICH
       commonProblems: [
         "Ältere Rohrsysteme in der Innenstadt",
         "Fettablagerungen in Gastronomie",
@@ -231,7 +217,7 @@ export const company = {
         "Service für Siemens-Campus",
         "Studentenwohnheime & WGs",
       ],
-      responseTime: "30-60 Min", // EINHEITLICH
+      responseTime: "Nach Vereinbarung", // EINHEITLICH
       commonProblems: [
         "Hohe Nutzung in Studentenwohnheimen",
         "Gewerbliche Anforderungen",
@@ -248,7 +234,7 @@ export const company = {
       },
       {
         question: "Wie schnell können Sie da sein?",
-        answer: "In Nürnberg, Fürth und Erlangen sind wir meist innerhalb von 30-60 Minuten bei Ihnen. In Nürnberg selbst oft noch schneller.",
+        answer: "Verfügbarkeit und voraussichtliche Ankunft klären wir telefonisch anhand Ihrer Adresse, der Verkehrslage und der aktuellen Einsatzplanung.",
       },
       {
         question: "Arbeiten Sie auch am Wochenende?",
@@ -283,8 +269,8 @@ export const company = {
   },
 
   seo: {
-    defaultTitle: "Rohrreinigung Kraft | 24/7 Notdienst Nürnberg, Fürth, Erlangen",
-    defaultDescription: "Rohrreinigung & Kanalreinigung in Nürnberg und 30 km Umgebung ✓ Meist 30-60 Min ✓ 24/7 Notdienst ✓ Kostenlose Diagnose ✓ Festpreis vorab. Jetzt anrufen: 0911 89218682",
+    defaultTitle: "Rohrreinigung Nürnberg | 24h Notdienst – Kraft",
+    defaultDescription: "Rohrreinigung in Nürnberg und 30 km Umgebung. Preis vor Arbeitsbeginn. Verfügbarkeit und Ankunft telefonisch klären: 0911 89218682.",
     keywords: [
       "Rohrreinigung Nürnberg",
       "Rohrreinigung Fürth",
@@ -485,7 +471,7 @@ export const howItWorks = [
   {
     step: 2,
     title: "Schnelle Anfahrt",
-    description: "Unser Fachteam ist innerhalb von 30 Minuten bei Ihnen vor Ort.",
+    description: "Wir klären Verfügbarkeit und voraussichtliche Ankunft telefonisch mit Ihnen.",
     icon: "truck"
   },
   {

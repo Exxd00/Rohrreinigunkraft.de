@@ -47,7 +47,7 @@ test("sitemap contains unique, self-canonical public pages and no retired area",
   for (const entry of entries) {
     const path = new URL(entry.url).pathname;
     assert.equal(pageMetadata(path, "Title", "Description").alternates?.canonical, entry.url);
-    assert.equal(entry.lastModified, serviceArea.updated);
+    assert.equal(entry.lastModified, "2026-09-29");
   }
 });
 

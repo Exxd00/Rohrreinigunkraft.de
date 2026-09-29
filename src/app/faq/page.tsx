@@ -83,8 +83,8 @@ const faqCategories = [
     questions: [
       {
         question: "Wie schnell können Sie da sein?",
-        answer: "In Nürnberg, Fürth und Erlangen sind wir meist innerhalb von 30-60 Minuten bei Ihnen. In Nürnberg selbst oft noch schneller. Wir geben Ihnen am Telefon eine realistische Zeitangabe.",
-        shortAnswer: "30-60 Minuten in Nürnberg/Fürth/Erlangen. In Nürnberg oft schneller."
+        answer: "Verfügbarkeit und voraussichtliche Ankunft klären wir telefonisch anhand Ihrer Adresse, der Verkehrslage und der aktuellen Einsatzplanung.",
+        shortAnswer: "Ankunft und Verfügbarkeit telefonisch klären."
       },
       {
         question: "Wie läuft ein Einsatz ab?",

@@ -74,7 +74,7 @@ export const packages: Package[] = [
     pricingNote: "Nachts +40€, Wochenende +30€ – wird AM TELEFON gesagt",
 
     includes: [
-      "Anfahrt in 30-60 Min",
+      "Ankunft telefonisch abstimmen",
       "Sofortige Problemlösung",
       "Alle nötigen Werkzeuge dabei",
       "Saubere Arbeitsweise",
@@ -93,13 +93,13 @@ export const packages: Package[] = [
     },
 
     duration: "20-60 Min",
-    responseTime: "30-60 Min",
+    responseTime: "Nach Vereinbarung",
 
     popular: false,
     badge: "24/7",
     cta: {
       text: "Jetzt Notdienst rufen",
-      urgency: "Techniker ist in 30-60 Min bei Ihnen"
+      urgency: "Verfügbarkeit telefonisch klären"
     },
 
     linkedServices: ["rohrreinigung-notdienst", "toilette-verstopft", "toilette-laeuft-ueber", "keller-ueberflutet"],
@@ -349,7 +349,7 @@ export const packages: Package[] = [
     pricingNote: "Rahmenvertrag mit Festkonditionen",
 
     includes: [
-      "Prioritäts-Notdienst (30-60 Min Reaktion)",
+      "Prioritäts-Notdienst nach Vereinbarung",
       "10% Rabatt auf alle Einsätze",
       "Persönlicher Ansprechpartner",
       "Dokumentation für WEG-Versammlungen",
@@ -368,7 +368,7 @@ export const packages: Package[] = [
     },
 
     duration: "Je nach Einsatz",
-    responseTime: "30-60 Min Priorität",
+    responseTime: "Nach Vereinbarung",
 
     popular: false,
     badge: "B2B",

@@ -82,7 +82,7 @@ const guideSteps: GuideStep[] = [
     iconBg: "bg-primary",
     description: "Was passiert nachdem Sie uns kontaktiert haben",
     dos: [
-      "Sie erhalten eine geschätzte Ankunftszeit (meist 30-60 Min)",
+      "Wir besprechen Verfügbarkeit und voraussichtliche Ankunft",
       "Bereiten Sie den Zugang zum betroffenen Bereich vor",
       "Räumen Sie den Bereich um den verstopften Abfluss frei",
       "Halten Sie ggf. Schlüssel für Keller oder Außenbereiche bereit",
@@ -301,7 +301,7 @@ export default function EmergencyGuide() {
               </h3>
               <p className="text-gray-300 mb-6 max-w-lg mx-auto">
                 Kostenlose Diagnose vor Ort. Festpreis vor Arbeitsbeginn.
-                In {company.urgency.responseTime} Min bei Ihnen.
+                Verfügbarkeit und Ankunft telefonisch klären.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
