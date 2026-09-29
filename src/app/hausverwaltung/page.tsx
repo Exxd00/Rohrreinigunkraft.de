@@ -35,7 +35,7 @@ const targetGroups = [
     title: "Hausverwaltungen",
     description: "Schnelle Reaktion, professionelle Dokumentation, direkte Kommunikation",
     benefits: [
-      "Prioritäts-Notdienst 24/7 (30-60 Min)",
+      "Prioritäts-Notdienst nach Vereinbarung",
       "Dokumentation für WEG-Versammlungen",
       "Rahmenverträge mit Festkonditionen",
       "Direkte Techniker-Hotline",

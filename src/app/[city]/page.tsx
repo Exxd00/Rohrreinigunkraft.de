@@ -1,3 +1,5 @@
+import LocalServiceChoice from "@/components/city/LocalServiceChoice";
+import ServiceEvidence from "@/components/city/ServiceEvidence";
 import type { Metadata } from "next";
 import { getCityHeroIntro } from "@/data/hero-copy";
 import VideoShowcase from "@/components/home/VideoShowcase";
@@ -92,6 +94,7 @@ export default async function CityPage({
         benefit="Damit Ihr Alltag wieder läuft."
       />
       <VideoShowcase />
+      <LocalServiceChoice citySlug={city.slug} cityName={city.name} />
       <section className="bg-white py-12 dark:bg-slate-950 md:py-16">
         <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12">
           <div>
@@ -187,6 +190,7 @@ export default async function CityPage({
           </div>
         </div>
       </section>
+      <ServiceEvidence />
       <LocalCta city={city} source={`city-${city.slug}-footer`} />
     </>
   );

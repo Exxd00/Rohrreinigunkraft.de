@@ -147,7 +147,7 @@ export default function PreisePage() {
               <div className="flex flex-col items-center">
                 <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold mb-2">2</div>
                 <p className="text-sm font-medium text-gray-900 dark:text-white">Wir kommen</p>
-                <p className="text-xs text-gray-500">In 30-60 Min</p>
+                <p className="text-xs text-gray-500">Ankunft nach Absprache</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold mb-2">3</div>

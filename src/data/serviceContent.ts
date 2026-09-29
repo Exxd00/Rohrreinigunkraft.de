@@ -123,7 +123,7 @@ export const enhancedServiceContent: Record<string, EnhancedServiceContent> = {
   "rohrreinigung-notdienst": {
     slug: "rohrreinigung-notdienst",
     heroHeadline: "Rohr-Notfall?",
-    heroSubheadline: "24/7 für Sie da – in 30-60 Minuten vor Ort.",
+    heroSubheadline: "24/7 telefonisch erreichbar – Ankunft nach Verfügbarkeit.",
     consequences: {
       title: "Warum jetzt handeln?",
       items: [
@@ -180,7 +180,7 @@ export const enhancedServiceContent: Record<string, EnhancedServiceContent> = {
       title: "Unser Notdienst-Ablauf",
       steps: [
         { step: 1, title: "Sofort-Annahme", description: "24/7 persönlich erreichbar – kein Callcenter." },
-        { step: 2, title: "30-60 Min", description: "Techniker ist schnellstmöglich bei Ihnen." },
+        { step: 2, title: "Ankunft klären", description: "Adresse, Verkehr und aktuelle Verfügbarkeit bestimmen die Ankunftszeit." },
         { step: 3, title: "Schadenbegrenzung", description: "Erst das Wasser stoppen, dann Ursache finden." },
         { step: 4, title: "Festpreis", description: "Auch im Notfall: Preis vor Arbeitsbeginn." },
         { step: 5, title: "Dokumentation", description: "Fotos und Bericht für Ihre Versicherung." },
@@ -193,7 +193,7 @@ export const enhancedServiceContent: Record<string, EnhancedServiceContent> = {
       },
       {
         question: "Wie schnell können Sie da sein?",
-        answer: "In Nürnberg, Fürth und Erlangen in der Regel 30-60 Minuten. Bei extremen Notfällen oft schneller."
+        answer: "Die voraussichtliche Ankunft klären wir telefonisch anhand Ihrer Adresse, der Verkehrslage und der aktuellen Verfügbarkeit."
       },
       {
         question: "Zahlt meine Versicherung?",

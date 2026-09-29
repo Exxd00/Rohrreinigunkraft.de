@@ -1,3 +1,4 @@
+import ServiceEvidence from "@/components/city/ServiceEvidence";
 import type { Metadata } from "next";
 import { getServiceHeroCopy } from "@/data/hero-copy";
 import VideoShowcase from "@/components/home/VideoShowcase";
@@ -229,6 +230,7 @@ export default async function CityServicePage({ params }: Props) {
           </div>
         </div>
       </section>
+      <ServiceEvidence />
       <LocalCta
         city={city}
         source={`local-${city.slug}-${service.slug}-footer`}

@@ -88,7 +88,7 @@ export default function ThankYouPage() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white text-sm">
-                      Rückruf in wenigen Minuten
+                      Wir melden uns zu Ihrer Anfrage
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
                       Unser Team meldet sich schnellstmöglich bei Ihnen
@@ -121,7 +121,7 @@ export default function ThankYouPage() {
                       Schnelle Hilfe vor Ort
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Meist 30-60 Min vor Ort - Festpreis vorab
+                      Ankunft telefonisch klären – Preis vor Arbeitsbeginn
                     </p>
                   </div>
                 </div>

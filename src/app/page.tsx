@@ -55,95 +55,6 @@ const jsonLd = {
     }
   ],
 
-  // ⭐ Bewertungen - EINZIGE aggregateRating für diese Entität
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: String(company.rating.reviewCount),
-    reviewCount: String(company.rating.reviewCount)
-  },
-
-  // Einzelne Reviews - OHNE itemReviewed (da bereits in LocalBusiness)
-  review: [
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Thomas M."
-      },
-      datePublished: "2024-11-15",
-      reviewBody: "Schnelle Hilfe am Sonntagmorgen! Die Toilette war komplett verstopft und innerhalb von 45 Minuten war das Team vor Ort. Sehr professionell und faire Preise.",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-        worstRating: "1"
-      }
-    },
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Sandra K."
-      },
-      datePublished: "2024-10-22",
-      reviewBody: "Nach einem Rohrbruch im Keller waren sie blitzschnell da. Die Mitarbeiter waren freundlich, kompetent und haben alles sauber hinterlassen. Klare Empfehlung!",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-        worstRating: "1"
-      }
-    },
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Michael B."
-      },
-      datePublished: "2024-09-18",
-      reviewBody: "Unser Küchenabfluss war seit Wochen problematisch. Die Rohrreinigung Kraft hat das Problem schnell gefunden und nachhaltig beseitigt. Top Service!",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-        worstRating: "1"
-      }
-    },
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Anna W."
-      },
-      datePublished: "2024-08-05",
-      reviewBody: "Super Service! Abfluss in der Dusche war komplett zu. Techniker kam nach 35 Minuten und hatte das Problem in 20 Minuten gelöst. Sehr zu empfehlen!",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-        worstRating: "1"
-      }
-    },
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Peter H."
-      },
-      datePublished: "2024-07-12",
-      reviewBody: "Als Hausverwalter arbeite ich seit 2 Jahren mit Rohrreinigung Kraft zusammen. Immer zuverlässig, faire Preise und die Dokumentation ist top. Klare Empfehlung für Hausverwaltungen!",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-        worstRating: "1"
-      }
-    }
-  ],
-
   priceRange: "€€",
   currenciesAccepted: "EUR",
   paymentAccepted: "Cash, Credit Card, EC-Karte, Rechnung",
@@ -293,70 +204,6 @@ const jsonLd = {
   }
 };
 
-// FAQ Schema - للظهور في Google مع الأسئلة والأجوبة
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Was kostet eine Rohrreinigung in Nürnberg?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Die Kosten hängen vom Umfang der Verstopfung ab. Wir bieten eine kostenlose Diagnose vor Ort und nennen Ihnen dann einen Festpreis – ohne versteckte Kosten. Einfache Verstopfungen starten ab 79€, Rohrreinigung ab 89€, Kanalreinigung ab 149€."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Wie schnell können Sie bei einer Rohrverstopfung da sein?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "In Nürnberg, Fürth und Erlangen sind wir meist innerhalb von 30-60 Minuten bei Ihnen. In Nürnberg selbst oft noch schneller. Unser 24/7 Notdienst ist rund um die Uhr verfügbar."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Arbeiten Sie auch am Wochenende und nachts?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja, unser 24/7 Notdienst ist rund um die Uhr verfügbar – auch nachts, am Wochenende und an Feiertagen. Bei Notfällen sind wir immer für Sie da."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Muss ich im Voraus bezahlen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nein. Wir stellen erst nach erfolgreicher Arbeit eine Rechnung. Sie können bar, mit Karte oder auf Rechnung bezahlen. Wir nennen Ihnen immer einen Festpreis vor Arbeitsbeginn."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Was soll ich tun, bis Sie bei mir ankommen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Drehen Sie wenn möglich den Hauptwasserhahn ab und vermeiden Sie weitere Wassernutzung. Legen Sie Handtücher aus, um Wasserschäden zu minimieren. Wir sind meist in 30-60 Minuten bei Ihnen."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Bieten Sie Wartungsverträge für Hausverwaltungen an?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja, besonders für Hausverwaltungen und Gewerbebetriebe bieten wir regelmäßige Wartungsverträge mit Prioritäts-Service an. Inklusive Dokumentation, Sammelrechnung und persönlichem Ansprechpartner."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "In welchen Städten bieten Sie Rohrreinigung an?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Unser Einsatzgebiet umfasst Nürnberg und Umgebung im Radius von 30 km Luftlinie ab Nürnberg Hauptbahnhof. Für Ortsteile und Adressen am Rand bestätigen wir die Abdeckung vor dem Einsatz."
-      }
-    }
-  ]
-};
-
 export default function Home() {
   return (
     <>
@@ -364,12 +211,6 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      {/* FAQ Schema - For Rich Results */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* 1. Hero Section (the hero only) */}
