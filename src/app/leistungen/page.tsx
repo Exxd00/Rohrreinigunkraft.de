@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/page-seo";
 export const metadata = pageMetadata(
   "/leistungen",
   "Leistungen & Hilfe bei Verstopfung | Rohrreinigung Kraft",
-  "Finden Sie Rohrreinigung, Kanalservice, Notdienst und Untersuchungen in Nürnberg und 30 km Umgebung. Nach Anliegen, Leistungsbereich und Stadt filtern.",
+  "Finden Sie Rohrreinigung, Kanalservice, Notdienst und Untersuchungen in Nürnberg und Umgebung. Nach Anliegen, Leistungsbereich und Stadt filtern.",
 );
 export default function LeistungenPage() {
   const towns = getCitiesSortedByName()
@@ -34,7 +34,7 @@ export default function LeistungenPage() {
             <span>Leistungen</span>
           </nav>
           <p className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
-            Nürnberg & 30 km Umgebung
+            Nürnberg und Umgebung
           </p>
           <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight text-slate-900 dark:text-white md:text-5xl">
             Was ist verstopft? Wir helfen Ihnen weiter.

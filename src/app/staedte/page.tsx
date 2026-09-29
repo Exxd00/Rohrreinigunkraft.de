@@ -11,8 +11,8 @@ import PhoneCallButton from "@/components/ui/phone-call-button";
 
 export const metadata = pageMetadata(
   "/staedte",
-  "Einsatzgebiet: Nürnberg & 30 km Umkreis | Rohrreinigung Kraft",
-  "Unser Einsatzgebiet rund um Nürnberg: Städte und Gemeinden im 30-km-Radius, klare Abdeckung und lokale Hinweise. Finden Sie Ihren Ort und die passende Leistung.",
+  "Einsatzgebiet: Nürnberg und Umgebung | Rohrreinigung Kraft",
+  "Unser Einsatzgebiet rund um Nürnberg: Städte und Gemeinden in der Umgebung, klare Abdeckung und lokale Hinweise. Finden Sie Ihren Ort und die passende Leistung.",
 );
 
 export default function StaedtePage() {
@@ -38,24 +38,24 @@ export default function StaedtePage() {
               <MapPin className="h-4 w-4" /> Unser Einsatzgebiet
             </p>
             <h1 className="text-4xl font-bold leading-tight text-slate-900 dark:text-white md:text-5xl">
-              Nürnberg.
+              Nürnberg
               <br />
               <span className="text-sky-700 dark:text-sky-300">
-                Und 30 km drumherum.
+                und Umgebung
               </span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
               Ihr Abflussproblem braucht Hilfe vor Ort. Wir sind von Nürnberg aus
-              im 30-km-Umkreis für Sie unterwegs. Finden Sie Ihre Stadt und die
+              in der Umgebung für Sie unterwegs. Finden Sie Ihre Stadt und die
               passende Leistung – die Verfügbarkeit klären wir direkt mit Ihnen.
             </p>
             <div className="mt-7 grid grid-cols-2 gap-4">
               <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
                 <p className="text-3xl font-bold text-slate-900 dark:text-white">
-                  30 km
+                  Nürnberg
                 </p>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  Radius ab Nürnberg Hbf
+                  Unser Ausgangspunkt
                 </p>
               </div>
               <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
@@ -82,15 +82,13 @@ export default function StaedtePage() {
       <section className="border-y border-sky-100 bg-sky-50 py-8 dark:border-slate-700 dark:bg-sky-950/30">
         <div className="container mx-auto px-4">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-            So ist die Abdeckung definiert
+            So klären wir Ihren Einsatzort
           </h2>
           <p className="mt-3 max-w-5xl leading-relaxed text-slate-700 dark:text-slate-300">
-            Der Radius beträgt 30 km Luftlinie ab {serviceArea.center.name}. Die
-            Liste verwendet amtliche Ortsmittelpunkte als Orientierung. Sie ist
-            keine pauschale Zusage für jeden Ortsteil einer Gemeinde. An der
-            Grenze prüfen wir die genaue Objektadresse vor der
-            Einsatzbestätigung. Fahrstrecke und Ankunftszeit können von der
-            Luftlinie abweichen.
+            Wir sind in Nürnberg und Umgebung im Einsatz. Die Ortsliste hilft
+            Ihnen bei der Orientierung. Die genaue Objektadresse, Verfügbarkeit
+            und Anfahrt klären wir vor der Einsatzbestätigung. Die Karte dient
+            der Orientierung und zeigt keine Fahrstrecken oder Ankunftszeiten.
           </p>
           <p className="mt-3 max-w-5xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">
             Unser Betriebssitz ist Nürnberg. Die Ortsseiten beschreiben

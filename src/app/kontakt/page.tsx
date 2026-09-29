@@ -45,7 +45,7 @@ export default function KontaktPage() {
                   Großraum Nürnberg & Umgebung
                 </p>
                 <p className="text-sm text-gray-400">
-                  Nürnberg und Umgebung · 30 km Umkreis
+                  Nürnberg und Umgebung
                 </p>
               </div>
             </div>

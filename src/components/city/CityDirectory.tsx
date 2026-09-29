@@ -57,7 +57,7 @@ export default function CityDirectory({
               onChange={(e) => update({ radius: e.target.value })}
               className={field}
             >
-              <option value="30">Bis 30 km · gesamtes Gebiet</option>
+              <option value="30">Gesamtes Einsatzgebiet</option>
               <option value="20">Bis 20 km Luftlinie</option>
               <option value="10">Bis 10 km Luftlinie</option>
             </select>
@@ -125,7 +125,6 @@ export default function CityDirectory({
                     className="mt-0.5 h-4 w-4 shrink-0"
                     aria-hidden="true"
                   />
-                  {city.distance.toLocaleString("de-DE")} km Luftlinie ·{" "}
                   {city.region}
                 </p>
               </div>
@@ -143,8 +142,7 @@ export default function CityDirectory({
             Kein Ort passt zu diesen Filtern
           </h3>
           <p className="mt-2 text-slate-600 dark:text-slate-300">
-            Prüfen Sie die Schreibweise oder vergrößern Sie die Entfernung auf
-            30 km.
+            Prüfen Sie die Schreibweise oder wählen Sie das gesamte Einsatzgebiet.
           </p>
           <button
             type="button"

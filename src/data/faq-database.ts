@@ -570,8 +570,8 @@ export const regionFAQ: FAQItem[] = [
   {
     id: "region-1",
     question: "In welchen Städten sind Sie tätig?",
-    shortAnswer: "Nürnberg und Umgebung im 30-km-Radius; Randadressen prüfen wir vorab.",
-    fullAnswer: "Unser Einsatzgebiet umfasst 30 km Luftlinie ab Nürnberg Hauptbahnhof. Dazu gehören unter anderem Fürth, Erlangen, Schwabach, Lauf und Roth. Für Ortsteile am Rand gilt die genaue Adresse; Anfahrt und mögliche Zuschläge besprechen wir vor einer Zusage.",
+    shortAnswer: "Nürnberg und Umgebung; die genaue Adresse prüfen wir vorab.",
+    fullAnswer: "Wir sind in Nürnberg und Umgebung für Sie da. Dazu gehören unter anderem Fürth, Erlangen, Schwabach, Lauf und Roth. Für Ortsteile am Rand gilt die genaue Adresse; Anfahrt und mögliche Zuschläge besprechen wir vor einer Zusage.",
     category: "region",
     page: ["homepage", "faq"],
     keywords: ["einsatzgebiet", "welche städte"],
@@ -625,8 +625,8 @@ export const regionFAQ: FAQItem[] = [
   {
     id: "region-6",
     question: "Kommen Sie auch nach Forchheim?",
-    shortAnswer: "Keine pauschale Zusage: Die genaue Adresse wird an der 30-km-Grenze geprüft.",
-    fullAnswer: "Unser festes Einsatzgebiet endet bei 30 km Luftlinie ab Nürnberg Hauptbahnhof. Der Ortsmittelpunkt von Forchheim liegt außerhalb dieses Radius. Für eine Adresse nahe der Grenze prüfen wir die konkrete Lage; es gibt keine pauschale Zusage für Forchheim und Umgebung.",
+    shortAnswer: "Keine pauschale Zusage: Wir prüfen zunächst die genaue Adresse.",
+    fullAnswer: "Unser reguläres Einsatzgebiet umfasst Nürnberg und Umgebung. Forchheim gehört nicht pauschal zu den ausgewiesenen Einsatzorten. Wir prüfen zunächst die konkrete Adresse und Verfügbarkeit; eine Zusage für Forchheim und Umgebung erfolgt nicht automatisch.",
     category: "region",
     page: ["faq"],
     keywords: ["forchheim rohrreinigung"],

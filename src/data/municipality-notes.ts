@@ -118,7 +118,7 @@ export const municipalityNotes: Record<string, string> = {
   pinzberg:
     "Bei einer Anfrage aus Pinzberg sind Lage und Zugänglichkeit der betroffenen Entwässerungsstelle wichtig. Für eine Kameraaufnahme nennen Sie den Untersuchungszweck bereits vorab, damit Aufnahmeumfang und Dokumentation sinnvoll vereinbart werden können.",
   hausen:
-    "Gemeint ist Hausen im Landkreis Forchheim. Da der Ortsname häufig vorkommt, benötigen wir die vollständige Anschrift. Eine Anfrage irgendwo im Landkreis ist nicht gleichbedeutend mit einer Adresse innerhalb unseres 30-km-Radius.",
+    "Gemeint ist Hausen im Landkreis Forchheim. Da der Ortsname häufig vorkommt, benötigen wir die vollständige Anschrift. Eine Anfrage irgendwo im Landkreis ist nicht gleichbedeutend mit einer Adresse innerhalb unseres Einsatzgebiets.",
   roettenbach:
     "Hier ist Röttenbach im Landkreis Erlangen-Höchstadt gemeint. Die genaue Ortszuordnung ist wichtig, weil es weitere Gemeinden gleichen Namens gibt. Teilen Sie für eine planbare Arbeit auch Zugangszeiten und verantwortliche Kontaktperson mit.",
   kirchensittenbach:
@@ -150,7 +150,7 @@ export const municipalityNotes: Record<string, string> = {
   bruckberg:
     "Gemeint ist Bruckberg im Landkreis Ansbach. Wegen weiterer gleichnamiger Orte und der Lage am westlichen Rand brauchen wir die vollständige Anschrift. Erst danach können wir den Einsatz und den benötigten Arbeitszugang verbindlich abstimmen.",
   wiesenthau:
-    "Wiesenthau liegt sehr nahe an der nördlichen 30-km-Grenze. Die Stadt- oder Gemeindeangabe genügt hier nicht für eine Abdeckungszusage. Nennen Sie die genaue Objektadresse, bevor wir Leistungsumfang und Termin vereinbaren.",
+    "Wiesenthau liegt sehr nahe am nördlichen Rand unseres Einsatzgebiets. Die Stadt- oder Gemeindeangabe genügt hier nicht für eine Abdeckungszusage. Nennen Sie die genaue Objektadresse, bevor wir Leistungsumfang und Termin vereinbaren.",
   leutenbach:
     "Leutenbach im Landkreis Forchheim liegt unmittelbar an der Radiusgrenze. Selbst kleine Abweichungen vom Ortsmittelpunkt können relevant sein. Wir bestätigen die Abdeckung deshalb ausschließlich anhand der genauen Zieladresse und planen erst danach den Einsatz.",
 };

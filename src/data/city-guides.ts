@@ -37,7 +37,7 @@ export const cityGuides: Record<string, CityGuide> = {
   schwabach: {
     heading: "Wohnungsanschluss und Grundstücksleitung unterscheiden",
     context:
-      "Schwabach liegt südlich von Nürnberg innerhalb des 30-km-Radius. Für die Vorbereitung ist entscheidend, ob Wasser nur an einer Entwässerungsstelle steht oder an mehreren Stellen im Gebäude zurückkommt. Eine Meldung mit diesen Beobachtungen hilft mehr als eine Vermutung über die Ursache.",
+      "Schwabach liegt südlich von Nürnberg in unserem Einsatzgebiet. Für die Vorbereitung ist entscheidend, ob Wasser nur an einer Entwässerungsstelle steht oder an mehreren Stellen im Gebäude zurückkommt. Eine Meldung mit diesen Beobachtungen hilft mehr als eine Vermutung über die Ursache.",
     access:
       "Zeigen Sie uns den Weg zum betroffenen Raum und – falls vorhanden – zur Revisionsöffnung auf dem Grundstück. Bei einem Kellerablauf halten Sie Abstand zu ausgetretenem Wasser und beschreiben Sie die Situation telefonisch, statt den Raum zur Besichtigung zu betreten.",
     planning:
@@ -118,7 +118,7 @@ export const cityGuides: Record<string, CityGuide> = {
   roth: {
     heading: "Roth mit genauer Adresse statt einer Landkreisangabe",
     context:
-      "Die Stadt Roth liegt im südlichen 30-km-Einsatzgebiet. Ein Auftrag in der Stadt ist von einer Anfrage irgendwo im Landkreis Roth zu unterscheiden. Nennen Sie deshalb den tatsächlichen Ort und Ortsteil; die Landkreisbezeichnung allein begrenzt die Anfahrt nicht.",
+      "Die Stadt Roth liegt im südlichen Einsatzgebiet. Ein Auftrag in der Stadt ist von einer Anfrage irgendwo im Landkreis Roth zu unterscheiden. Nennen Sie deshalb den tatsächlichen Ort und Ortsteil; die Landkreisbezeichnung allein begrenzt die Anfahrt nicht.",
     access:
       "Für eine Leitung zwischen Gebäude und Grundstücksgrenze sind Lage und Erreichbarkeit der Revisionspunkte wesentlich. Bei einem Zugang in Nebenräumen organisieren Sie die Schlüssel und einen Ansprechpartner am Objekt.",
     planning:
@@ -136,7 +136,7 @@ export const cityGuides: Record<string, CityGuide> = {
   abenberg: {
     heading: "Ortsteil und private Zufahrt gemeinsam nennen",
     context:
-      "Abenberg liegt südwestlich des Nürnberger Ausgangspunkts. Bei einem Objekt außerhalb des zentralen Ortsbereichs ist der Ortsteil für die Einsatzplanung besonders hilfreich. Die genaue Adresse wird vor der Anfahrt auf die vereinbarte 30-km-Abdeckung geprüft.",
+      "Abenberg liegt südwestlich des Nürnberger Ausgangspunkts. Bei einem Objekt außerhalb des zentralen Ortsbereichs ist der Ortsteil für die Einsatzplanung besonders hilfreich. Die genaue Adresse wird vor der Anfahrt auf die vereinbarte Abdeckung geprüft.",
     access:
       "Beschreiben Sie bei einer langen oder schmalen privaten Zufahrt die Zugangssituation. Für Arbeiten an einer Außenleitung sind vorhandene Revisionsöffnungen und der Weg dorthin wichtiger als eine pauschale Aussage über die Grundstücksgröße.",
     planning:
@@ -163,7 +163,7 @@ export const cityGuides: Record<string, CityGuide> = {
   hersbruck: {
     heading: "Auftrag und Anfahrt im östlichen Einsatzgebiet vorbereiten",
     context:
-      "Hersbruck liegt östlich von Nürnberg innerhalb des 30-km-Radius. Bei der Aufnahme erfassen wir die konkrete Adresse und die aktuelle Störung. Für Objekte in Randlagen klären wir die tatsächliche Abdeckung vor der Einsatzbestätigung.",
+      "Hersbruck liegt östlich von Nürnberg in unserem Einsatzgebiet. Bei der Aufnahme erfassen wir die konkrete Adresse und die aktuelle Störung. Für Objekte in Randlagen klären wir die tatsächliche Abdeckung vor der Einsatzbestätigung.",
     access:
       "Wenn ein Revisionsschacht oder Arbeitsraum nur zu bestimmten Zeiten zugänglich ist, nennen Sie das bereits bei der Anfrage. Für einen Betrieb und ein privates Wohnobjekt können unterschiedliche Ansprechpartner und Freigaben erforderlich sein.",
     planning:
@@ -172,7 +172,7 @@ export const cityGuides: Record<string, CityGuide> = {
   windsbach: {
     heading: "Eine genaue Adresse ist hier besonders wichtig",
     context:
-      "Windsbach liegt nahe dem südwestlichen Rand unseres Radius. Die Einordnung bezieht sich auf den amtlichen Ortsmittelpunkt. Vor einer Zusage prüfen wir daher Straße und Ortsteil; eine Luftlinie unter 30 km bedeutet nicht, dass jede Adresse im gesamten Gemeindegebiet abgedeckt ist.",
+      "Windsbach liegt nahe dem südwestlichen Rand unseres Radius. Die Einordnung bezieht sich auf den amtlichen Ortsmittelpunkt. Vor einer Zusage prüfen wir daher Straße und Ortsteil; die Aufnahme eines Orts in die Liste bedeutet nicht, dass jede Adresse im gesamten Gemeindegebiet abgedeckt ist.",
     access:
       "Bei Grundstücksleitungen klären Sie, über welchen Eingang oder welche Zufahrt der Arbeitsbereich erreichbar ist. Wenn mehrere Gebäude gemeinsam entwässern, brauchen wir den bekannten Leitungsbezug und eine zuständige Person für den Zugang.",
     planning:
@@ -181,7 +181,7 @@ export const cityGuides: Record<string, CityGuide> = {
   hilpoltstein: {
     heading: "Hilpoltstein im Süden eindeutig zuordnen",
     context:
-      "Hilpoltstein im Landkreis Roth liegt am südlichen Rand des 30-km-Gebiets. Es ist nicht mit Hiltpoltstein im Norden zu verwechseln. Die genaue Adresse und Postleitzahl sind hier deshalb für die Einsatzaufnahme besonders wichtig.",
+      "Hilpoltstein im Landkreis Roth liegt am südlichen Rand unseres Einsatzgebiets. Es ist nicht mit Hiltpoltstein im Norden zu verwechseln. Die genaue Adresse und Postleitzahl sind hier deshalb für die Einsatzaufnahme besonders wichtig.",
     access:
       "Vor der Anfahrt bestätigen wir die Abdeckung des konkreten Objekts. Beschreiben Sie danach den Zugang zur betroffenen Leitung, mögliche Schachtlagen und eine erreichbare Kontaktperson, damit der Termin fachlich vorbereitet werden kann.",
     planning:

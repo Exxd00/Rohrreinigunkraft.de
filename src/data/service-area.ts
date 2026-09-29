@@ -11,7 +11,7 @@ export const serviceArea = {
     "https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html",
   sourceDate: "2025-12-31",
   coordinateDate: "2024-12-31",
-  description: "Nürnberg und Umgebung im Umkreis von 30 km",
+  description: "Nürnberg und Umgebung",
 } as const;
 
 export function distanceKm(latitude: number, longitude: number): number {

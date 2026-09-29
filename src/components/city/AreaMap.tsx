@@ -29,9 +29,8 @@ export default function AreaMap() {
       >
         <title id="area-map-title">Einsatzgebiet um Nürnberg</title>
         <desc id="area-map-desc">
-          Schematische Lage der 97 Städte und Gemeinden, deren amtlicher
-          Mittelpunkt innerhalb von 30 Kilometern Luftlinie um Nürnberg
-          Hauptbahnhof liegt. Vollständige Ortsliste unterhalb der Karte.
+          Schematische Lage der 97 Städte und Gemeinden in unserem Einsatzgebiet
+          Nürnberg und Umgebung. Vollständige Ortsliste unterhalb der Karte.
         </desc>
         <circle
           cx="280"
@@ -67,7 +66,7 @@ export default function AreaMap() {
           fontSize="14"
           fontWeight="600"
         >
-          NORD · 30 KM LUFTLINIE
+          NORD · NÜRNBERG UND UMGEBUNG
         </text>
         {cities.map((city) => {
           const p = point(city.latitude, city.longitude);
@@ -80,7 +79,7 @@ export default function AreaMap() {
                 r={offset ? 5 : 2.7}
                 fill={offset ? "#075985" : "#38bdf8"}
               />
-              <title>{`${city.name}: ${city.distance.toLocaleString("de-DE")} km`}</title>
+              <title>{city.name}</title>
               {offset ? (
                 <text
                   x={p.x + offset.dx}
