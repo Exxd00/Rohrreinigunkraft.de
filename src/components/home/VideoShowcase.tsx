@@ -20,7 +20,7 @@ export default function VideoShowcase() {
   // Auto-play the featured clip (muted) once it scrolls into view — motion grabs attention
   useEffect(() => {
     const v = featuredRef.current;
-    if (!v) return;
+    if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -62,7 +62,7 @@ export default function VideoShowcase() {
     <>
       <section
         id="videos"
-        className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950"
+        className="relative py-10 md:py-16 overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950"
       >
         {/* Ambient glow */}
         <div className="pointer-events-none absolute inset-0">
@@ -93,13 +93,15 @@ export default function VideoShowcase() {
               Sehen Sie uns <span className="text-primary">bei der Arbeit</span>
             </h2>
             <p className="text-gray-300 md:text-lg">
-              Keine Stockfotos. Echte Aufnahmen aus unseren Rohr- und Kanaleinsätzen in
-              Mittelfranken – inklusive Live-Kamerabefahrung direkt aus der Leitung.
+              Ein Blick in die Leitung sagt mehr als viele Worte. Erleben Sie
+              Rohrreinigung und Kamerainspektion anhand unserer Firmenaufnahmen.
             </p>
           </div>
 
+          <p className="mx-auto mb-8 max-w-2xl text-center text-sm text-gray-400">Die Aufnahmen zeigen Beispiele unserer Arbeit in der Region, nicht jeden einzelnen Einsatzort.</p>
+
           {/* Vorher / Nachher — echte YouTube-Aufnahmen unserer Rohrreinigung */}
-          <div className="max-w-2xl mx-auto mb-12 md:mb-16 space-y-6 md:space-y-8">
+          <div className="max-w-5xl mx-auto mb-12 md:mb-16 grid gap-6 md:grid-cols-2 md:gap-8">
             {/* Vorher */}
             <div>
               <div className="mb-3 flex items-center gap-2">
@@ -151,7 +153,7 @@ export default function VideoShowcase() {
                   loop={!soundOn}
                   controls={soundOn}
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   className="w-full h-full object-cover"
                   onEnded={() => setSoundOn(false)}
                 />
@@ -217,14 +219,10 @@ export default function VideoShowcase() {
                 className="group relative rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-xl bg-black text-left"
               >
                 <div className="relative aspect-[9/16]">
-                  <video
-                    src={reel.src}
-                    poster={reel.poster}
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    preload="metadata"
+                  <img
+                    src={reel.poster}
+                    alt={reel.title}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/30" />

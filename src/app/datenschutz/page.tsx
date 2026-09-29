@@ -1,3 +1,4 @@
+import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import Link from "next/link";
 import { company } from "@/data/company";
@@ -194,7 +195,8 @@ export default function DatenschutzPage() {
   ];
 
   return (
-    <section className="pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <>
+    <section className="pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -210,6 +212,15 @@ export default function DatenschutzPage() {
               Informationen zum Schutz Ihrer personenbezogenen Daten
             </p>
           </div>
+
+          <a href="#legal-content" className="mb-6 inline-flex min-h-11 items-center text-primary underline underline-offset-4">Direkt zu den rechtlichen Informationen</a>
+        </div>
+      </div>
+    </section>
+    <VideoShowcase />
+    <section id="legal-content" className="scroll-mt-24 py-12 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
 
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -281,5 +292,6 @@ export default function DatenschutzPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }

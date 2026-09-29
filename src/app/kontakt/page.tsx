@@ -1,3 +1,4 @@
+import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import ContactForm from "@/components/home/ContactForm";
 import { company } from "@/data/company";
@@ -16,15 +17,17 @@ export default function KontaktPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              <span className="text-gradient">Kontakt</span>
+              <span className="text-gradient">Ihr direkter Kontakt zur Rohrreinigung Kraft</span>
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Haben Sie Fragen oder benötigen Sie schnelle Hilfe?
-              Kontaktieren Sie uns - wir sind 24/7 für Sie da!
+              Akute Verstopfung oder geplanter Termin? Schildern Sie uns Ihr Anliegen.
+              Telefonisch erreichen Sie uns rund um die Uhr; per Formular können Sie einen Rückruf anfragen.
             </p>
+            <a href="#kontakt" className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-primary px-6 py-3 font-semibold text-white">Direkt zur Anfrage</a>
           </div>
         </div>
       </section>
+      <VideoShowcase />
 
       {/* Contact Form Component */}
       <ContactForm />

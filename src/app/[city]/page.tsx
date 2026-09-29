@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import WorkVideo from "@/components/city/WorkVideo";
+import { getCityHeroIntro } from "@/data/hero-copy";
+import VideoShowcase from "@/components/home/VideoShowcase";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ClipboardList } from "lucide-react";
@@ -87,13 +88,15 @@ export default async function CityPage({
       <LocalHero
         city={city}
         title={`Rohrreinigung in ${city.name}`}
-        intro={city.description}
+        intro={getCityHeroIntro(city.name)}
+        benefit="Damit Ihr Alltag wieder läuft."
       />
+      <VideoShowcase />
       <section className="bg-white py-12 dark:bg-slate-950 md:py-16">
         <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
-              Vor Ort gut vorbereitet
+              So helfen wir Ihnen vor Ort
             </p>
             <h2 className="mt-3 text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
               {city.guide.heading}
@@ -107,9 +110,8 @@ export default async function CityPage({
             <div className="mt-6 flex gap-3 rounded-xl bg-slate-50 p-5 dark:bg-slate-900">
               <ClipboardList className="mt-1 h-5 w-5 shrink-0 text-sky-700 dark:text-sky-300" />
               <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                Diese Hinweise dienen der Vorbereitung. Sie behaupten keine
-                besonders häufigen Rohrschäden in bestimmten Straßen und
-                ersetzen keine Untersuchung Ihrer Anlage.
+                Sie müssen die Ursache nicht selbst kennen. Beschreiben Sie,
+                was Sie beobachten – wir besprechen mit Ihnen den nächsten Schritt.
               </p>
             </div>
           </div>
@@ -146,7 +148,7 @@ export default async function CityPage({
                   {service.label}
                 </p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
-                  Ablauf ansehen
+                  Leistung ansehen
                   <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
@@ -161,7 +163,6 @@ export default async function CityPage({
           </Link>
         </div>
       </section>
-      <WorkVideo />
       <section className="bg-white py-12 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-bold">

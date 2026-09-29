@@ -1,3 +1,4 @@
+import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -303,8 +304,8 @@ export default function FAQPage() {
               </span>
             </h1>
             <p className="text-lg text-white/80 mb-8">
-              Ehrliche Antworten auf die Fragen, die sich unsere Kunden wirklich stellen.
-              Keine Verkaufsfloskeln.
+              Was kostet der Einsatz? Was können Sie bis zur Ankunft tun?
+              Hier finden Sie Antworten zu Preisen, Ablauf und unseren Leistungen.
             </p>
 
             {/* Quick Links */}
@@ -322,6 +323,7 @@ export default function FAQPage() {
           </div>
         </div>
       </section>
+      <VideoShowcase />
 
       {/* FAQ Content */}
       <section className="py-12 md:py-16 bg-white dark:bg-gray-900">
