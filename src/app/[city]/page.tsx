@@ -38,7 +38,7 @@ export async function generateMetadata({
     };
   return pageMetadata(
     `/${city.slug}`,
-    `Rohrreinigung ${city.name} | Kraft · Nürnberg & 30 km`,
+    `Rohrreinigung ${city.name} | Kraft · Nürnberg und Umgebung`,
     `${city.name}: Rohr- und Abflussreinigung, Kanalservice und 24/7-Notdienstaufnahme. Hinweise zum Objekt, Ablauf und Einsatzgebiet. Preis vor Arbeitsbeginn.`,
   );
 }
@@ -52,7 +52,7 @@ export default async function CityPage({
   const faq = [
     {
       question: `Gibt es eine Niederlassung in ${city.name}?`,
-      answer: `Unser Standort ist Nürnberg. ${city.name} ist Teil unseres Einsatzgebiets im 30-km-Radius. Diese Seite stellt keine eigene Niederlassung vor. Die konkrete Adresse prüfen wir vor der Zusage.`,
+      answer: `Unser Standort ist Nürnberg. ${city.name} ist Teil unseres Einsatzgebiets rund um Nürnberg. Diese Seite stellt keine eigene Niederlassung vor. Die konkrete Adresse prüfen wir vor der Zusage.`,
     },
     {
       question: `Welche Angaben brauchen Sie für einen Termin in ${city.name}?`,

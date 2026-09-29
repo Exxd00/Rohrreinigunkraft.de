@@ -66,7 +66,7 @@ const targetGroups = [
   {
     icon: Home,
     title: "Immobilien­betreuung",
-    description: "Zuverlässiger Partner für Ihre Objekte in Nürnberg und 30 km Umgebung",
+    description: "Zuverlässiger Partner für Ihre Objekte in Nürnberg und Umgebung",
     benefits: [
       "Schnelle Reaktionszeit",
       "Transparente Abrechnung",
@@ -181,7 +181,7 @@ export default function HausverwaltungPage() {
 
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 border border-primary/30 rounded-full mb-6">
               <Building2 className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">B2B-Service für Nürnberg & 30 km Umgebung</span>
+              <span className="text-sm font-medium text-primary">B2B-Service für Nürnberg und Umgebung</span>
             </div>
 
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -195,7 +195,7 @@ export default function HausverwaltungPage() {
               Wir stimmen Einsatz, Zugang und Dokumentation mit Ihnen ab.
             </p>
             <p className="text-white/60 mb-8">
-              Ein Ansprechpartner für Ihre Abwasserleitungen – in Nürnberg und 30 km Umgebung.
+              Ein Ansprechpartner für Ihre Abwasserleitungen – in Nürnberg und Umgebung.
             </p>
 
             {/* Trust badges */}

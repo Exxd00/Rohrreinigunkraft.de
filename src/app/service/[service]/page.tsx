@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     };
   }
 
-  return pageMetadata(`/service/${service.slug}`, `${service.name} | Nürnberg & 30 km | Rohrreinigung Kraft`, `${service.shortDescription}. Ablauf und Vorbereitung für Nürnberg und das Umland im 30-km-Radius. Preis vor Arbeitsbeginn abstimmen.`);
+  return pageMetadata(`/service/${service.slug}`, `${service.name} | Nürnberg und Umgebung | Rohrreinigung Kraft`, `${service.shortDescription}. Ablauf und Vorbereitung für Nürnberg und Umgebung. Preis vor Arbeitsbeginn abstimmen.`);
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
@@ -182,7 +182,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {getServiceHeroCopy(service).benefit}
             </p>
 
-            <p className="mb-6 mx-auto max-w-2xl text-base leading-relaxed text-white/75">{getServiceHeroCopy(service).intro} Für Nürnberg und 30 km Umgebung.</p>
+            <p className="mb-6 mx-auto max-w-2xl text-base leading-relaxed text-white/75">{getServiceHeroCopy(service).intro} Für Nürnberg und Umgebung.</p>
 
             {/* Trust Points */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">

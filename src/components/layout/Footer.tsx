@@ -153,7 +153,7 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                Ihr Partner für Rohrreinigung in Nürnberg und 30 km Umgebung.
+                Ihr Partner für Rohrreinigung in Nürnberg und Umgebung.
                 Schnell, fair und zuverlässig seit über 10 Jahren.
               </p>
               <div className="flex items-center gap-2 text-sm">

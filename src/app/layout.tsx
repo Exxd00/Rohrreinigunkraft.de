@@ -95,7 +95,7 @@ export default function RootLayout({
               "@id": "https://rohrreinigung-kraft.de/#organization",
               name: "Rohrreinigung Kraft",
               description:
-                "Rohrreinigung & Kanalreinigung in Nürnberg und 30 km Umgebung. 24/7 Notdienstaufnahme.",
+                "Rohrreinigung & Kanalreinigung in Nürnberg und Umgebung. 24/7 Notdienstaufnahme.",
               url: "https://rohrreinigung-kraft.de",
               logo: "https://rohrreinigung-kraft.de/logo.png",
               telephone: "+4991189218682",

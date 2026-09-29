@@ -180,7 +180,7 @@ const jsonLd = {
     ],
   },
 
-  slogan: "Rohrreinigung für Nürnberg und 30 km Umgebung - 24/7 Notdienstaufnahme",
+  slogan: "Rohrreinigung für Nürnberg und Umgebung - 24/7 Notdienstaufnahme",
 
   foundingDate: "2014",
 

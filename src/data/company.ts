@@ -270,7 +270,7 @@ export const company = {
 
   seo: {
     defaultTitle: "Rohrreinigung Nürnberg | 24h Notdienst – Kraft",
-    defaultDescription: "Rohrreinigung in Nürnberg und 30 km Umgebung. Preis vor Arbeitsbeginn. Verfügbarkeit und Ankunft telefonisch klären: 0911 89218682.",
+    defaultDescription: "Rohrreinigung in Nürnberg und Umgebung. Preis vor Arbeitsbeginn. Verfügbarkeit und Ankunft telefonisch klären: 0911 89218682.",
     keywords: [
       "Rohrreinigung Nürnberg",
       "Rohrreinigung Fürth",

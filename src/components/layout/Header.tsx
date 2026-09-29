@@ -174,7 +174,7 @@ export default function Header() {
                         },
                         {
                           name: "Städte & Gemeinden",
-                          description: "Ihren Ort im 30-km-Gebiet finden",
+                          description: "Ihren Ort in der Umgebung finden",
                           href: "/staedte",
                           icon: MapPin,
                         },

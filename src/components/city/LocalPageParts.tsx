@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Phone, CheckCircle2 } from "lucide-react";
 import PhoneCallButton from "@/components/ui/phone-call-button";
 import { company } from "@/data/company";
-import { serviceArea } from "@/data/service-area";
 import type { City } from "@/data/cities";
 
 export function LocalHero({
@@ -55,8 +54,7 @@ export function LocalHero({
         <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14">
           <div className="min-w-0">
             <p className="mb-4 flex items-center gap-2 text-sm font-semibold tracking-wide text-sky-300">
-              <MapPin className="h-4 w-4 shrink-0" /> Nürnberg & Umgebung · 30
-              km Umkreis
+              <MapPin className="h-4 w-4 shrink-0" /> Nürnberg und Umgebung
             </p>
             <h1 className="max-w-4xl break-words text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
               {title}
@@ -121,13 +119,7 @@ export function AreaNote({ city }: { city: City }) {
         Für Sie in {city.name} unterwegs
       </div>
       <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-        Der amtliche Ortsmittelpunkt von {city.name} liegt rund{" "}
-        <strong>{city.distance.toLocaleString("de-DE")} km Luftlinie</strong>{" "}
-        vom Nürnberger Hauptbahnhof entfernt. Das ist eine Orientierung, keine
-        Fahrstrecke oder Ankunftszeit.
-      </p>
-      <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-        Unser Einsatzradius beträgt {serviceArea.radiusKm} km. Für Ortsteile und
+        Wir sind in Nürnberg und Umgebung für Sie da. Für Ortsteile und
         Adressen am Rand bestätigen wir die Abdeckung vorab. Wir arbeiten von
         Nürnberg aus; diese Seite bezeichnet ein Einsatzgebiet und keine
         zusätzliche Niederlassung.
@@ -136,7 +128,7 @@ export function AreaNote({ city }: { city: City }) {
         href="/staedte#radius"
         className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-sky-800 underline underline-offset-4 dark:text-sky-300"
       >
-        Radius und weitere Einsatzorte ansehen
+        Weitere Einsatzorte ansehen
         <ArrowRight className="h-4 w-4" />
       </Link>
     </aside>
@@ -149,7 +141,7 @@ export function LocalCta({ city, source }: { city: City; source: string }) {
       <div className="container mx-auto grid items-center gap-6 px-4 md:grid-cols-[1fr_auto]">
         <div>
           <p className="mb-2 text-sm font-semibold text-sky-300">
-            Rohrreinigung Kraft · Nürnberg & 30 km Umgebung
+            Rohrreinigung Kraft · Nürnberg und Umgebung
           </p>
           <h2 className="text-2xl font-bold">
             Verstopfung in {city.name}? Sprechen Sie mit uns.

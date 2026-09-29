@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata(
     `/${city.slug}/${service.slug}`,
     `${service.name} ${city.name} | Rohrreinigung Kraft`,
-    `${service.label} in ${city.name}: ${service.question} Ablauf, Vorbereitung und persönliche Einsatzaufnahme im 30-km-Gebiet Nürnberg.`,
+    `${service.label} in ${city.name}: ${service.question} Ablauf, Vorbereitung und persönliche Einsatzaufnahme in Nürnberg und Umgebung.`,
   );
 }
 

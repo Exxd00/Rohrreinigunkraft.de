@@ -266,7 +266,7 @@ const faqCategories = [
     questions: [
       {
         question: "In welchen Städten sind Sie aktiv?",
-        answer: "Unser Einsatzgebiet umfasst Nürnberg und Orte innerhalb von 30 km Luftlinie ab Nürnberg Hauptbahnhof, darunter Fürth, Erlangen und Schwabach. An der Grenze bestätigen wir die Abdeckung anhand Ihrer genauen Adresse. Die Ortsliste finden Sie unter Einsatzgebiet.",
+        answer: "Unser Einsatzgebiet umfasst Nürnberg und Umgebung, darunter Fürth, Erlangen und Schwabach. Die Abdeckung bestätigen wir anhand Ihrer genauen Adresse. Die Ortsliste finden Sie unter Einsatzgebiet.",
         shortAnswer: "Kerngebiet: Nürnberg, Fürth, Erlangen. Plus Umland im 60-km-Radius."
       },
       {

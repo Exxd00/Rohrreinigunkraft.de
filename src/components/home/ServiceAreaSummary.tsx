@@ -10,7 +10,7 @@ export default function ServiceAreaSummary() {
             <MapPin className="h-4 w-4" /> Unser Einsatzgebiet
           </p>
           <h2 className="mt-3 text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-            Nürnberg und 30 km Umgebung
+            Nürnberg und Umgebung
           </h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">
             Von Fürth und Erlangen bis Schwabach und zum nahen Umland: Finden
