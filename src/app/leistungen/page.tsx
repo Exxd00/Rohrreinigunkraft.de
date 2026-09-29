@@ -1,3 +1,4 @@
+import VideoShowcase from "@/components/home/VideoShowcase";
 import Link from "next/link";
 import ServiceDirectory from "@/components/directory/ServiceDirectory";
 import PhoneCallButton from "@/components/ui/phone-call-button";
@@ -36,14 +37,15 @@ export default function LeistungenPage() {
             Nürnberg & 30 km Umgebung
           </p>
           <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight text-slate-900 dark:text-white md:text-5xl">
-            Die passende Hilfe für Ihr Anliegen
+            Was ist verstopft? Wir helfen Ihnen weiter.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Abfluss verstopft, Rückstau oder eine Leitung prüfen? Finden Sie die
-            passende Leistung und erfahren Sie, wie wir den Einsatz vorbereiten.
+            Von der verstopften Dusche bis zur Kanalreinigung: Finden Sie die
+            passende Hilfe für Ihr Problem – mit verständlichem Ablauf und einem Preis vor Arbeitsbeginn.
           </p>
         </div>
       </section>
+      <VideoShowcase />
       <section className="bg-slate-50 py-8 dark:bg-slate-950 md:py-12">
         <div className="container mx-auto max-w-6xl px-4">
           <ServiceDirectory

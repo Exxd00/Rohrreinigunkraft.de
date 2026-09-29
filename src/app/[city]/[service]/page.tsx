@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import WorkVideo from "@/components/city/WorkVideo";
+import { getServiceHeroCopy } from "@/data/hero-copy";
+import VideoShowcase from "@/components/home/VideoShowcase";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ClipboardCheck, Search, CheckCircle2 } from "lucide-react";
@@ -96,8 +97,10 @@ export default async function CityServicePage({ params }: Props) {
         city={city}
         serviceName={service.name}
         title={`${service.name} in ${city.name}`}
-        intro={brief}
+        intro={getServiceHeroCopy(service).intro}
+        benefit={getServiceHeroCopy(service).benefit}
       />
+      <VideoShowcase />
       <section className="bg-white py-12 dark:bg-slate-950 md:py-16">
         <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12">
           <div>
@@ -105,7 +108,7 @@ export default async function CityServicePage({ params }: Props) {
               {service.label}
             </p>
             <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
-              Welcher Arbeitsschritt passt zu Ihrem Anliegen?
+              Die passende Hilfe für Ihr Problem
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-slate-700 dark:text-slate-300">
               {service.intro}
@@ -114,7 +117,7 @@ export default async function CityServicePage({ params }: Props) {
               <strong>Leistungsbereich:</strong> {service.scope}.
             </p>
             <div className="mt-6 rounded-xl border-l-4 border-sky-500 bg-sky-50 p-5 dark:bg-sky-950/40">
-              <h3 className="font-bold">Für die Aufnahme in {city.name}</h3>
+              <h3 className="font-bold">Ihr Einsatz in {city.name}</h3>
               <p className="mt-2 leading-relaxed text-slate-700 dark:text-slate-300">
                 {city.guide.access}
               </p>
@@ -126,23 +129,23 @@ export default async function CityServicePage({ params }: Props) {
       <section className="bg-slate-50 py-12 dark:bg-slate-900 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold sm:text-3xl">
-            So bereiten wir {service.name} vor
+            So läuft Ihr Auftrag ab
           </h2>
           <div className="mt-7 grid gap-5 md:grid-cols-3">
             {[
               {
                 icon: ClipboardCheck,
-                title: "1 · Vorbereiten",
+                title: "1 · Ihr Anliegen verstehen",
                 text: service.preparation,
               },
               {
                 icon: Search,
-                title: "2 · Befund und Verfahren",
+                title: "2 · Lösung und Preis besprechen",
                 text: service.method,
               },
               {
                 icon: CheckCircle2,
-                title: "3 · Ergebnis besprechen",
+                title: "3 · Ergebnis gemeinsam prüfen",
                 text: service.result,
               },
             ].map((step) => (
@@ -163,7 +166,6 @@ export default async function CityServicePage({ params }: Props) {
           </p>
         </div>
       </section>
-      <WorkVideo serviceSlug={service.slug} />
       <section className="bg-white py-12 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-bold">

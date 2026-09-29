@@ -8,9 +8,10 @@ import type { City } from "@/data/cities";
 export function LocalHero({
   title,
   intro,
+  benefit,
   city,
   serviceName,
-}: { title: string; intro: string; city: City; serviceName?: string }) {
+}: { title: string; intro: string; benefit: string; city: City; serviceName?: string }) {
   return (
     <section className="relative overflow-hidden bg-slate-900 pt-28 pb-12 text-white md:pt-36 md:pb-16">
       <div
@@ -60,6 +61,7 @@ export function LocalHero({
             <h1 className="max-w-4xl break-words text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
               {title}
             </h1>
+            <p className="mt-3 max-w-3xl text-2xl font-semibold leading-snug text-sky-300 sm:text-3xl">{benefit}</p>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-200 sm:text-lg">
               {intro}
             </p>
@@ -75,7 +77,7 @@ export function LocalHero({
                 href="/kontakt"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/30 px-6 py-3 font-medium hover:bg-white/10"
               >
-                Anfrage stellen
+                Rückruf anfordern
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -87,12 +89,12 @@ export function LocalHero({
             <p className="text-xs font-semibold uppercase tracking-widest text-sky-300">
               Ihr direkter Kontakt
             </p>
-            <p className="mt-3 text-xl font-bold">Erst klären. Dann handeln.</p>
+            <p className="mt-3 text-xl font-bold">Ein Anruf. Ein klarer Plan.</p>
             <ul className="mt-5 space-y-4 text-sm leading-relaxed text-slate-200">
               {[
-                "Adresse und Problem gemeinsam eingrenzen",
-                "Aktuelle Verfügbarkeit am Telefon klären",
-                "Preis vor Arbeitsbeginn abstimmen",
+                "Sie schildern das Problem – wir hören zu",
+                "Wir klären, wann Hilfe möglich ist",
+                "Sie kennen den Preis vor Arbeitsbeginn",
               ].map((text) => (
                 <li key={text} className="flex gap-3">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-sky-300" />
@@ -116,7 +118,7 @@ export function AreaNote({ city }: { city: City }) {
     <aside className="rounded-2xl border border-sky-200 bg-sky-50 p-6 dark:border-sky-900 dark:bg-sky-950/40">
       <div className="flex items-center gap-2 font-semibold text-sky-900 dark:text-sky-200">
         <MapPin className="h-5 w-5 shrink-0" />
-        Einordnung im Einsatzgebiet
+        Für Sie in {city.name} unterwegs
       </div>
       <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
         Der amtliche Ortsmittelpunkt von {city.name} liegt rund{" "}
@@ -150,11 +152,11 @@ export function LocalCta({ city, source }: { city: City; source: string }) {
             Rohrreinigung Kraft · Nürnberg & 30 km Umgebung
           </p>
           <h2 className="text-2xl font-bold">
-            Hilfe für Ihr Objekt in {city.name}
+            Verstopfung in {city.name}? Sprechen Sie mit uns.
           </h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-slate-300">
-            Nennen Sie die genaue Adresse und die betroffenen Anschlüsse. Wir
-            klären den passenden nächsten Schritt mit Ihnen.
+            Schildern Sie uns Ihr Problem. Wir besprechen, wie wir Ihnen helfen
+            können und wann ein Einsatz an Ihrer Adresse möglich ist.
           </p>
         </div>
         <PhoneCallButton

@@ -1,5 +1,6 @@
+import { getServiceHeroCopy } from "@/data/hero-copy";
 import { getLocalService } from "@/data/local-services";
-import WorkVideo from "@/components/city/WorkVideo";
+import VideoShowcase from "@/components/home/VideoShowcase";
 import { getCityServiceBrief } from "@/data/city-service-notes";
 import { serviceAreaSchema } from "@/data/service-area";
 import { pageMetadata } from "@/lib/page-seo";
@@ -189,17 +190,19 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span className="text-sm font-medium text-emerald-300">
-                24/7 Notdienst verfügbar
+                24/7 telefonisch erreichbar
               </span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              {enhancedContent?.heroHeadline || `${service.name}?`}
+              {`${service.name} in Nürnberg`}
             </h1>
             <p className="text-lg md:text-xl text-white/80 mb-6 max-w-xl mx-auto">
-              {enhancedContent?.heroSubheadline || "Nürnberg und 30 km Umgebung – Umfang und Anfahrt vorab klären"}
+              {getServiceHeroCopy(service).benefit}
             </p>
+
+            <p className="mb-6 mx-auto max-w-2xl text-base leading-relaxed text-white/75">{getServiceHeroCopy(service).intro} Für Nürnberg und 30 km Umgebung.</p>
 
             {/* Trust Points */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -257,6 +260,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </div>
       </section>
+      <VideoShowcase />
 
       {localDetail && <section className="bg-white py-12 dark:bg-slate-950"><div className="container mx-auto max-w-5xl px-4"><p className="text-sm font-semibold text-sky-700 dark:text-sky-300">{localDetail.label}</p><h2 className="mt-3 text-2xl font-bold">Was umfasst {service.name}?</h2><p className="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">{localDetail.intro}</p><div className="mt-7 grid gap-5 md:grid-cols-3">{[{ title: "Vorbereitung", text: localDetail.preparation }, { title: "Verfahren nach Befund", text: localDetail.method }, { title: "Ergebnis und nächste Schritte", text: localDetail.result }].map(item => <article key={item.title} className="rounded-xl bg-slate-50 p-6 dark:bg-slate-900"><h3 className="font-bold">{item.title}</h3><p className="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">{item.text}</p></article>)}</div><p className="mt-5 rounded-xl bg-sky-50 p-5 text-sm leading-relaxed text-slate-700 dark:bg-sky-950/30 dark:text-slate-300">{localDetail.stop}</p></div></section>}
 
@@ -510,7 +514,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
       )}
 
       {/* Cities */}
-      <WorkVideo serviceSlug={service.slug} />
       <section className="py-8 bg-gray-50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
@@ -555,7 +558,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            {enhancedContent?.heroHeadline || `${service.name}?`}
+            {`${service.name} in Nürnberg`}
           </h2>
           <p className="text-gray-300 mb-6 max-w-xl mx-auto">
             Kostenlose Diagnose • Festpreis vor Arbeit • Kein Start ohne Ihr OK

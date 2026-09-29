@@ -1,3 +1,4 @@
+import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -89,13 +90,13 @@ export default function PreisePage() {
               Was kostet Rohrreinigung?
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">
-                Sie wissen es, BEVOR wir anfangen.
+                Erst den Preis kennen. Dann entscheiden.
               </span>
             </h1>
             <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
-              Jede Verstopfung ist anders. Deshalb: Wir kommen, schauen kostenlos nach,
-              nennen Ihnen den <strong className="text-white">EXAKTEN Festpreis</strong> – und Sie entscheiden.
-              Kein Start ohne Ihr OK.
+              Die Preise unten geben Ihnen eine erste Orientierung. Nach Prüfung der Ursache
+              nennen wir den <strong className="text-white">Preis für die vereinbarte Arbeit</strong>.
+              Anfahrt und mögliche Zuschläge besprechen wir vorab.
             </p>
 
             {/* The Promise */}
@@ -131,6 +132,7 @@ export default function PreisePage() {
           </div>
         </div>
       </section>
+      <VideoShowcase />
 
       {/* How It Works - Simple */}
       <section className="py-8 bg-emerald-50 dark:bg-emerald-950/20">

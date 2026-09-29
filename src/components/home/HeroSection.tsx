@@ -50,7 +50,7 @@ export default function HeroSection() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span className="text-sm font-medium text-emerald-300">
-                  {company.urgency.availableTechnicians} Techniker jetzt verfügbar
+                  24/7 telefonisch erreichbar
                 </span>
               </div>
             </div>
@@ -66,18 +66,16 @@ export default function HeroSection() {
               </div>
 
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">
-                <span className="text-white">Festpreis </span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">
-                  VOR
-                </span>
-                <span className="text-white"> dem ersten Handgriff.</span>
+                <span className="text-white">Rohrreinigung in Nürnberg.</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Damit Ihr Alltag wieder läuft.</span>
               </h1>
               <p className="text-lg md:text-2xl text-white/90 font-medium mb-2">
-                Ihr Rohrreiniger in Nürnberg – Klarheit, bevor Sie zahlen.
+                Abfluss verstopft? Rohr dicht? Wir kümmern uns darum.
               </p>
               <p className="text-sm md:text-base text-white/70 max-w-2xl mx-auto">
-                Wir kommen, schauen, erklären und nennen den Preis.
-                Dann entscheiden <strong className="text-white">SIE</strong>. Kein Druck. Keine Überraschungen.
+                Schildern Sie uns Ihr Problem. Wir besprechen die passende Hilfe
+                und nennen Ihnen den Preis <strong className="text-white">vor Arbeitsbeginn</strong>.
+                Sie entscheiden, ob wir starten.
               </p>
             </div>
 
@@ -107,7 +105,7 @@ export default function HeroSection() {
                   <Phone className="w-7 h-7 text-white" />
                 </div>
                 <div className="text-left">
-                  <p className="text-white/80 text-sm font-medium">Jetzt kostenlos anrufen</p>
+                  <p className="text-white/80 text-sm font-medium">Jetzt Hilfe anfragen</p>
                   <p className="text-white text-2xl md:text-3xl font-black tracking-tight">
                     {company.contact.phoneDisplay}
                   </p>
@@ -118,7 +116,7 @@ export default function HeroSection() {
               <Link href="/kontakt" className="block mt-3">
                 <div className="w-full h-12 bg-white/10 text-white border border-white/20 font-semibold rounded-xl flex items-center justify-center gap-2 text-sm hover:bg-white/20 transition-colors">
                   <Zap className="w-4 h-4 text-yellow-400" />
-                  Rückruf in 5 Minuten anfordern
+                  Rückruf anfordern
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </Link>
@@ -145,7 +143,7 @@ export default function HeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400" />
-                <span className="text-white/80 text-sm">In {company.urgency.responseTime} Min vor Ort</span>
+                <span className="text-white/80 text-sm">Ankunft am Telefon klären</span>
               </div>
             </div>
 

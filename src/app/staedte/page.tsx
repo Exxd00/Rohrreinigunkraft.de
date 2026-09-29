@@ -1,3 +1,4 @@
+import VideoShowcase from "@/components/home/VideoShowcase";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { getCitiesSortedByName, cities } from "@/data/cities";
@@ -44,9 +45,9 @@ export default function StaedtePage() {
               </span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-              Rohrreinigung, Kanalservice und Notdienstaufnahme für Nürnberg und
-              das nahe Umland. Finden Sie Ihren Ort und erfahren Sie, welche
-              Angaben für Ihren Einsatz wichtig sind.
+              Ihr Abflussproblem braucht Hilfe vor Ort. Wir sind von Nürnberg aus
+              im 30-km-Umkreis für Sie unterwegs. Finden Sie Ihre Stadt und die
+              passende Leistung – die Verfügbarkeit klären wir direkt mit Ihnen.
             </p>
             <div className="mt-7 grid grid-cols-2 gap-4">
               <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
@@ -77,6 +78,7 @@ export default function StaedtePage() {
           <AreaMap />
         </div>
       </section>
+      <VideoShowcase />
       <section className="border-y border-sky-100 bg-sky-50 py-8 dark:border-slate-700 dark:bg-sky-950/30">
         <div className="container mx-auto px-4">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">
