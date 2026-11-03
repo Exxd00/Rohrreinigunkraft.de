@@ -60,7 +60,7 @@ export const company = {
       "Kein Start ohne Ihr OK",
     ],
     services: {
-      rohrreinigung: { from: 89, label: "Rohrreinigung", description: "Alle Arten von Verstopfungen" },
+      rohrreinigung: { from: 79, label: "Rohrreinigung", description: "Alle Arten von Verstopfungen" },
       kanalreinigung: { from: 149, label: "Kanalreinigung", description: "Mit Hochdruck-Spültechnik" },
       toiletteVerstopft: { from: 79, label: "Toilette verstopft", description: "Schnelle Soforthilfe" },
       abflussreinigung: { from: 69, label: "Abflussreinigung", description: "Küche, Bad, Dusche" },
