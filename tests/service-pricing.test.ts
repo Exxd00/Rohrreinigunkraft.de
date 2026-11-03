@@ -7,7 +7,7 @@ test("unpriced repair and specialist services never inherit a cleaning price", (
   for (const slug of ["inliner-sanierung", "rissreparatur", "partielle-reparatur", "kanalsanierung", "not-a-service"]) {
     assert.equal(getServicePrice(slug), undefined, slug);
   }
-  assert.equal(getServicePrice("rohrreinigung"), 89);
+  assert.equal(getServicePrice("rohrreinigung"), 79);
   assert.equal(getServicePrice("kanalreinigung"), 149);
   assert.equal(getServicePrice("kamera-inspektion"), 129);
 });
