@@ -104,7 +104,7 @@ const jsonLd = {
         priceSpecification: {
           "@type": "PriceSpecification",
           priceCurrency: "EUR",
-          minPrice: "89"
+          minPrice: company.pricing.services.rohrreinigung.from
         }
       },
       {
