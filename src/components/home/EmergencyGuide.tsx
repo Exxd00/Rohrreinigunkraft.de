@@ -102,7 +102,7 @@ const guideSteps: GuideStep[] = [
     iconBg: "bg-sky-500",
     description: "Was Sie bei unserem Einsatz erwarten können",
     dos: [
-      "Unser Techniker analysiert zuerst das Problem – kostenlos",
+      "Die erste Einschätzung durch unseren Techniker ist kostenlos",
       "Sie erhalten einen verbindlichen Festpreis VOR Arbeitsbeginn",
       "Erst nach Ihrer Zustimmung beginnen wir mit der Arbeit",
       "Wir schützen Ihre Böden mit Abdeckungen",
@@ -300,7 +300,7 @@ export default function EmergencyGuide() {
                 Problem jetzt? Wir helfen sofort!
               </h3>
               <p className="text-gray-300 mb-6 max-w-lg mx-auto">
-                Kostenlose Diagnose vor Ort. Festpreis vor Arbeitsbeginn.
+                Kostenlose Ersteinschätzung vor Ort. Festpreis vor Arbeitsbeginn.
                 Verfügbarkeit und Ankunft telefonisch klären.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

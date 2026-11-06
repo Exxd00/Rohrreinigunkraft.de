@@ -83,7 +83,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap justify-center gap-3 md:gap-6 mb-6">
               <div className="flex items-center gap-2 text-white/90">
                 <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />
-                <span className="text-xs md:text-sm font-medium">Diagnose kostenlos</span>
+                <span className="text-xs md:text-sm font-medium">Ersteinschätzung kostenlos</span>
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <Shield className="w-4 h-4 md:w-5 md:h-5 text-primary" />

@@ -36,9 +36,8 @@ export default function AboutUs() {
                   in Nürnberg, Fürth, Erlangen und Umgebung.
                 </p>
                 <p>
-                  Mehr als <strong className="text-gray-900 dark:text-white">{company.stats.projectsCompleted}</strong> Einsätze
-                  haben wir erfolgreich abgeschlossen. {company.rating.reviewCount} Kunden bewerten uns mit 5 Sternen.
-                  Nicht, weil wir die günstigsten sind. Sondern weil wir <strong className="text-gray-900 dark:text-white">ehrlich</strong> sind.
+                  <strong className="text-gray-900 dark:text-white">{company.stats.projectsCompleted}</strong> Einsätze
+                  haben wir erfolgreich abgeschlossen. Auf Google liegt unser Durchschnitt bei {company.rating.fullText}.
                 </p>
               </div>
 

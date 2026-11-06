@@ -1,3 +1,5 @@
+import { cameraReportPriceFrom } from "./assessment-pricing";
+
 /**
  * نظام الباقات الشامل - Rohrreinigung Kraft
  * 8 باقات مصممة حسب نية العميل ومشكلته
@@ -110,13 +112,13 @@ export const packages: Package[] = [
   {
     id: "diagnose",
     slug: "diagnose-paket",
-    name: "Diagnose-Paket",
+    name: "Kamerabefahrung mit Befundbericht",
     subtitle: "Erst verstehen, dann entscheiden",
     icon: "Camera",
     color: "amber",
 
     intent: "diagnose",
-    whenToUse: "Sie wollen WISSEN, was los ist – bevor Sie Geld ausgeben.",
+    whenToUse: "Sie möchten die Ursache einer Störung im Rohr dokumentieren lassen.",
     idealFor: [
       "Wiederkehrende Verstopfungen",
       "Unklare Ursache",
@@ -125,9 +127,9 @@ export const packages: Package[] = [
       "Dokumentation für Versicherung/Vermieter"
     ],
 
-    priceFrom: 149,
-    priceTypical: "149",
-    pricingNote: "Festpreis – egal wie lange es dauert",
+    priceFrom: cameraReportPriceFrom,
+    priceTypical: String(cameraReportPriceFrom),
+    pricingNote: "Preis vor Beauftragung",
 
     includes: [
       "HD-Kamerabefahrung",
@@ -153,8 +155,8 @@ export const packages: Package[] = [
     popular: false,
     badge: "Mit Video",
     cta: {
-      text: "Diagnose-Termin buchen",
-      urgency: "Klarheit in 24h"
+      text: "Kamerabefahrung anfragen",
+      urgency: "Termin telefonisch abstimmen"
     },
 
     linkedServices: ["kamera-inspektion", "kanalinspektion", "dichtheitspruefung", "leckortung"],
@@ -185,7 +187,7 @@ export const packages: Package[] = [
     pricingNote: "Festpreis nach Diagnose vor Ort",
 
     includes: [
-      "Kostenlose Diagnose vor Ort",
+      "Kostenlose Ersteinschätzung vor Ort",
       "Mechanische oder Hochdruck-Reinigung",
       "Funktionsprüfung",
       "Sauberes Arbeiten",

@@ -1,3 +1,6 @@
+import { cameraReportPriceFrom } from "./assessment-pricing";
+import { company } from "./company";
+
 /**
  * Enhanced service content for AEO optimization
  * Adds depth to service pages with:
@@ -343,17 +346,17 @@ export const enhancedServiceContent: Record<string, EnhancedServiceContent> = {
         { step: 2, title: "Kamerafahrt", description: "HD-Kamera zeigt live, was im Rohr ist." },
         { step: 3, title: "Dokumentation", description: "Fotos und Video der relevanten Stellen." },
         { step: 4, title: "Auswertung", description: "Wir erklären Ihnen, was wir gefunden haben." },
-        { step: 5, title: "Empfehlung", description: "Schriftlicher Bericht mit Handlungsoptionen." },
+        { step: 5, title: "Empfehlung", description: "Beim Paket mit Befundbericht erhalten Sie unsere Empfehlungen schriftlich." },
       ]
     },
     faq: [
       {
         question: "Was kostet eine Kamera-Inspektion?",
-        answer: "Die Inspektion kostet pauschal 149€ inklusive Dokumentation. Bei kombinierter Reinigung kann sie günstiger werden."
+        answer: `Die TV-Inspektion beginnt bei ${company.pricing.services.kameraInspektion.from} €. Eine Kamerabefahrung mit schriftlichem Befundbericht kostet ab ${cameraReportPriceFrom} €.`
       },
       {
         question: "Bekomme ich die Aufnahmen?",
-        answer: "Ja, Sie erhalten Fotos, Video und einen schriftlichen Befundbericht."
+        answer: "Beim Paket mit Befundbericht erhalten Sie die Aufnahmen zusammen mit unserer schriftlichen Auswertung."
       },
       {
         question: "Wie weit kann die Kamera ins Rohr?",
@@ -511,7 +514,7 @@ export const enhancedServiceContent: Record<string, EnhancedServiceContent> = {
     faq: [
       {
         question: "Was kostet eine Rohrreinigung?",
-        answer: "Einfache Verstopfungen ab 79€. Der genaue Preis wird nach kostenloser Diagnose vor Ort genannt."
+        answer: "Einfache Verstopfungen ab 79€. Der genaue Preis wird nach kostenloser Ersteinschätzung vor Ort genannt."
       },
       {
         question: "Wie lange dauert eine Rohrreinigung?",
@@ -600,7 +603,7 @@ export const enhancedServiceContent: Record<string, EnhancedServiceContent> = {
       },
       {
         question: "Was kostet die Duschreinigung?",
-        answer: "Ab 79€. Der genaue Preis nach kostenloser Diagnose vor Ort."
+        answer: "Ab 79€. Der genaue Preis nach kostenloser Ersteinschätzung vor Ort."
       },
     ]
   },
@@ -762,7 +765,7 @@ export const enhancedServiceContent: Record<string, EnhancedServiceContent> = {
       },
       {
         question: "Was kostet die Reinigung?",
-        answer: "Ab 79€. Der genaue Preis nach kostenloser Diagnose vor Ort."
+        answer: "Ab 79€. Der genaue Preis nach kostenloser Ersteinschätzung vor Ort."
       },
     ]
   },

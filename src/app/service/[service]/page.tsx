@@ -108,7 +108,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       },
     },
     } : {}),
-    termsOfService: "Festpreis nach kostenloser Diagnose vor Ort",
+    termsOfService: "Festpreis nach kostenloser Ersteinschätzung vor Ort",
     hoursAvailable: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -188,7 +188,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <div className="flex items-center gap-2 text-white/90">
                 <CheckCircle className="w-5 h-5 text-emerald-400" />
-                <span className="text-sm font-medium">Diagnose kostenlos</span>
+                <span className="text-sm font-medium">Ersteinschätzung kostenlos</span>
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <Shield className="w-5 h-5 text-primary" />
@@ -546,7 +546,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             {`${service.name} in Nürnberg`}
           </h2>
           <p className="text-gray-300 mb-6 max-w-xl mx-auto">
-            Kostenlose Diagnose • Festpreis vor Arbeit • Kein Start ohne Ihr OK
+            Kostenlose Ersteinschätzung • Festpreis vor Arbeit • Kein Start ohne Ihr OK
           </p>
           <Link href={`tel:${company.contact.phone}`}>
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white h-14 px-8 shadow-lg shadow-primary/30">

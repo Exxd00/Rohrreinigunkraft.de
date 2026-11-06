@@ -1,3 +1,5 @@
+import { assessmentPricingText } from "./assessment-pricing";
+
 /**
  * نظام الضمانات الثلاثي - Rohrreinigung Kraft
  * قبل العمل | أثناء العمل | بعد العمل
@@ -35,10 +37,10 @@ export const guaranteesBefore: Guarantee[] = [
   {
     id: "diagnose-kostenlos",
     phase: "before",
-    name: "Diagnose kostenlos",
-    headline: "Kostenlose Diagnose vor Ort",
+    name: "Kostenlose Ersteinschätzung",
+    headline: "Kostenlose Ersteinschätzung vor Ort",
     shortDescription: "Wir schauen uns das Problem an – ohne dass Sie etwas zahlen.",
-    fullDescription: "Wir kommen zu Ihnen, untersuchen das Problem und erklären Ihnen, was los ist. Das kostet Sie nichts – auch wenn Sie danach ablehnen. Kein Risiko für Sie.",
+    fullDescription: assessmentPricingText,
     icon: "Search",
     badge: "Garantiert",
     color: "emerald",
@@ -46,8 +48,8 @@ export const guaranteesBefore: Guarantee[] = [
     linkedServices: ["rohrreinigung", "kanalreinigung", "abflussreinigung", "toilette-verstopft"],
     linkedPages: ["/preise", "/", "/kontakt"],
     adCopy: {
-      short: "Kostenlose Diagnose",
-      medium: "Erst prüfen, dann entscheiden – Diagnose ist kostenlos"
+      short: "Kostenlose Ersteinschätzung",
+      medium: "Die erste Einschätzung vor Ort ist kostenlos"
     }
   },
   {

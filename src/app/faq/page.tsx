@@ -1,3 +1,5 @@
+import { assessmentPricingText, cameraReportPriceFrom } from "@/data/assessment-pricing";
+
 import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -35,13 +37,13 @@ const faqCategories = [
     questions: [
       {
         question: "Was kostet eine Rohrreinigung?",
-        answer: "Eine einfache Rohrreinigung (z.B. Toilette verstopft) kostet ab 79€. Der genaue Preis hängt von der Tiefe und Art der Verstopfung ab. Wichtig: Wir nennen Ihnen den GENAUEN Festpreis nach der kostenlosen Diagnose vor Ort – BEVOR wir mit der Arbeit beginnen.",
-        shortAnswer: "Ab 79€. Der genaue Festpreis wird nach kostenloser Diagnose vor Ort genannt, bevor die Arbeit beginnt."
+        answer: "Eine einfache Rohrreinigung (z.B. Toilette verstopft) kostet ab 79€. Der genaue Preis hängt von der Tiefe und Art der Verstopfung ab. Wichtig: Wir nennen Ihnen den GENAUEN Festpreis nach der kostenlosen Ersteinschätzung vor Ort – BEVOR wir mit der Arbeit beginnen.",
+        shortAnswer: "Ab 79€. Der genaue Festpreis wird nach kostenloser Ersteinschätzung vor Ort genannt, bevor die Arbeit beginnt."
       },
       {
-        question: "Ist die Diagnose wirklich kostenlos?",
-        answer: "Ja, die Diagnose ist immer kostenlos. Wir kommen zu Ihnen, untersuchen das Problem und erklären, was zu tun ist. Dann nennen wir den Festpreis. Erst wenn Sie JA sagen, beginnen wir. Wenn Sie ablehnen, entstehen keine Kosten.",
-        shortAnswer: "Ja, 100% kostenlos. Auch wenn Sie das Angebot ablehnen, zahlen Sie nichts."
+        question: "Was ist bei der Diagnose kostenlos?",
+        answer: assessmentPricingText,
+        shortAnswer: "Die erste Einschätzung vor Ort ist kostenlos."
       },
       {
         question: "Gibt es versteckte Kosten?",
@@ -70,8 +72,8 @@ const faqCategories = [
       },
       {
         question: "Was kostet eine Kamera-Inspektion?",
-        answer: "Eine TV-Kamerainspektion mit HD-Dokumentation kostet ab 149€ pauschal. Inklusive Foto-/Videomaterial und schriftlichem Befundbericht.",
-        shortAnswer: "Ab 149€ pauschal inklusive HD-Dokumentation und Befundbericht."
+        answer: `Eine Kamerabefahrung mit schriftlichem Befundbericht kostet ab ${cameraReportPriceFrom} €. Foto- und Videodokumentation sind enthalten.`,
+        shortAnswer: `Ab ${cameraReportPriceFrom} € mit HD-Dokumentation und schriftlichem Befundbericht.`
       },
     ]
   },
@@ -88,8 +90,8 @@ const faqCategories = [
       },
       {
         question: "Wie läuft ein Einsatz ab?",
-        answer: "1) Sie rufen an und schildern das Problem. 2) Wir kommen zur kostenlosen Diagnose. 3) Wir erklären, was zu tun ist und nennen den Festpreis. 4) Sie entscheiden. Erst bei Ihrem JA beginnen wir. 5) Nach der Arbeit Funktionsprüfung und Rechnung.",
-        shortAnswer: "Anruf → Diagnose (kostenlos) → Festpreis nennen → Ihre Entscheidung → Arbeit → Rechnung."
+        answer: "1) Sie rufen an und schildern das Problem. 2) Wir kommen zur kostenlosen Ersteinschätzung. 3) Wir erklären, was zu tun ist und nennen den Festpreis. 4) Sie entscheiden. Erst bei Ihrem JA beginnen wir. 5) Nach der Arbeit Funktionsprüfung und Rechnung.",
+        shortAnswer: "Anruf → Ersteinschätzung (kostenlos) → Festpreis nennen → Ihre Entscheidung → Arbeit → Rechnung."
       },
       {
         question: "Wie lange dauert eine Rohrreinigung?",

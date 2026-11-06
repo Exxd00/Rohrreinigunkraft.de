@@ -27,8 +27,8 @@ const differentiators = [
   },
   {
     icon: FileCheck,
-    title: "Diagnose kostenlos. Immer.",
-    description: "Wir kommen, prüfen und erklären. Sie zahlen erst, wenn Sie JA sagen.",
+    title: "Kostenlose Ersteinschätzung vor Ort",
+    description: "Wir sehen uns die Verstopfung an und besprechen mit Ihnen die nächsten Schritte.",
     proof: "Kein OK von Ihnen = Keine Kosten für Sie.",
     color: "amber"
   },

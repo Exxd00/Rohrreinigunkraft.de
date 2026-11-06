@@ -1,3 +1,5 @@
+import { assessmentPricingText } from "@/data/assessment-pricing";
+
 import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -33,7 +35,7 @@ import { getFAQForPage } from "@/data/faq-database";
 export const metadata: Metadata = {
   alternates: { canonical: "https://rohrreinigung-kraft.de/preise" },
   title: "Rohrreinigung Preise | Festpreis BEVOR wir anfangen | Keine Überraschungen",
-  description: "Was kostet Rohrreinigung? Ab 79€. Der EXAKTE Preis nach kostenloser Diagnose – BEVOR die Arbeit beginnt. Lehnen Sie ab? Kostet nichts. Jetzt informieren!",
+  description: "Einfache Rohrreinigung ab 79 €. Die erste Einschätzung vor Ort ist kostenlos. Den Preis der vereinbarten Arbeiten erfahren Sie vor der Beauftragung.",
 };
 
 // Icon mapping for packages
@@ -105,7 +107,7 @@ export default function PreisePage() {
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-primary">0€</div>
-                  <p className="text-xs text-white/70">Diagnose kostet</p>
+                  <p className="text-xs text-white/70">Ersteinschätzung vor Ort</p>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-emerald-400">100%</div>
@@ -122,7 +124,7 @@ export default function PreisePage() {
             <div className="flex flex-wrap justify-center gap-3">
               <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full">
                 <CheckCircle className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm font-medium">Lehnen Sie ab? Kostet nichts.</span>
+                <span className="text-sm font-medium">Ersteinschätzung unverbindlich</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full">
                 <Euro className="w-4 h-4 text-primary" />
@@ -173,7 +175,7 @@ export default function PreisePage() {
                 Welches Paket passt zu Ihrer Situation?
               </h2>
               <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Wählen Sie nach Ihrem Bedarf. Der finale Festpreis wird nach der kostenlosen Diagnose genannt.
+                {assessmentPricingText}
               </p>
             </div>
 
@@ -529,8 +531,8 @@ export default function PreisePage() {
             Bereit für Klarheit?
           </h2>
           <p className="mb-6 opacity-90 max-w-xl mx-auto">
-            Rufen Sie an. Wir kommen, prüfen <strong>kostenlos</strong> und nennen den <strong>Festpreis</strong> – bevor wir starten.
-            Lehnen Sie ab? Kostet nichts.
+            Rufen Sie an. Nach der <strong>kostenlosen Ersteinschätzung</strong> nennen wir Ihnen den Preis für die vereinbarten Arbeiten.
+            Ersteinschätzung unverbindlich
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href={`tel:${company.contact.phone}`}>
