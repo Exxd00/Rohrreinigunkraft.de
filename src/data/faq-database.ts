@@ -1,4 +1,4 @@
-import { assessmentPricingText, cameraReportPriceFrom } from "./assessment-pricing";
+import { assessmentPricingText, cameraReportPriceFrom, declinedCleaningText, travelFeeText } from "./assessment-pricing";
 
 /**
  * قاعدة بيانات الأسئلة الشائعة - Rohrreinigung Kraft
@@ -86,8 +86,8 @@ export const kostenFAQ: FAQItem[] = [
   {
     id: "kosten-4",
     question: "Was kostet die Anfahrt?",
-    shortAnswer: "In Nürnberg, Fürth und Erlangen: Im Preis inklusive. Außerhalb: +25€ pauschal.",
-    fullAnswer: "Die Anfahrt in den Kernstädten Nürnberg, Fürth und Erlangen ist immer im Preis inbegriffen. Für Orte außerhalb berechnen wir eine Pauschale von 25€ – das sagen wir Ihnen aber bereits am Telefon, bevor wir losfahren.",
+    shortAnswer: travelFeeText,
+    fullAnswer: declinedCleaningText,
     category: "kosten",
     page: ["preise", "faq"],
     keywords: ["anfahrt kosten", "anfahrtskosten"],
@@ -108,8 +108,8 @@ export const kostenFAQ: FAQItem[] = [
   {
     id: "kosten-6",
     question: "Muss ich bei Ablehnung etwas zahlen?",
-    shortAnswer: "Nein. Wenn Sie nach der Ersteinschätzung ablehnen, entstehen keine Kosten.",
-    fullAnswer: "Die erste Einschätzung vor Ort ist kostenlos und unverbindlich. Wenn Ihnen unser Angebot nicht zusagt, fahren wir einfach wieder. Sie zahlen nichts – weder Anfahrt noch Diagnose.",
+    shortAnswer: declinedCleaningText,
+    fullAnswer: travelFeeText,
     category: "kosten",
     page: ["preise", "faq"],
     keywords: ["ablehnung", "keine kosten"],
@@ -185,8 +185,8 @@ export const kostenFAQ: FAQItem[] = [
   {
     id: "kosten-13",
     question: "Was kostet Kanalreinigung?",
-    shortAnswer: "Ab 149€, typisch 180-350€. Mit Hochdruck-Technik und inklusive Anfahrt.",
-    fullAnswer: "Kanalreinigung startet ab 149€ für einfache Fälle. Die meisten Einsätze liegen bei 180-350€, abhängig von Länge und Zustand des Kanals. Inklusive sind: Anfahrt, Hochdruck-Spülung bis 200 bar, Funktionsprüfung. Kamera-Inspektion optional für +50€.",
+    shortAnswer: "Ab 149€, typisch 180-350€. Mit Hochdruck-Technik.",
+    fullAnswer: "Kanalreinigung startet ab 149€ für einfache Fälle. Die meisten Einsätze liegen bei 180-350€, abhängig von Länge und Zustand des Kanals. Enthalten sind die Hochdruck-Spülung bis 200 bar und die Funktionsprüfung. Eine gegebenenfalls anfallende Anfahrtspauschale vereinbaren wir vorab. Kamera-Inspektion optional für +50€.",
     category: "kosten",
     page: ["preise", "service-kanalreinigung", "faq"],
     keywords: ["kanalreinigung kosten", "kanal reinigen preis"],
@@ -616,8 +616,8 @@ export const regionFAQ: FAQItem[] = [
   {
     id: "region-5",
     question: "Kostet die Anfahrt nach Schwabach extra?",
-    shortAnswer: "+25€ Anfahrtspauschale. Wird vorher am Telefon genannt.",
-    fullAnswer: "Für Schwabach und andere Orte außerhalb des Kerngebiets (Nürnberg, Fürth, Erlangen) berechnen wir eine Pauschale von 25€ für die Anfahrt. Das sagen wir Ihnen bereits am Telefon, bevor wir losfahren – keine Überraschungen.",
+    shortAnswer: "Für Schwabach vereinbaren wir die Anfahrtspauschale von 25 € vorab.",
+    fullAnswer: travelFeeText,
     category: "region",
     page: ["faq"],
     keywords: ["schwabach anfahrt", "außerhalb anfahrt"],

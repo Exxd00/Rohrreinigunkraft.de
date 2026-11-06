@@ -1,4 +1,4 @@
-import { assessmentPricingText } from "./assessment-pricing";
+import { assessmentPricingText, declinedCleaningText } from "./assessment-pricing";
 
 /**
  * نظام الضمانات الثلاثي - Rohrreinigung Kraft
@@ -39,7 +39,7 @@ export const guaranteesBefore: Guarantee[] = [
     phase: "before",
     name: "Kostenlose Ersteinschätzung",
     headline: "Kostenlose Ersteinschätzung vor Ort",
-    shortDescription: "Wir schauen uns das Problem an – ohne dass Sie etwas zahlen.",
+    shortDescription: "Die Ersteinschätzung selbst ist kostenlos.",
     fullDescription: assessmentPricingText,
     icon: "Search",
     badge: "Garantiert",
@@ -93,7 +93,7 @@ export const guaranteesBefore: Guarantee[] = [
     name: "Kein Start ohne Ihr OK",
     headline: "Wir starten erst mit Ihrer Zustimmung",
     shortDescription: "Sie entscheiden – nicht wir.",
-    fullDescription: "Wir beginnen NICHT mit der Arbeit, bevor Sie dem Preis zugestimmt haben. Wenn Ihnen der Preis nicht passt, fahren wir wieder – ohne dass Ihnen Kosten entstehen.",
+    fullDescription: `Wir beginnen mit der Reinigung, wenn Sie dem Preis zugestimmt haben. ${declinedCleaningText}`,
     icon: "CheckCircle",
     color: "blue",
     linkedPackages: ["notfall", "standard", "komplett", "wiederkehrend", "diagnose"],

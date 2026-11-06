@@ -1,4 +1,4 @@
-import { assessmentPricingText, cameraReportPriceFrom } from "@/data/assessment-pricing";
+import { assessmentPricingText, cameraReportPriceFrom, declinedCleaningText, travelFeeText } from "@/data/assessment-pricing";
 
 import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
@@ -47,7 +47,7 @@ const faqCategories = [
       },
       {
         question: "Gibt es versteckte Kosten?",
-        answer: "Nein. Der Festpreis, den wir nach der Diagnose nennen, ist der Endpreis. Keine Materialzuschläge, keine Anfahrtskosten extra, keine Überraschungen auf der Rechnung. Was wir sagen, das gilt.",
+        answer: "Der vereinbarte Festpreis gilt für die beauftragten Arbeiten. Eine mögliche Anfahrtspauschale und Zuschläge besprechen wir bereits bei der Terminvereinbarung.",
         shortAnswer: "Nein. Der genannte Festpreis ist der Endpreis. Punkt."
       },
       {
@@ -62,8 +62,8 @@ const faqCategories = [
       },
       {
         question: "Kostet die Anfahrt extra?",
-        answer: "In Nürnberg, Fürth und Erlangen ist die Anfahrt im Preis enthalten. Außerhalb unseres Kerngebiets berechnen wir pauschal 25€ Anfahrt – das sagen wir Ihnen am Telefon, bevor wir kommen.",
-        shortAnswer: "In Nürnberg/Fürth/Erlangen inklusive. Außerhalb: +25€ pauschal (vorher kommuniziert)."
+        answer: travelFeeText,
+        shortAnswer: declinedCleaningText
       },
       {
         question: "Wie kann ich bezahlen?",

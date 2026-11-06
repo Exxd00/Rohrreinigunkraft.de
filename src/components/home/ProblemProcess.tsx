@@ -195,7 +195,7 @@ export default function ProblemProcess() {
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-2">Entscheidung</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Sie sagen JA → Wir legen los. Sie sagen NEIN → Wir gehen. Keine Kosten.
+                  Sie entscheiden, ob wir reinigen. Wenn Sie ablehnen, zahlen Sie nur die vorher vereinbarte Anfahrtspauschale.
                 </p>
                 <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-2 font-medium">
                   → Sie haben die Kontrolle.

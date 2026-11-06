@@ -43,7 +43,7 @@ export default function CTASection() {
               </h2>
               <p className="text-gray-300 text-lg max-w-xl mx-auto">
                 Die erste Einschätzung vor Ort ist kostenlos.
-                Sie zahlen erst, wenn Sie JA sagen.
+                Eine mögliche Anfahrtspauschale vereinbaren wir vorab.
               </p>
             </div>
 

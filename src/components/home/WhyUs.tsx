@@ -29,7 +29,7 @@ const differentiators = [
     icon: FileCheck,
     title: "Kostenlose Ersteinschätzung vor Ort",
     description: "Wir sehen uns die Verstopfung an und besprechen mit Ihnen die nächsten Schritte.",
-    proof: "Kein OK von Ihnen = Keine Kosten für Sie.",
+    proof: "Eine mögliche Anfahrtspauschale vereinbaren wir vorab.",
     color: "amber"
   },
   {

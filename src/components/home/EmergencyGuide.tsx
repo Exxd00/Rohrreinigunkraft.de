@@ -111,7 +111,7 @@ const guideSteps: GuideStep[] = [
     donts: [
       "Kein Arbeitsbeginn ohne Ihre ausdrückliche Zustimmung",
       "Keine versteckten Kosten oder Überraschungen",
-      "Keine Anfahrtskosten bei Auftragserteilung",
+      "Keine Anfahrtspauschale ohne vorherige Vereinbarung",
     ],
     tip: "Fragen Sie nach Tipps zur Vorbeugung – unsere Techniker beraten Sie gerne kostenlos.",
   },
