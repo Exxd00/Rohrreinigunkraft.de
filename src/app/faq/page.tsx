@@ -118,13 +118,18 @@ const faqCategories = [
     questions: [
       {
         question: "Wann ist eine Verstopfung ein Notfall?",
-        answer: "Ein Notfall liegt vor, wenn: 1) Wasser austritt und Schäden drohen, 2) Die einzige Toilette im Haushalt nicht nutzbar ist, 3) Abwasser zurückdrückt, 4) Geruch auf Kanalgase hindeutet. Bei diesen Situationen sollten Sie sofort anrufen.",
-        shortAnswer: "Bei Wasseraustritt, unbenutzbar Toilette, Abwasser-Rückstau oder Gasgeruch: Sofort anrufen."
+        answer: "Rufen Sie unseren Rohrreinigungsnotdienst an, wenn Abwasser in die Wohnung zurückläuft, durch austretendes Wasser Schäden drohen oder die einzige Toilette im Haushalt ausfällt.",
+        shortAnswer: "Bei einem Rückstau, einem drohenden Wasserschaden oder dem Ausfall der einzigen Toilette erreichen Sie uns rund um die Uhr."
       },
       {
-        question: "Was soll ich tun, bis der Techniker kommt?",
-        answer: "1) Drehen Sie den Hauptwasserhahn ab (bei drohendem Überlauf). 2) Benutzen Sie den betroffenen Abfluss nicht weiter. 3) Legen Sie Handtücher aus, um Wasserschäden zu minimieren. 4) Öffnen Sie Fenster bei Geruch.",
-        shortAnswer: "Wasser abstellen, Abfluss nicht benutzen, Handtücher auslegen, bei Geruch lüften."
+        question: "Was soll ich tun, wenn es im Haus nach Gas riecht?",
+        answer: "Bei Verdacht auf austretendes Erdgas vermeiden Sie offene Flammen und betätigen Sie keine elektrischen Schalter. Warnen Sie andere durch Klopfen, verlassen Sie das Gebäude und rufen Sie erst draußen den Entstördienst Ihres Gasnetzbetreibers an. Bei akuter Gefahr wählen Sie draußen den Notruf 112.",
+        shortAnswer: "Verlassen Sie das Gebäude. Rufen Sie den Gasnetzbetreiber von draußen an, bei akuter Gefahr die 112."
+      },
+      {
+        question: "Was soll ich tun, bis der Rohrreinigungsdienst kommt?",
+        answer: "Benutzen Sie den betroffenen Abfluss und angeschlossene Geräte vorerst nicht. Stoppen Sie laufenden Wasserzulauf, wenn das gefahrlos möglich ist. Sagen Sie uns am Telefon, wo das Wasser austritt.",
+        shortAnswer: "Vermeiden Sie weiteren Wasserzulauf und halten Sie Abstand zum austretenden Abwasser."
       },
       {
         question: "Arbeiten Sie auch nachts und am Wochenende?",
@@ -269,7 +274,7 @@ const faqCategories = [
       {
         question: "In welchen Städten sind Sie aktiv?",
         answer: "Unser Einsatzgebiet umfasst Nürnberg und Umgebung, darunter Fürth, Erlangen und Schwabach. Die Abdeckung bestätigen wir anhand Ihrer genauen Adresse. Die Ortsliste finden Sie unter Einsatzgebiet.",
-        shortAnswer: "Kerngebiet: Nürnberg, Fürth, Erlangen. Plus Umland im 60-km-Radius."
+        shortAnswer: `Nürnberg, Fürth, Erlangen und Orte im Umkreis von ${company.serviceRadius} km um Nürnberg. Die genaue Adresse klären wir am Telefon.`
       },
       {
         question: "Wo ist Ihr Firmensitz?",
