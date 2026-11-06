@@ -98,7 +98,7 @@ export default function PreisePage() {
             <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
               Die Preise unten geben Ihnen eine erste Orientierung. Nach Prüfung der Ursache
               nennen wir den <strong className="text-white">Preis für die vereinbarte Arbeit</strong>.
-              Anfahrt und mögliche Zuschläge besprechen wir vorab.
+              Anfahrt und mögliche Zuschläge besprechen wir vorab. <a href="#kosten-4" className="text-white underline underline-offset-2">Was kostet die Anfahrt?</a>
             </p>
 
             {/* The Promise */}
@@ -444,7 +444,7 @@ export default function PreisePage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="font-bold">4.</span>
-                      <span>Sie entscheiden <strong>(Nein = wir gehen, kostet nichts)</strong></span>
+                      <span>Sie entscheiden, ob Sie die Reinigung beauftragen. Bei einer Absage fällt nur die vorher vereinbarte Anfahrtspauschale an.</span>
                     </li>
                   </ol>
                 </div>
@@ -496,7 +496,8 @@ export default function PreisePage() {
               {pageFAQ.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-gray-50 dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700"
+                  id={item.id}
+                  className="scroll-mt-24 bg-gray-50 dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700"
                 >
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-start gap-2">
                     <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
