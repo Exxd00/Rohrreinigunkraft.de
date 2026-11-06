@@ -42,7 +42,7 @@ export default function CTASection() {
                 Verstopfung? <span className="text-primary">Rufen Sie jetzt an.</span>
               </h2>
               <p className="text-gray-300 text-lg max-w-xl mx-auto">
-                Kostenlose Beratung. Kostenlose Diagnose vor Ort.
+                Die erste Einschätzung vor Ort ist kostenlos.
                 Sie zahlen erst, wenn Sie JA sagen.
               </p>
             </div>

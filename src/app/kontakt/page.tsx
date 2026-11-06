@@ -21,7 +21,7 @@ export default function KontaktPage() {
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Akute Verstopfung oder geplanter Termin? Schildern Sie uns Ihr Anliegen.
-              Telefonisch erreichen Sie uns rund um die Uhr; per Formular können Sie einen Rückruf anfragen.
+              Unser Notdienst ist telefonisch rund um die Uhr erreichbar. Über das Formular können Sie einen Rückruf anfragen.
             </p>
             <a href="#kontakt" className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-primary px-6 py-3 font-semibold text-white">Direkt zur Anfrage</a>
           </div>
@@ -32,24 +32,21 @@ export default function KontaktPage() {
       {/* Contact Form Component */}
       <ContactForm />
 
-      {/* Map Placeholder */}
       <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              Unser Einsatzgebiet
-            </h2>
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl h-80 flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-gray-500 dark:text-gray-400 mb-2">
-                  Großraum Nürnberg & Umgebung
-                </p>
-                <p className="text-sm text-gray-400">
-                  Nürnberg und Umgebung
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Besuchen Sie uns in Nürnberg</h2>
+          <address className="not-italic text-gray-700 dark:text-gray-200">
+            {company.name}<br />
+            {company.address.street}, {company.address.zip} {company.address.city}
+          </address>
+          <p className="mx-auto mt-4 max-w-xl text-gray-600 dark:text-gray-300">
+            Wir empfangen Kunden in Nürnberg-Glockenhof und kommen für Einsätze zu Ihnen.
+            Für einen Besuch erreichen Sie uns zur Terminabsprache unter{" "}
+            <a className="underline" href={`tel:${company.contact.phone}`}>{company.contact.phoneDisplay}</a>.
+          </p>
+          <a className="mt-4 inline-block font-semibold text-primary underline" href={company.googleReviewsUrl}>
+            Standort auf Google Maps öffnen
+          </a>
         </div>
       </section>
     </>

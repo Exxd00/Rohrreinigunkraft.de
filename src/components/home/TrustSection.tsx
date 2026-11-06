@@ -8,9 +8,9 @@ import { company } from "@/data/company";
 const trustPoints = [
   {
     icon: Star,
-    title: "5.0 auf Google",
-    subtitle: `${company.rating.reviewCount} echte Bewertungen`,
-    description: "Von Kunden, die uns vertrauen – überprüfbar auf Google",
+    title: `${company.rating.displayText} auf Google`,
+    subtitle: `${company.rating.reviewCount} Google-Bewertungen`,
+    description: `Stand: ${company.rating.asOf}`,
     link: company.googleReviewsUrl,
     linkText: "Bewertungen lesen",
     color: "amber"
@@ -31,7 +31,7 @@ const trustPoints = [
   },
   {
     icon: Users,
-    title: `${company.stats.projectsCompleted}+ Einsätze`,
+    title: `${company.stats.projectsCompleted} Einsätze`,
     subtitle: "Erfahrung, die zählt",
     description: "Ihr Problem? Haben wir schon 100x gelöst.",
     color: "blue"
@@ -152,8 +152,7 @@ export default function TrustSection() {
                   {company.rating.displayText} auf Google
                 </h3>
                 <p className="text-gray-300 mb-4 max-w-md">
-                  "{company.rating.reviewCount} Kunden bewerten uns mit 5 Sternen.
-                  Lesen Sie selbst, was echte Kunden über uns sagen."
+                  Durchschnitt aus {company.rating.reviewCount} Bewertungen (Stand: {company.rating.asOf}).
                 </p>
                 <Link
                   href={company.googleReviewsUrl}
@@ -209,7 +208,7 @@ export default function TrustSection() {
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full">
             <CheckCircle className="w-4 h-4 text-emerald-500" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Kostenlose Diagnose</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Kostenlose Ersteinschätzung</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full">
             <CheckCircle className="w-4 h-4 text-emerald-500" />

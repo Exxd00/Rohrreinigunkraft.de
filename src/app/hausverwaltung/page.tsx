@@ -84,7 +84,7 @@ const b2bPackages = [
     icon: Zap,
     features: [
       "Keine Bindung",
-      "Kostenlose Diagnose vor Ort",
+      "Kostenlose Ersteinschätzung vor Ort",
       "Festpreis vor Arbeitsbeginn",
       "Dokumentation auf Wunsch",
       "Rechnung oder Sofortzahlung",

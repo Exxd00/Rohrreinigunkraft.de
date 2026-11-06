@@ -85,7 +85,7 @@ export default function PricingPreview() {
                 <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
                   <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                     <CheckCircle className="w-4 h-4 text-green-500" />
-                    Diagnose kostenlos
+                    Ersteinschätzung kostenlos
                   </div>
                   <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                     <CheckCircle className="w-4 h-4 text-green-500" />

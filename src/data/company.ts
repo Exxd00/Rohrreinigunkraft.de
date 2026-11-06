@@ -7,6 +7,9 @@ import { serviceArea } from "./service-area";
  * Ankunft und Verfügbarkeit werden telefonisch abgestimmt.
  */
 
+const googleReviews = { score: 5.0, count: 149, asOf: "06.11.2026" };
+const googleRatingText = `${googleReviews.score.toFixed(1).replace(".", ",")}/5`;
+
 // Firmenadresse - ECHT (von Gelbe Seiten verifiziert)
 export const company = {
   name: "Rohrreinigung Kraft",
@@ -51,10 +54,10 @@ export const company = {
 
   pricing: {
     type: "quote",
-    text: "Festpreis nach kostenloser Diagnose vor Ort",
+    text: "Festpreis nach kostenloser Ersteinschätzung vor Ort",
     transparent: true,
     guarantees: [
-      "Kostenlose Diagnose vor Ort",
+      "Kostenlose Ersteinschätzung vor Ort",
       "Festpreis vor Arbeitsbeginn",
       "Keine versteckten Kosten",
       "Kein Start ohne Ihr OK",
@@ -84,20 +87,21 @@ export const company = {
     satisfactionRate: "98%",
   },
 
-  // ✅ ECHTE BEWERTUNGEN (Google Maps - geprüft am 21.09.2026)
+  // Google Business Profile snapshot
   rating: {
-    score: 5.0,
+    score: googleReviews.score,
     maxScore: 5,
-    reviewCount: 141, // Google Maps verifiziert
-    displayText: "5.0/5",
-    fullText: "5.0/5 basierend auf 141 Google-Bewertungen",
+    reviewCount: googleReviews.count,
+    asOf: googleReviews.asOf,
+    displayText: googleRatingText,
+    fullText: `${googleRatingText} aus ${googleReviews.count} Google-Bewertungen (Stand: ${googleReviews.asOf})`,
     platforms: [
-      { name: "Google", score: 5.0, count: 141 },
+      { name: "Google", score: googleReviews.score, count: googleReviews.count },
     ],
   },
 
   // Google Reviews URL
-  googleReviewsUrl: "https://www.google.com/maps/place/Rohrreinigung+Kraft/@49.4374,11.0895/reviews",
+  googleReviewsUrl: "https://maps.google.com/maps?cid=9644824578368654069",
 
   b2b: {
     targetGroups: [
@@ -144,7 +148,7 @@ export const company = {
       icon: "truck"
     },
     {
-      title: "Kostenlose Diagnose",
+      title: "Kostenlose Ersteinschätzung",
       description: "Erst prüfen, dann entscheiden – ohne Kosten",
       icon: "search"
     },
@@ -230,7 +234,7 @@ export const company = {
     general: [
       {
         question: "Was kostet eine Rohrreinigung?",
-        answer: "Die Kosten hängen vom Umfang der Verstopfung ab. Wir bieten eine kostenlose Diagnose vor Ort und nennen Ihnen dann einen Festpreis – ohne versteckte Kosten. Einfache Verstopfungen starten ab 79€.",
+        answer: "Die Kosten hängen vom Umfang der Verstopfung ab. Wir bieten eine kostenlose Ersteinschätzung vor Ort und nennen Ihnen dann einen Festpreis – ohne versteckte Kosten. Einfache Verstopfungen starten ab 79€.",
       },
       {
         question: "Wie schnell können Sie da sein?",

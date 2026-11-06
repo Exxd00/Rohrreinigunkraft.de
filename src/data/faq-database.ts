@@ -1,3 +1,5 @@
+import { assessmentPricingText, cameraReportPriceFrom } from "./assessment-pricing";
+
 /**
  * قاعدة بيانات الأسئلة الشائعة - Rohrreinigung Kraft
  * 150+ سؤال موزع على الصفحات والفئات
@@ -51,8 +53,8 @@ export const kostenFAQ: FAQItem[] = [
   {
     id: "kosten-1",
     question: "Was kostet eine Rohrreinigung?",
-    shortAnswer: "Ab 79€ für einfache Verstopfungen. Der genaue Festpreis wird nach kostenloser Diagnose vor Ort genannt – bevor die Arbeit beginnt.",
-    fullAnswer: "Die Kosten hängen von der Art und Tiefe der Verstopfung ab. Einfache Verstopfungen (Toilette, Waschbecken) kosten ab 79€, typisch 80-150€. Tiefere Probleme (Kanalreinigung) ab 149€. Das Besondere: Wir machen eine kostenlose Diagnose vor Ort und nennen Ihnen dann den EXAKTEN Festpreis – bevor wir anfangen. Keine Überraschungen.",
+    shortAnswer: "Ab 79€ für einfache Verstopfungen. Der genaue Festpreis wird nach kostenloser Ersteinschätzung vor Ort genannt – bevor die Arbeit beginnt.",
+    fullAnswer: "Die Kosten hängen von der Art und Tiefe der Verstopfung ab. Einfache Verstopfungen (Toilette, Waschbecken) kosten ab 79€, typisch 80-150€. Tiefere Probleme (Kanalreinigung) ab 149€. Das Besondere: Wir machen eine kostenlose Ersteinschätzung vor Ort und nennen Ihnen dann den EXAKTEN Festpreis – bevor wir anfangen. Keine Überraschungen.",
     category: "kosten",
     page: ["homepage", "preise", "faq"],
     keywords: ["rohrreinigung kosten", "rohrreinigung preis", "was kostet rohrreinigung"],
@@ -61,9 +63,9 @@ export const kostenFAQ: FAQItem[] = [
   },
   {
     id: "kosten-2",
-    question: "Ist die Diagnose wirklich kostenlos?",
-    shortAnswer: "Ja, die Diagnose vor Ort ist immer kostenlos – auch wenn Sie unser Angebot danach ablehnen.",
-    fullAnswer: "Wir kommen zu Ihnen, schauen uns das Problem an und erklären, was nötig ist. Das kostet Sie nichts. Erst danach nennen wir den Festpreis. Wenn Ihnen der Preis nicht passt, fahren wir wieder – ohne Kosten für Sie. Das ist unser Versprechen.",
+    question: "Was ist bei der Diagnose kostenlos?",
+    shortAnswer: assessmentPricingText,
+    fullAnswer: "Wir besprechen den Preis weiterer Arbeiten mit Ihnen, bevor Sie den Auftrag erteilen.",
     category: "kosten",
     page: ["homepage", "preise", "faq"],
     keywords: ["diagnose kostenlos", "kostenlose begutachtung"],
@@ -106,8 +108,8 @@ export const kostenFAQ: FAQItem[] = [
   {
     id: "kosten-6",
     question: "Muss ich bei Ablehnung etwas zahlen?",
-    shortAnswer: "Nein. Wenn Sie nach der Diagnose ablehnen, entstehen keine Kosten.",
-    fullAnswer: "Die Diagnose ist komplett kostenlos und unverbindlich. Wenn Ihnen unser Angebot nicht zusagt, fahren wir einfach wieder. Sie zahlen nichts – weder Anfahrt noch Diagnose.",
+    shortAnswer: "Nein. Wenn Sie nach der Ersteinschätzung ablehnen, entstehen keine Kosten.",
+    fullAnswer: "Die erste Einschätzung vor Ort ist kostenlos und unverbindlich. Wenn Ihnen unser Angebot nicht zusagt, fahren wir einfach wieder. Sie zahlen nichts – weder Anfahrt noch Diagnose.",
     category: "kosten",
     page: ["preise", "faq"],
     keywords: ["ablehnung", "keine kosten"],
@@ -128,8 +130,8 @@ export const kostenFAQ: FAQItem[] = [
   {
     id: "kosten-8",
     question: "Was kostet eine Kamera-Inspektion?",
-    shortAnswer: "Festpreis 149€ inklusive HD-Videoaufnahme und schriftlichem Befundbericht.",
-    fullAnswer: "Eine Kamera-Inspektion kostet pauschal 149€ – unabhängig von der Dauer. Inklusive sind: HD-Kamerabefahrung, Video-/Fotodokumentation per E-Mail, schriftlicher Befundbericht und Handlungsempfehlung. Perfekt für Dokumentation oder wenn Sie die Ursache verstehen wollen.",
+    shortAnswer: `Eine Kamerabefahrung mit schriftlichem Befundbericht kostet ab ${cameraReportPriceFrom} €.`,
+    fullAnswer: "Das Paket umfasst eine HD-Kamerabefahrung, Foto- und Videodokumentation, einen schriftlichen Befundbericht und eine Handlungsempfehlung.",
     category: "kosten",
     page: ["preise", "service-kamera", "faq"],
     keywords: ["kamera inspektion kosten", "kamerabefahrung preis"],
@@ -139,8 +141,8 @@ export const kostenFAQ: FAQItem[] = [
   {
     id: "kosten-9",
     question: "Was kostet Toilette entstopfen?",
-    shortAnswer: "Ab 79€, typisch 80-130€. Festpreis nach kostenloser Diagnose vor Ort.",
-    fullAnswer: "Eine verstopfte Toilette zu entstopfen kostet ab 79€. Die meisten Fälle liegen bei 80-130€. Der genaue Preis hängt davon ab, wie tief die Verstopfung sitzt und was sie verursacht hat. Nach unserer kostenlosen Diagnose nennen wir den Festpreis.",
+    shortAnswer: "Ab 79€, typisch 80-130€. Festpreis nach kostenloser Ersteinschätzung vor Ort.",
+    fullAnswer: "Eine verstopfte Toilette zu entstopfen kostet ab 79€. Die meisten Fälle liegen bei 80-130€. Der genaue Preis hängt davon ab, wie tief die Verstopfung sitzt und was sie verursacht hat. Nach unserer kostenlosen Ersteinschätzung nennen wir den Festpreis.",
     category: "kosten",
     page: ["preise", "service-toilette", "faq"],
     keywords: ["toilette verstopft kosten", "wc entstopfen preis"],
@@ -162,7 +164,7 @@ export const kostenFAQ: FAQItem[] = [
     id: "kosten-11",
     question: "Warum sind die Preise 'ab'?",
     shortAnswer: "Weil jede Verstopfung anders ist. 'Ab' ist für einfache Fälle. Der exakte Festpreis folgt nach Diagnose.",
-    fullAnswer: "Eine Toilette mit Feuchttuch-Problem ist in 15 Minuten gelöst. Eine tiefsitzende Wurzelverstopfung braucht Spezialequipment und 2 Stunden. Einen fixen Preis vorab zu nennen wäre entweder zu teuer für Sie (bei einfachen Fällen) oder unrealistisch für uns. Deshalb: Kostenlose Diagnose → Exakter Festpreis → Ihr OK.",
+    fullAnswer: "Eine Toilette mit Feuchttuch-Problem ist in 15 Minuten gelöst. Eine tiefsitzende Wurzelverstopfung braucht Spezialequipment und 2 Stunden. Einen fixen Preis vorab zu nennen wäre entweder zu teuer für Sie (bei einfachen Fällen) oder unrealistisch für uns. Deshalb: Kostenlose Ersteinschätzung → Exakter Festpreis → Ihr OK.",
     category: "kosten",
     page: ["preise", "faq"],
     keywords: ["ab preis", "warum ab"],
@@ -173,7 +175,7 @@ export const kostenFAQ: FAQItem[] = [
     id: "kosten-12",
     question: "Was bestimmt den Preis?",
     shortAnswer: "Hauptsächlich: Tiefe der Verstopfung, Art (Fett/Wurzeln/Fremdkörper), Zugänglichkeit und nötige Technik.",
-    fullAnswer: "Der Preis richtet sich nach dem Aufwand: Wie tief sitzt die Verstopfung? Was hat sie verursacht (Haare sind einfacher als Wurzeln)? Wie gut erreichbar ist die Stelle? Welche Technik brauchen wir? All das sehen wir bei der kostenlosen Diagnose und nennen dann den Festpreis.",
+    fullAnswer: "Der Preis richtet sich nach dem Aufwand: Wie tief sitzt die Verstopfung? Was hat sie verursacht (Haare sind einfacher als Wurzeln)? Wie gut erreichbar ist die Stelle? Welche Technik brauchen wir? All das sehen wir bei der kostenlosen Ersteinschätzung und nennen dann den Festpreis.",
     category: "kosten",
     page: ["preise", "faq"],
     keywords: ["preis faktoren", "was bestimmt preis"],
@@ -222,7 +224,7 @@ export const ablaufFAQ: FAQItem[] = [
   {
     id: "ablauf-1",
     question: "Wie läuft ein Einsatz ab?",
-    shortAnswer: "Anruf → Ankunft abstimmen → Kostenlose Diagnose → Festpreis nennen → Ihr OK → Arbeit → Fertig.",
+    shortAnswer: "Anruf → Ankunft abstimmen → Kostenlose Ersteinschätzung → Festpreis nennen → Ihr OK → Arbeit → Fertig.",
     fullAnswer: "1. Sie rufen an und schildern das Problem. 2. Wir stimmen die Ankunft mit Ihnen ab. 3. Vor Ort schauen wir uns das Problem an (kostenlos). 4. Wir erklären, was zu tun ist und nennen den Festpreis. 5. Sie entscheiden. 6. Bei OK arbeiten wir und hinterlassen alles sauber. 7. Sie zahlen, wir gehen.",
     category: "ablauf",
     page: ["homepage", "faq"],
@@ -664,8 +666,8 @@ export const serviceFAQ: FAQItem[] = [
   {
     id: "service-2",
     question: "Machen Sie auch Kamera-Inspektionen?",
-    shortAnswer: "Ja. HD-Kamerabefahrung mit Video-Dokumentation. Festpreis 149€.",
-    fullAnswer: "Unsere Kamera-Inspektion zeigt Ihnen genau, was im Rohr los ist: HD-Kamera fährt durch die Leitung, Sie sehen live auf dem Bildschirm. Inklusive Videoaufnahme und schriftlichem Befundbericht. Ideal bei wiederkehrenden Problemen oder vor Hauskauf. Festpreis: 149€.",
+    shortAnswer: `Ja. Die Kamerabefahrung mit schriftlichem Befundbericht kostet ab ${cameraReportPriceFrom} €.`,
+    fullAnswer: "Die Kamera zeigt den Zustand der Leitung direkt auf dem Bildschirm. Beim Paket mit Befundbericht erhalten Sie außerdem die Aufnahmen und eine schriftliche Auswertung.",
     category: "service",
     page: ["service-kamera", "faq"],
     keywords: ["kamera inspektion", "rohr kamera"],
@@ -787,7 +789,7 @@ export const problemeFAQ: FAQItem[] = [
     id: "probleme-1",
     question: "Warum ist meine Toilette immer wieder verstopft?",
     shortAnswer: "Häufige Ursachen: Feuchttücher, zu viel Papier, tieferliegendes Problem, alte Leitungen.",
-    fullAnswer: "Wiederkehrende Toilettenverstopfungen haben meist eine Ursache: Feuchttücher (die lösen sich NICHT auf!), zu viel Papier auf einmal, Kalkablagerungen bei hartem Wasser, oder ein tieferliegendes Problem (Gefälle, Knick, Wurzeln). Unser Diagnose-Paket findet die Ursache.",
+    fullAnswer: "Wiederkehrende Toilettenverstopfungen haben meist eine Ursache: Feuchttücher (die lösen sich NICHT auf!), zu viel Papier auf einmal, Kalkablagerungen bei hartem Wasser, oder ein tieferliegendes Problem (Gefälle, Knick, Wurzeln). Eine gesonderte Kamerabefahrung kann helfen, die Ursache zu finden.",
     category: "probleme",
     page: ["service-toilette", "faq"],
     keywords: ["toilette immer verstopft", "wc verstopfung ursache"],
