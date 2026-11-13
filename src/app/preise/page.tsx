@@ -1,3 +1,4 @@
+import TrackedPhoneLink from "@/components/ui/tracked-phone-link";
 import { assessmentPricingText } from "@/data/assessment-pricing";
 
 import VideoShowcase from "@/components/home/VideoShowcase";
@@ -253,7 +254,7 @@ export default function PreisePage() {
                       <span>Dauer: {pkg.duration}</span>
                     </div>
 
-                    <Link href={`tel:${company.contact.phone}`}>
+                    <TrackedPhoneLink source={`pricing_package_${pkg.id}`} href={`tel:${company.contact.phone}`}>
                       <Button className={`w-full ${
                         pkg.popular
                           ? 'bg-emerald-600 hover:bg-emerald-700'
@@ -262,7 +263,7 @@ export default function PreisePage() {
                         <Phone className="w-4 h-4 mr-2" />
                         {pkg.cta.text}
                       </Button>
-                    </Link>
+                    </TrackedPhoneLink>
                     <p className="text-xs text-center text-gray-500 mt-2">{pkg.cta.urgency}</p>
                   </div>
                 );
@@ -536,12 +537,12 @@ export default function PreisePage() {
             Ersteinschätzung unverbindlich
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href={`tel:${company.contact.phone}`}>
+            <TrackedPhoneLink source="pricing_bottom_cta" href={`tel:${company.contact.phone}`}>
               <Button className="bg-white text-primary hover:bg-gray-100 h-12 px-8 font-semibold shadow-lg">
                 <Phone className="w-5 h-5 mr-2" />
                 {company.contact.phoneDisplay}
               </Button>
-            </Link>
+            </TrackedPhoneLink>
             <Link href="/kontakt">
               <button className="h-12 px-8 border-2 border-white/30 text-white hover:bg-white/10 rounded-xl transition-colors flex items-center justify-center font-semibold">
                 Rückruf anfordern

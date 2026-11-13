@@ -94,6 +94,17 @@ const postDirectCallClickToSheets = (source: string, eventId: string) => {
 // conversion helper, but is recorded in GA4 and Alle Anfragen.
 export const trackDirectCallClick = (source: string) => {
   if (typeof window === "undefined") return;
+
+  // Match the existing consent banner. A telephone link must still work when
+  // consent is absent, rejected, or browser storage is unavailable.
+  try {
+    if (window.localStorage.getItem("rk_nuernberg_consent") !== "accepted") {
+      return;
+    }
+  } catch {
+    return;
+  }
+
   const eventId = beginCallClick();
   if (!eventId) return;
 

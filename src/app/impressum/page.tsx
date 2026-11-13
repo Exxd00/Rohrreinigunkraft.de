@@ -1,3 +1,4 @@
+import TrackedPhoneLink from "@/components/ui/tracked-phone-link";
 import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -66,7 +67,7 @@ export default function ImpressumPage() {
 
               {/* Contact */}
               <div className="space-y-3">
-                <a
+                <TrackedPhoneLink source="impressum_contact"
                   href={`tel:${company.contact.phone}`}
                   className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-700/50 hover:bg-primary/10 transition-colors group"
                 >
@@ -79,7 +80,7 @@ export default function ImpressumPage() {
                       {company.contact.phoneDisplay}
                     </p>
                   </div>
-                </a>
+                </TrackedPhoneLink>
 
                 <a
                   href={`mailto:${company.contact.email}`}

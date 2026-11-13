@@ -1,3 +1,4 @@
+import TrackedPhoneLink from "@/components/ui/tracked-phone-link";
 import { assessmentPricingText, cameraReportPriceFrom, declinedCleaningText, travelFeeText } from "@/data/assessment-pricing";
 
 import VideoShowcase from "@/components/home/VideoShowcase";
@@ -412,12 +413,12 @@ export default function FAQPage() {
               Rufen Sie uns an. Wir beantworten Ihre Fragen gerne persönlich – kostenlos und unverbindlich.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={`tel:${company.contact.phone}`}>
+              <TrackedPhoneLink source="faq_cta" href={`tel:${company.contact.phone}`}>
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white h-14 px-8 shadow-lg">
                   <Phone className="w-5 h-5 mr-2" />
                   {company.contact.phoneDisplay}
                 </Button>
-              </Link>
+              </TrackedPhoneLink>
               <Link href="/kontakt">
                 <Button size="lg" variant="outline" className="h-14 px-8">
                   Nachricht schreiben
