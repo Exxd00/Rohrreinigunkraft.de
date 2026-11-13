@@ -53,7 +53,22 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     };
   }
 
-  return pageMetadata(`/service/${service.slug}`, `${service.name} | Nürnberg und Umgebung | Rohrreinigung Kraft`, `${service.shortDescription}. Ablauf und Vorbereitung für Nürnberg und Umgebung. Preis vor Arbeitsbeginn abstimmen.`);
+  const seo: Record<string, { title: string; description: string }> = {
+    abflussreinigung: {
+      title: "Abflussreinigung Nürnberg | Küche & Bad – Kraft",
+      description: "Küche, Dusche oder Waschbecken verstopft? Abflussreinigung in Nürnberg nach Prüfung der Ursache. Preis vor Arbeitsbeginn, Termin telefonisch abstimmen.",
+    },
+    kanalreinigung: {
+      title: "Kanalreinigung Nürnberg | Grundleitungen – Kraft",
+      description: "Kanalreinigung in Nürnberg für private Grund- und Sammelleitungen. Zugang und Verfahren nach Befund klären. Preis vor Arbeitsbeginn vereinbaren.",
+    },
+  };
+  const selectedSeo = seo[service.slug];
+  return pageMetadata(
+    `/service/${service.slug}`,
+    selectedSeo?.title ?? `${service.name} | Nürnberg und Umgebung | Rohrreinigung Kraft`,
+    selectedSeo?.description ?? `${service.shortDescription}. Ablauf und Vorbereitung für Nürnberg und Umgebung. Preis vor Arbeitsbeginn abstimmen.`,
+  );
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {

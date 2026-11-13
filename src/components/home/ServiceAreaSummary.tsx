@@ -13,7 +13,7 @@ export default function ServiceAreaSummary() {
             Nürnberg und Umgebung
           </h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">
-            Von Fürth und Erlangen bis Schwabach und zum nahen Umland: Finden
+            Von <Link href="/fuerth" className="font-medium underline underline-offset-4 hover:text-sky-700 dark:hover:text-sky-300">Fürth</Link> und <Link href="/erlangen" className="font-medium underline underline-offset-4 hover:text-sky-700 dark:hover:text-sky-300">Erlangen</Link> bis Schwabach und zum nahen Umland: Finden
             Sie Ihren Ort und die passende Leistung. Für Adressen an der Grenze
             klären wir die Abdeckung vor der Zusage.
           </p>
