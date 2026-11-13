@@ -1,3 +1,4 @@
+import TrackedPhoneLink from "@/components/ui/tracked-phone-link";
 import VideoShowcase from "@/components/home/VideoShowcase";
 import { Metadata } from "next";
 import ContactForm from "@/components/home/ContactForm";
@@ -42,7 +43,7 @@ export default function KontaktPage() {
           <p className="mx-auto mt-4 max-w-xl text-gray-600 dark:text-gray-300">
             Wir empfangen Kunden in Nürnberg-Glockenhof und kommen für Einsätze zu Ihnen.
             Für einen Besuch erreichen Sie uns zur Terminabsprache unter{" "}
-            <a className="underline" href={`tel:${company.contact.phone}`}>{company.contact.phoneDisplay}</a>.
+            <TrackedPhoneLink source="kontakt_intro" className="underline" href={`tel:${company.contact.phone}`}>{company.contact.phoneDisplay}</TrackedPhoneLink>.
           </p>
           <a className="mt-4 inline-block font-semibold text-primary underline" href={company.googleReviewsUrl}>
             Standort auf Google Maps öffnen

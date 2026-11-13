@@ -1,5 +1,7 @@
 "use client";
 
+import TrackedPhoneLink from "@/components/ui/tracked-phone-link";
+
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { X, Volume2, VolumeX, Camera, Phone, ArrowRight, Maximize2 } from "lucide-react";
@@ -261,12 +263,12 @@ export default function VideoShowcase() {
               Ihr Rohr macht Probleme? Wir zeigen Ihnen per Kamera, was wirklich los ist.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href={`tel:${company.contact.phone}`}>
+              <TrackedPhoneLink source="video_showcase" href={`tel:${company.contact.phone}`}>
                 <Button size="lg" className="h-14 px-8 gradient-primary text-white w-full sm:w-auto">
                   <Phone className="w-5 h-5 mr-2" />
                   {company.contact.phoneDisplay}
                 </Button>
-              </Link>
+              </TrackedPhoneLink>
               <Link href="/arbeiten">
                 <Button
                   size="lg"

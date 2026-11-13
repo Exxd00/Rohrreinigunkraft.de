@@ -1,7 +1,8 @@
 "use client";
 
+import TrackedPhoneLink from "@/components/ui/tracked-phone-link";
+
 import { MapPin, Calendar, Users, Heart, Wrench, Phone } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 import { company } from "@/data/company";
 
@@ -147,12 +148,12 @@ export default function AboutUs() {
                   Kostenlose Beratung – ohne Verpflichtung.
                 </p>
               </div>
-              <Link href={`tel:${company.contact.phone}`}>
+              <TrackedPhoneLink source="about_home" href={`tel:${company.contact.phone}`}>
                 <button className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30">
                   <Phone className="w-5 h-5" />
                   {company.contact.phoneDisplay}
                 </button>
-              </Link>
+              </TrackedPhoneLink>
             </div>
           </div>
         </div>
