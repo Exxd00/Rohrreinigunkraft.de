@@ -36,10 +36,21 @@ export async function generateMetadata({
       title: "Einsatzort nicht gefunden",
       robots: { index: false, follow: true },
     };
+  const seo: Record<string, { title: string; description: string }> = {
+    fuerth: {
+      title: "Rohrreinigung Fürth | 24/7 erreichbar | Kraft",
+      description: "Rohrreinigung in Fürth für Küche, Bad und Hausleitungen. 24/7 telefonisch erreichbar. Preis vor Arbeitsbeginn, Ankunft nach Absprache.",
+    },
+    erlangen: {
+      title: "Rohrreinigung Erlangen | 24/7 erreichbar | Kraft",
+      description: "Rohrreinigung in Erlangen für Küche, Bad und Hausleitungen. 24/7 telefonisch erreichbar. Preis vor Arbeitsbeginn, Ankunft nach Absprache.",
+    },
+  };
+  const selectedSeo = seo[city.slug];
   return pageMetadata(
     `/${city.slug}`,
-    `Rohrreinigung ${city.name} | Kraft · Nürnberg und Umgebung`,
-    `${city.name}: Rohr- und Abflussreinigung, Kanalservice und 24/7-Notdienstaufnahme. Hinweise zum Objekt, Ablauf und Einsatzgebiet. Preis vor Arbeitsbeginn.`,
+    selectedSeo?.title ?? `Rohrreinigung ${city.name} | Kraft · Nürnberg und Umgebung`,
+    selectedSeo?.description ?? `${city.name}: Rohr- und Abflussreinigung, Kanalservice und 24/7-Notdienstaufnahme. Hinweise zum Objekt, Ablauf und Einsatzgebiet. Preis vor Arbeitsbeginn.`,
   );
 }
 

@@ -79,6 +79,15 @@ export default function PricingPreview() {
               ))}
             </div>
 
+            <div className="mb-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
+              <Link href="/service/abflussreinigung" className="font-medium text-primary underline underline-offset-4">
+                Details zur Abflussreinigung
+              </Link>
+              <Link href="/service/kanalreinigung" className="font-medium text-primary underline underline-offset-4">
+                Details zur Kanalreinigung
+              </Link>
+            </div>
+
             {/* Trust Points + CTA */}
             <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-5 md:p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
