@@ -6,6 +6,14 @@ import { reviewedCitySlugs } from "@/data/city-service-notes";
 import { siteUrl } from "@/lib/page-seo";
 // Last shared public-content release, not the service-area data revision.
 const publicContentUpdated = "2026-09-29";
+// Actual dates of reviewed page edits, not the current build/request date.
+const pageContentUpdated: Partial<Record<string, string>> = {
+  "": "2026-11-14",
+  "/fuerth": "2026-11-14",
+  "/erlangen": "2026-11-14",
+  "/service/abflussreinigung": "2026-11-14",
+  "/service/kanalreinigung": "2026-11-14",
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
@@ -31,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // A content revision date, not the date of every request/crawl.
   return paths.map((path) => ({
     url: `${siteUrl}${path || "/"}`,
-    lastModified: publicContentUpdated,
+    lastModified: pageContentUpdated[path] ?? publicContentUpdated,
     changeFrequency: "monthly",
     priority: path ? 0.7 : 1,
   }));

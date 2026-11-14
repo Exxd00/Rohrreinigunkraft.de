@@ -44,10 +44,14 @@ test("sitemap contains unique, self-canonical public pages and no retired area",
   assert.equal(new Set(entries.map(entry => entry.url)).size, entries.length);
   assert.ok(entries.some(entry => entry.url.endsWith("/nuernberg/rohrreinigung")));
   assert.equal(entries.some(entry => /\/(ansbach|forchheim|thank-you|admin)(\/|$)/.test(entry.url)), false);
+  const updatedPages = new Set([
+    "/", "/fuerth", "/erlangen",
+    "/service/abflussreinigung", "/service/kanalreinigung",
+  ]);
   for (const entry of entries) {
     const path = new URL(entry.url).pathname;
     assert.equal(pageMetadata(path, "Title", "Description").alternates?.canonical, entry.url);
-    assert.equal(entry.lastModified, "2026-09-29");
+    assert.equal(entry.lastModified, updatedPages.has(path) ? "2026-11-14" : "2026-09-29");
   }
 });
 
