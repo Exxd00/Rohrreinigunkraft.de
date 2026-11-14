@@ -10,7 +10,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { company } from "@/data/company";
-import { trackCallIntent, trackDirectCallClick } from "@/lib/tracking";
+import { trackCallIntent, trackCallConfirmed } from "@/lib/tracking";
 
 interface CallConfirmModalProps {
   isOpen: boolean;
@@ -43,9 +43,9 @@ export default function CallConfirmModal({
     if (isCallInProgress) return;
     setIsCallInProgress(true);
 
-    // A tel: click does not prove that the call connected. Track it only as
-    // engagement; connected Google Ads calls are imported separately.
-    trackDirectCallClick(source);
+    // The final confirmation is a lead-intent signal, not proof that the
+    // conversation connected. Ordinary phone links are tracked separately.
+    trackCallConfirmed(source);
 
     // IMMEDIATELY make the call - no waiting!
     window.location.href = `tel:${company.contact.phone}`;

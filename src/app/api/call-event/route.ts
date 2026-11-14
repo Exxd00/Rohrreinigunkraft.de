@@ -3,8 +3,8 @@ import { postCustomerEventToSheet } from "@/lib/customer-events-sheet";
 
 const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
-interface DirectCallEventData {
-  eventType: "direct_call_click";
+interface PhoneEventData {
+  eventType: "direct_call_click" | "call_confirmed";
   eventId?: string;
   source?: string;
   utmSource?: string | null;
@@ -23,9 +23,12 @@ const clean = (value: unknown, maxLength = 240) =>
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as DirectCallEventData;
+    const body = (await request.json()) as PhoneEventData;
 
-    if (body.eventType !== "direct_call_click") {
+    if (
+      body.eventType !== "direct_call_click" &&
+      body.eventType !== "call_confirmed"
+    ) {
       return NextResponse.json(
         { success: false, recorded: false, reason: "unsupported_event" },
         { status: 400 },
@@ -47,14 +50,21 @@ export async function POST(request: NextRequest) {
       ? trafficSource + " / " + trafficMedium
       : trafficSource;
 
+    const confirmedIntent = body.eventType === "call_confirmed";
     const payload = {
       timestamp: new Date().toISOString(),
-      name: "📞 Website-Telefonklick",
+      name: confirmedIntent
+        ? "📞 Anrufabsicht bestätigt"
+        : "📞 Website-Telefonklick",
       phone: "Direkter Anruf",
       email: "",
       city: "Nürnberg",
       service: "Telefonischer Kontakt",
-      message: "Klick auf einen Telefonlink (" + source + ").",
+      message: confirmedIntent
+        ? "Anrufabsicht im letzten Dialogschritt bestätigt (" +
+          source +
+          "). Gespräch nicht bestätigt."
+        : "Klick auf einen Telefonlink (" + source + ").",
       images: 0,
       source: attribution,
       referrer: clean(body.referrer, 500) || "direct",
@@ -66,7 +76,7 @@ export async function POST(request: NextRequest) {
       landingPage: clean(body.landingPage, 500) || null,
       currentPage: clean(body.currentPage, 500) || null,
       eventId,
-      eventName: "direct_call_click",
+      eventName: body.eventType,
       eventType: "call",
       callStatus: "not_confirmed",
       sourceSite: "rohrreinigung-kraft.de",
