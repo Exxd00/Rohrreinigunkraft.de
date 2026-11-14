@@ -279,8 +279,8 @@ const faqCategories = [
       },
       {
         question: "Wo ist Ihr Firmensitz?",
-        answer: "Wir sitzen in der Ehemannstraße 9, 90478 Nürnberg-Glockenhof. Ein echter lokaler Familienbetrieb – kein Call-Center, keine Franchise.",
-        shortAnswer: "Ehemannstr. 9, 90478 Nürnberg-Glockenhof. Lokaler Familienbetrieb."
+        answer: "Rohrreinigung Kraft hat seinen Standort in der Ehemannstr. 9, 90478 Nürnberg-Glockenhof. Wir arbeiten von dort aus in Nürnberg und Umgebung. Die genannten Einsatzorte sind keine zusätzlichen Niederlassungen.",
+        shortAnswer: "Ehemannstr. 9, 90478 Nürnberg-Glockenhof. Die genannten Einsatzorte sind keine zusätzlichen Niederlassungen."
       },
       {
         question: "Wie lange gibt es Rohrreinigung Kraft schon?",

@@ -101,8 +101,8 @@ export default function AboutUs() {
                 <Image
                   src="/work/mitarbeiter.jpg"
                   alt="Rohrreinigung Kraft Mitarbeiter bei der Arbeit"
-                  width={600}
-                  height={400}
+                  width={843}
+                  height={853}
                   className="w-full h-auto object-cover"
                 />
                 {/* Overlay badge */}

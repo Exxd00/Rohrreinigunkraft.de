@@ -63,6 +63,8 @@ function InlineBeforeAfter({ before, after }: { before: string; after: string })
       <img
         src={after}
         alt="Nachher"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
@@ -71,6 +73,8 @@ function InlineBeforeAfter({ before, after }: { before: string; after: string })
         <img
           src={before}
           alt="Vorher"
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 h-full object-cover"
           style={{
             width: ref.current ? `${ref.current.offsetWidth}px` : "100%",
