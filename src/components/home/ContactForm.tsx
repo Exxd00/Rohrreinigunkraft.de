@@ -54,9 +54,11 @@ export default function ContactForm() {
   const [images, setImages] = useState<CompressedImage[]>([]);
   const [isCompressing, setIsCompressing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasSavedSubmission, setHasSavedSubmission] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [website, setWebsite] = useState("");
   const pendingEventId = useRef<string | null>(null);
+  const confirmedEventId = useRef<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -104,6 +106,8 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (confirmedEventId.current) return;
+
     if (!privacyAccepted) {
       alert("Bitte akzeptieren Sie die Datenschutzerklärung.");
       return;
@@ -145,11 +149,24 @@ export default function ContactForm() {
       const result = await response.json();
 
       if (response.ok && result.recorded === true) {
-        pendingEventId.current = null;
-        sessionStorage.setItem("form_submitted", "true");
-        sessionStorage.setItem("kraft_form_event_id", eventId);
-        router.push("/thank-you");
+        // The server confirmed the request. Browser storage or navigation must
+        // not turn that success into a retry with a new event ID.
+        confirmedEventId.current = eventId;
+        setHasSavedSubmission(true);
+
+        try {
+          sessionStorage.setItem("kraft_form_event_id", eventId);
+          sessionStorage.setItem("form_submitted", "true");
+          router.push("/thank-you");
+        } catch (handoffError) {
+          if (process.env.NODE_ENV === "development") {
+            console.warn("Request saved; thank-you navigation unavailable:", handoffError);
+          }
+        }
       } else {
+        // Another in-flight response may already have confirmed this request.
+        if (confirmedEventId.current) return;
+
         console.error("Form submission failed:", result);
         const errorMsg = result.details || result.error || "Unbekannter Fehler";
         alert(
@@ -157,6 +174,8 @@ export default function ContactForm() {
         );
       }
     } catch (error) {
+      if (confirmedEventId.current) return;
+
       console.error("Form submission error:", error);
       alert(
         `Verbindungsfehler. Bitte rufen Sie uns an: ${company.contact.phoneDisplay}`,
@@ -216,7 +235,25 @@ export default function ContactForm() {
                 <span>Rückruf anfordern – bei akutem Rückstau bitte anrufen</span>
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+              {hasSavedSubmission && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-emerald-950 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-100"
+                >
+                  <CheckCircle className="mb-2 h-6 w-6" aria-hidden="true" />
+                  <h3 className="font-semibold">Anfrage erfolgreich gespeichert</h3>
+                  <p className="mt-1 text-sm">
+                    Vielen Dank. Wir melden uns unter der angegebenen Telefonnummer bei Ihnen.
+                  </p>
+                </div>
+              )}
+
+              <form
+                hidden={hasSavedSubmission}
+                onSubmit={handleSubmit}
+                className="space-y-3 md:space-y-4"
+              >
                 <div className="hidden" aria-hidden="true">
                   <label htmlFor="contact-website">Website</label>
                   <input

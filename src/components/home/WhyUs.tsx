@@ -1,5 +1,7 @@
 "use client";
 
+import { cameraReportPriceFrom } from "@/data/assessment-pricing";
+
 import {
   Eye,
   Euro,
@@ -41,9 +43,9 @@ const differentiators = [
   },
   {
     icon: Camera,
-    title: "Dokumentation inklusive",
-    description: "Vorher-Nachher-Fotos, Befundbericht – alles, was Sie für Versicherung oder Vermieter brauchen.",
-    proof: "Bei anderen? Aufpreis. Bei uns? Standard.",
+    title: "Dokumentation nach Vereinbarung",
+    description: `Die erste Einschätzung vor Ort ist kostenlos. Eine gesondert beauftragte Kamerabefahrung mit schriftlichem Befundbericht kostet ab ${cameraReportPriceFrom} €.`,
+    proof: "Den Dokumentationsumfang vereinbaren wir vor Arbeitsbeginn.",
     color: "purple"
   },
   {
