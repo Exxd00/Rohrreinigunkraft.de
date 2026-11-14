@@ -8,6 +8,7 @@ declare global {
 }
 
 type TrackingEvent = "thank_you_page";
+type PhoneEvent = "direct_call_click" | "call_confirmed";
 const CALL_CLICK_DEDUPLICATION_MS = 1200;
 let lastCallClickAt = 0;
 
@@ -44,12 +45,16 @@ const beginCallClick = () => {
   return crypto.randomUUID();
 };
 
-const postDirectCallClickToSheets = (source: string, eventId: string) => {
+const postPhoneEventToSheets = (
+  source: string,
+  eventId: string,
+  eventName: PhoneEvent,
+) => {
   if (typeof window === "undefined") return;
 
   const tracking = getTrackingData();
   const body = JSON.stringify({
-    eventType: "direct_call_click",
+    eventType: eventName,
     eventId,
     source,
     utmSource: tracking.source,
@@ -85,14 +90,12 @@ const postDirectCallClickToSheets = (source: string, eventId: string) => {
         );
       }
       if (process.env.NODE_ENV === "development") {
-        console.error("[Sheets] direct_call_click", error);
+        console.error("[Sheets] " + eventName, error);
       }
     });
 };
 
-// Basic engagement event for telephone links. It stays outside the Google Ads
-// conversion helper, but is recorded in GA4 and Alle Anfragen.
-export const trackDirectCallClick = (source: string) => {
+const trackPhoneEvent = (source: string, eventName: PhoneEvent) => {
   if (typeof window === "undefined") return;
 
   // Match the existing consent banner. A telephone link must still work when
@@ -108,19 +111,31 @@ export const trackDirectCallClick = (source: string) => {
   const eventId = beginCallClick();
   if (!eventId) return;
 
-  window.gtag?.("event", "direct_call_click", {
+  const confirmedIntent = eventName === "call_confirmed";
+  window.gtag?.("event", eventName, {
     send_to: "G-SFZFMCJXG2",
-    event_category: "engagement",
+    event_category: confirmedIntent ? "lead" : "engagement",
     event_label: source,
-    interaction_type: "direct_call",
-    interaction_location: "telephone_link",
+    interaction_type: confirmedIntent ? "confirmed_call_intent" : "direct_call",
+    interaction_location: confirmedIntent
+      ? "call_confirmation_modal"
+      : "telephone_link",
     contact_method: "phone",
     site: "nuernberg",
     event_id: eventId,
   });
 
-  postDirectCallClickToSheets(source, eventId);
+  postPhoneEventToSheets(source, eventId, eventName);
 };
+
+// Ordinary telephone-link clicks remain an engagement signal only.
+export const trackDirectCallClick = (source: string) =>
+  trackPhoneEvent(source, "direct_call_click");
+
+// Only the final modal button confirms intent. The historical event name is
+// retained for the existing GA4/Ads conversion; it does not prove a connected call.
+export const trackCallConfirmed = (source: string) =>
+  trackPhoneEvent(source, "call_confirmed");
 
 // Compatibility for existing imports. The shared click guard keeps each
 // physical telephone-link click to one GA4 and one Sheets event.
@@ -141,7 +156,6 @@ export const trackThankYouPage = (eventId?: string) => {
 
 // Compatibility exports for existing UI imports. They intentionally do not
 // create additional GA4 conversions, preventing duplicate or false leads.
-export const trackCallConfirmed = trackDirectCallClick;
 export const trackCallIntent = (_source: string) => {};
 export const trackEmailIntent = (_source: string) => {};
 export const trackEmailConfirmed = (_source: string) => {};
