@@ -10,6 +10,8 @@ interface PhoneEventData {
   utmSource?: string | null;
   utmMedium?: string | null;
   utmCampaign?: string | null;
+  keyword?: string | null;
+  campaignId?: string | null;
   gclid?: string | null;
   gbraid?: string | null;
   wbraid?: string | null;
@@ -73,6 +75,8 @@ export async function POST(request: NextRequest) {
       wbraid: clean(body.wbraid, 200) || null,
       medium: trafficMedium || null,
       campaign: clean(body.utmCampaign, 160) || null,
+      keyword: clean(body.keyword, 160) || null,
+      campaignId: typeof body.campaignId === "string" && /^\d{1,20}$/.test(body.campaignId) ? body.campaignId : null,
       landingPage: clean(body.landingPage, 500) || null,
       currentPage: clean(body.currentPage, 500) || null,
       eventId,
