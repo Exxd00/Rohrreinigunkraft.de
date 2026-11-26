@@ -9,6 +9,7 @@ import {
   microsToCurrency,
   GoogleAdsConfig,
 } from "@/lib/google-ads";
+import { getRrkReport, validReportDates } from "@/lib/rrk-ads-reports";
 import { isAdminRequestAuthorized } from "@/lib/admin-auth";
 
 function getConfig(): GoogleAdsConfig {
@@ -75,11 +76,29 @@ export async function GET(request: NextRequest) {
   const config = getConfig();
   const dateRange = getDateRange(searchParams);
 
+  if (!validReportDates(dateRange)) {
+    return NextResponse.json({ error: "Use valid YYYY-MM-DD dates in chronological order." }, { status: 400 });
+  }
+  const missing = Object.entries(config)
+    .filter(([name, value]) => name !== "loginCustomerId" && !value)
+    .map(([name]) => name);
+  if (missing.length) {
+    return NextResponse.json({ error: "Google Ads configuration missing: " + missing.join(", ") }, { status: 503 });
+  }
+
   try {
     let data: unknown[];
     let reportName: string;
 
     switch (reportType) {
+      case "rrk_daily":
+      case "rrk_keywords":
+      case "rrk_terms":
+      case "rrk_urls":
+        data = await getRrkReport(config, reportType, dateRange);
+        reportName = reportType;
+        break;
+
       case "performance":
         data = await getPerformanceReport(config, dateRange);
         reportName = "performance_report";
@@ -135,7 +154,7 @@ export async function GET(request: NextRequest) {
       default:
         return NextResponse.json({
           success: false,
-          error: "Unknown report type. Use: performance, keywords, conversions, calls, cities, campaigns, complete"
+          error: "Unknown report type."
         }, { status: 400 });
     }
 
@@ -186,11 +205,11 @@ function calculateSummary(data: unknown[]): Record<string, number> {
 
   for (const row of data) {
     const metrics = (row as { metrics?: Record<string, number> }).metrics || {};
-    totalImpressions += metrics.impressions || 0;
-    totalClicks += metrics.clicks || 0;
-    totalCostMicros += metrics.costMicros || 0;
-    totalConversions += metrics.conversions || 0;
-    totalConversionValue += metrics.conversionsValue || 0;
+    totalImpressions += Number(metrics.impressions || 0);
+    totalClicks += Number(metrics.clicks || 0);
+    totalCostMicros += Number(metrics.costMicros || 0);
+    totalConversions += Number(metrics.conversions || 0);
+    totalConversionValue += Number(metrics.conversionsValue || 0);
   }
 
   const totalCost = microsToCurrency(totalCostMicros);
@@ -246,10 +265,10 @@ function convertToCSV(data: unknown[]): string {
       headerArray.map(header => {
         const value = row[header];
         if (value === null || value === undefined) return "";
-        if (typeof value === "string" && value.includes(",")) {
-          return `"${value.replace(/"/g, '""')}"`;
-        }
-        return String(value);
+        if (typeof value === "number") return String(value);
+        let cell = Array.isArray(value) ? JSON.stringify(value) : String(value);
+        if (/^[=+@\-\t\r]/.test(cell)) cell = "'" + cell;
+        return /[",\r\n]/.test(cell) ? `"${cell.replace(/"/g, '""')}"` : cell;
       }).join(",")
     ),
   ];

@@ -190,6 +190,10 @@ export default function GoogleAdsPage() {
                 onChange={(e) => setReportType(e.target.value)}
                 className="mt-1 w-full p-2 border rounded-lg bg-white dark:bg-gray-800"
               >
+                <option value="rrk_daily">حملة RRK حسب اليوم</option>
+                <option value="rrk_keywords">كلمات حملة RRK وتكاليفها</option>
+                <option value="rrk_terms">عبارات البحث الظاهرة لحملة RRK</option>
+                <option value="rrk_urls">إعدادات روابط RRK حسب المستوى</option>
                 <option value="performance">الأداء العام</option>
                 <option value="campaigns">الحملات</option>
                 <option value="keywords">الكلمات المفتاحية</option>
