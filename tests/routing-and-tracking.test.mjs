@@ -87,3 +87,46 @@ test("keeps the current production payload valid during rollout", async () => {
     /Invalid schema/,
   );
 });
+
+test("web app uses a script lock and the configured spreadsheet to append the ad fields once", async () => {
+  const source = await readFile(new URL("../scripts/google-sheets-customer-events.gs", import.meta.url), "utf8");
+  const rows = [];
+  let locked = false;
+  const sheet = {
+    getLastRow: () => rows.length + 2,
+    appendRow(row) { assert.equal(locked, true); rows.push([...row]); },
+    getRange(row, col) {
+      if (row === 1) return { getDisplayValues: () => [vm.runInContext("REQUIRED_HEADERS", context)] };
+      assert.equal(col, 18);
+      return { createTextFinder: (id) => ({
+        matchEntireCell: () => ({ findNext: () => rows[0]?.[17] === id ? { getRow: () => 3 } : null }),
+      }) };
+    },
+  };
+  const context = vm.createContext({
+    LockService: { getScriptLock: () => ({
+      waitLock() { assert.equal(locked, false); locked = true; },
+      releaseLock() { locked = false; },
+    }) },
+    PropertiesService: { getScriptProperties: () => ({ getProperty(key) {
+      assert.equal(key, "CUSTOMER_EVENTS_SPREADSHEET_ID");
+      return "fixture-spreadsheet";
+    } }) },
+    SpreadsheetApp: { openById(id) {
+      assert.equal(id, "fixture-spreadsheet");
+      return { getSheetByName(name) { assert.equal(name, "📞 Alle Anfragen"); return sheet; } };
+    } },
+    ContentService: { MimeType: { JSON: "json" }, createTextOutput: (raw) => ({ setMimeType: () => JSON.parse(raw) }) },
+  });
+  vm.runInContext(source, context);
+  const event = { postData: { contents: JSON.stringify({
+    sourceSite: "rohrreinigung-kraft.de", timestamp: "2026-11-26T07:00:00Z", eventId: "example-event",
+    campaign: "Campaign", keyword: "=literal", campaignId: "12345678901234567890",
+  }) } };
+  assert.equal(context.doPost(event).success, true);
+  assert.equal(context.doPost(event).duplicate, true);
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0][14], "Campaign");
+  assert.deepEqual(rows[0].slice(17), ["example-event", "", "", "", "'=literal", "'12345678901234567890"]);
+  assert.equal(locked, false);
+});

@@ -28,17 +28,13 @@ const REQUIRED_HEADERS = [
 ];
 
 function doPost(e) {
-  const lock = LockService.getDocumentLock();
+  const lock = LockService.getScriptLock();
   try {
     lock.waitLock(10000);
     const payload = JSON.parse((e && e.postData && e.postData.contents) || "{}");
     validatePayload_(payload);
 
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(
-      TARGET_SHEET_NAME,
-    );
-    if (!sheet) throw new Error("Required sheet is missing: " + TARGET_SHEET_NAME);
-    validateHeaders_(sheet);
+    const sheet = customerEventSheet_();
 
     const existingRow = findEventRow_(sheet, payload.eventId);
     if (existingRow) {
@@ -103,6 +99,17 @@ function doPost(e) {
       lock.releaseLock();
     } catch (_) {}
   }
+}
+
+// Configure CUSTOMER_EVENTS_SPREADSHEET_ID in the bound project's Script
+// Properties. This resolver can also be run in the editor as a read-only check.
+function customerEventSheet_() {
+  const id = PropertiesService.getScriptProperties().getProperty("CUSTOMER_EVENTS_SPREADSHEET_ID");
+  if (!id) throw new Error("Customer event spreadsheet is not configured");
+  const sheet = SpreadsheetApp.openById(id).getSheetByName(TARGET_SHEET_NAME);
+  if (!sheet) throw new Error("Required sheet is missing: " + TARGET_SHEET_NAME);
+  validateHeaders_(sheet);
+  return sheet;
 }
 
 function validatePayload_(payload) {
