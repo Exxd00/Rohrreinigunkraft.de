@@ -59,6 +59,7 @@ function doPost(e) {
         ? "📞 Rückrufwunsch"
         : "📝 Formular";
 
+    const ads = adsAttribution_(payload);
     sheet.appendRow([
       new Date(payload.timestamp),
       "🆕 Neu",
@@ -77,10 +78,15 @@ function doPost(e) {
       "",
       isCall ? "⚠️ Gespräch nicht bestätigt" : "",
       safeCell_(payload.source || "Website"),
-      safeCell_(payload.campaign),
+      safeCell_(ads.campaign),
       safeCell_(clickId_(payload)),
       "",
       safeCell_(payload.eventId),
+      "", // S: existing operational column
+      "", // T: internal notes
+      "", // U: historical revenue
+      safeCell_(ads.keyword),
+      ads.campaignId ? "'" + ads.campaignId : "", // keep long Ads IDs as text
     ]);
 
     return jsonResponse_({
@@ -119,6 +125,48 @@ function validatePayload_(payload) {
     throw new Error("Invalid eventId");
   }
   if (!payload.timestamp || isNaN(new Date(payload.timestamp).getTime())) throw new Error("Invalid timestamp");
+}
+
+// Current clients send an attribution snapshot for a single ad touch. During
+// rollout, older clients can supply the original tagged landing URL instead.
+function adsAttribution_(payload) {
+  const explicit = {
+    campaign: payload.campaign || "",
+    keyword: payload.keyword || "",
+    campaignId: /^\d{1,20}$/.test(payload.campaignId || "") ? payload.campaignId : "",
+  };
+  if (explicit.keyword || explicit.campaignId) return explicit;
+
+  const landing = /^https:\/\/(?:www\.)?rohrreinigung-?kraft\.de(?:\/[^?#]*)?\?([^#]*)/i
+    .exec(String(payload.landingPage || ""));
+  if (!landing) return explicit;
+  const tags = Object.create(null);
+  try {
+    for (const part of landing[1].split("&")) {
+      const separator = part.indexOf("=");
+      if (separator < 1) continue;
+      const key = part.slice(0, separator);
+      if (!(key in tags)) {
+        tags[key] = decodeURIComponent(part.slice(separator + 1).replace(/\+/g, " ")).trim();
+      }
+    }
+  } catch (_) {
+    return explicit;
+  }
+  // Legacy clients can carry old campaign fields; match the landing click
+  // to the still-valid GCLID on this submission before taking its metadata.
+  if (!payload.gclid || tags.gclid !== payload.gclid) return explicit;
+  if (tags.utm_source && !/^google(?:ads)?$/i.test(tags.utm_source)) return explicit;
+  const id = [tags.campaignid, tags.gad_campaignid, tags.campaign_id, tags.utm_id, tags.utm_campaign]
+    .find(value => /^\d{1,20}$/.test(value || ""));
+  const name = tags.utm_campaign;
+  const keyword = tags.keyword || tags.utm_term;
+  return {
+    campaign: name && !/[{}]/.test(name) && !/^\d+$/.test(name) ? name :
+      id === "23874769195" ? "RK | Search | Mittelfranken | High Intent" : explicit.campaign,
+    campaignId: id || "",
+    keyword: keyword && !/[{}]/.test(keyword) ? keyword.slice(0, 200) : "",
+  };
 }
 
 function clickId_(payload) {

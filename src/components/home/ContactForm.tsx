@@ -135,6 +135,8 @@ export default function ContactForm() {
           source: trackingData.source,
           medium: trackingData.medium,
           campaign: trackingData.campaign,
+          keyword: trackingData.keyword,
+          campaignId: trackingData.campaignId,
           landingPage: trackingData.landingPage,
           currentPage: trackingData.currentPage,
           referrer: trackingData.referrer,

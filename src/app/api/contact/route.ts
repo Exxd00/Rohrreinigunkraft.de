@@ -25,6 +25,8 @@ interface ContactFormData {
   source?: string;
   medium?: string;
   campaign?: string;
+  keyword?: string;
+  campaignId?: string;
   landingPage?: string;
   currentPage?: string;
   referrer?: string;
@@ -358,6 +360,8 @@ async function sendToGoogleSheets(
     sourceSite: "rohrreinigung-kraft.de",
     medium: formData.medium || null,
     campaign: formData.campaign || null,
+    keyword: typeof formData.keyword === "string" ? formData.keyword.trim().slice(0, 160) : null,
+    campaignId: typeof formData.campaignId === "string" && /^\d{1,20}$/.test(formData.campaignId) ? formData.campaignId : null,
     landingPage: formData.landingPage || null,
     currentPage: formData.currentPage || null,
   });

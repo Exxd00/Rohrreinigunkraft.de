@@ -60,6 +60,8 @@ const postPhoneEventToSheets = (
     utmSource: tracking.source,
     utmMedium: tracking.medium,
     utmCampaign: tracking.campaign,
+    keyword: tracking.keyword,
+    campaignId: tracking.campaignId,
     gclid: tracking.gclid,
     gbraid: tracking.gbraid,
     wbraid: tracking.wbraid,
