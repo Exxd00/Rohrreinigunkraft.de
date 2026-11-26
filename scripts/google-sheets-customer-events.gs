@@ -34,7 +34,7 @@ function doPost(e) {
     const payload = JSON.parse((e && e.postData && e.postData.contents) || "{}");
     validatePayload_(payload);
 
-    const sheet = customerEventSheet_();
+    const sheet = customerEventSheet();
 
     const existingRow = findEventRow_(sheet, payload.eventId);
     if (existingRow) {
@@ -103,7 +103,7 @@ function doPost(e) {
 
 // Configure CUSTOMER_EVENTS_SPREADSHEET_ID in the bound project's Script
 // Properties. This resolver can also be run in the editor as a read-only check.
-function customerEventSheet_() {
+function customerEventSheet() {
   const id = PropertiesService.getScriptProperties().getProperty("CUSTOMER_EVENTS_SPREADSHEET_ID");
   if (!id) throw new Error("Customer event spreadsheet is not configured");
   const sheet = SpreadsheetApp.openById(id).getSheetByName(TARGET_SHEET_NAME);
