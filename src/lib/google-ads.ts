@@ -141,18 +141,22 @@ export async function googleAdsRequest(
  */
 export async function searchGoogleAds(
   config: GoogleAdsConfig,
-  query: string,
-  pageSize = 1000
+  query: string
 ): Promise<unknown[]> {
   const customerId = config.customerId.replace(/-/g, "");
   const endpoint = `/${GOOGLE_ADS_API_VERSION}/customers/${customerId}/googleAds:search`;
 
-  const result = await googleAdsRequest(config, endpoint, "POST", {
-    query,
-    pageSize,
-  });
-
-  return (result as { results?: unknown[] }).results || [];
+  const rows: unknown[] = [];
+  let pageToken: string | undefined;
+  do {
+    const page = await googleAdsRequest(config, endpoint, "POST", {
+      query,
+      ...(pageToken ? { pageToken } : {}),
+    }) as { results?: unknown[]; nextPageToken?: string };
+    for (const row of page.results || []) rows.push(row);
+    pageToken = page.nextPageToken;
+  } while (pageToken);
+  return rows;
 }
 
 // ============================
@@ -356,8 +360,8 @@ export async function getCampaigns(
       campaign.id,
       campaign.name,
       campaign.status,
-      campaign.start_date,
-      campaign.end_date,
+      campaign.start_date_time,
+      campaign.end_date_time,
       campaign_budget.amount_micros,
       metrics.impressions,
       metrics.clicks,
