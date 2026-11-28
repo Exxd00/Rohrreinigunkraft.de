@@ -9,6 +9,7 @@ import { serviceAreaSchema } from "@/data/service-area";
 import { pageMetadata } from "@/lib/page-seo";
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   Phone,
@@ -348,6 +349,26 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   {enhancedContent.causes.title}
                 </h2>
 
+                {service.slug === "kamera-inspektion" && (
+                  <div className="mb-8 grid gap-6 sm:grid-cols-2">
+                    <figure>
+                      <Image src="/work/praxis-revisionsschacht.jpg" width={1080} height={810}
+                        alt="Geöffneter Revisionsschacht mit eingeführtem Kamerakabel."
+                        className="h-auto w-full rounded-xl" />
+                      <figcaption className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                        Über den offenen Revisionsschacht führen wir die Kamera in die Leitung.
+                      </figcaption>
+                    </figure>
+                    <figure>
+                      <Image src="/work/praxis-kamerainspektion.webp" width={960} height={720}
+                        alt="Kamerabild einer Rohrleitung mit einer Engstelle."
+                        className="h-auto w-full rounded-xl" />
+                      <figcaption className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                        Auf dem Monitor ist zu sehen, wie viel Platz an der Engstelle im Rohr bleibt.
+                      </figcaption>
+                    </figure>
+                  </div>
+                )}
                 <div className="space-y-4">
                   {enhancedContent.causes.common.map((item, index) => (
                     <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
@@ -497,6 +518,17 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                 {service.longDescription}
               </p>
+
+              {service.slug === "wurzelentfernung" && (
+                <figure className="mx-auto mb-8 max-w-sm">
+                  <Image src="/work/praxis-wurzeln-am-reinigungskopf.jpg" width={810} height={1080}
+                    alt="Feine Wurzeln und Fasern am metallischen Reinigungskopf."
+                    className="h-auto w-full rounded-xl" />
+                  <figcaption className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    Nach dem Herausziehen sind die feinen Wurzeln am Reinigungskopf zu erkennen.
+                  </figcaption>
+                </figure>
+              )}
 
               {/* Features */}
               <div className="grid grid-cols-2 gap-3 mb-8">
